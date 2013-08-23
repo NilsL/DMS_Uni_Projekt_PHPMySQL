@@ -1,4 +1,4 @@
 # DMS Uni Projekt
-## realisiert mit PHP/MySQL & jQuery/AJAX
+#### realisiert mit PHP/MySQL & jQuery/AJAX
 
-<about.me/nlutz>
+[Nils Lutz](http://about.me/nlutz "Nils Lutz @ about.me")
