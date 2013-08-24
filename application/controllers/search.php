@@ -1,9 +1,9 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *
- *
- *
+ * Name: Search Controller
+ * Author: Nils Lutz
+ * Version: 0.1
  */
 class Search extends CI_Controller {
 
@@ -61,7 +61,6 @@ class Search extends CI_Controller {
          $data['classifications'] = $classifications;
       }
 
-      $data['search_adv'] = TRUE;
       $data['view']       = 'search/search_advanced_view';
       $this->load->view('template/content', $data);
    }

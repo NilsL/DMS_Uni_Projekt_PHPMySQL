@@ -1,8 +1,8 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
- *
- *
- *
+ * Name: Usercontrol Controller
+ * Author: Nils Lutz
+ * Version: 0.1
  */
 class Usercontrol extends CI_Controller {
 

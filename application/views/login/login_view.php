@@ -1,4 +1,4 @@
-<?php echo form_open('login/validate_login', array('class' => 'login')); ?>
+<?php echo form_open('login/validate_login', array('name' => 'login', 'class' => 'login', 'onsubmit' => 'return validateLogin()')); ?>
 
 <p>
    <?php
@@ -15,7 +15,7 @@
 </p>
 
 <p>
-   <?php echo form_button(array('class' => 'login-button', 'type' => 'submit', 'content' => 'Login')); ?>
+   <?php echo form_button(array('name' => 'login-button', 'type' => 'submit', 'content' => 'Login')); ?>
 </p>
 
 <p>

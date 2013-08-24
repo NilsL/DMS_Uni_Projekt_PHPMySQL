@@ -17,14 +17,8 @@
          media="screen, projection"/>
 
    <!--   JavaScript-->
-   <?php
-   if (isset($search_adv)) {
-      ?>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url(); ?>js/ajax.js"></script>
-   <?php
-   }
-   ?>
 </head>
 
 <body>
