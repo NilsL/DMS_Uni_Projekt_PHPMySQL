@@ -61,7 +61,8 @@ class Search extends CI_Controller {
          $data['classifications'] = $classifications;
       }
 
-      $data['view']       = 'search/search_advanced_view';
+      $data['jQuery'] = TRUE;
+      $data['view']   = 'search/search_advanced_view';
       $this->load->view('template/content', $data);
    }
 
