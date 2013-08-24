@@ -6,7 +6,7 @@
    <?php echo form_open('login/validate_signup', array('class' => 'signup')); ?>
    <p>
       <?php echo form_label('First Name: ', 'first_name'); ?>
-      <?php echo form_input(array('id' => 'first_name', 'name' => 'first_name', 'placeholder' => 'Jon')); ?>
+      <?php echo form_input(array('id' => 'first_name', 'name' => 'first_name', 'placeholder' => 'Jon', 'autofocus' => 'autofocus')); ?>
    </p>
 
    <p>

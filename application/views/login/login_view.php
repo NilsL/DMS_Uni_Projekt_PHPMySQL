@@ -3,7 +3,7 @@
 <p>
    <?php
    echo form_label('Login: ', 'login');
-   echo form_input(array('id' => 'login', 'name' => 'login', 'placeholder' => 'User or Email'));
+   echo form_input(array('id' => 'login', 'name' => 'login', 'placeholder' => 'User or Email', 'autofocus' => 'autofocus'));
    ?>
 </p>
 

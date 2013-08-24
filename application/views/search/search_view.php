@@ -7,7 +7,7 @@
    <p>
       <?php
       echo form_label('Titel', 'title');
-      echo form_input(array('id' => 'title', 'name' => 'title', 'placeholder' => 'Titel des Dokuments'));
+      echo form_input(array('id' => 'title', 'name' => 'title', 'placeholder' => 'Titel des Dokuments', 'autofocus' => 'autofocus'));
       ?>
    </p>
 

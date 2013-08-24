@@ -10,7 +10,8 @@
 			echo form_input ( array (
 					'id' => 'i_author_name',
 					'name' => 'i_author_name',
-					'placeholder' => 'New Author' 
+					'placeholder' => 'New Author',
+               'autofocus' => 'autofocus'
 			) );
 			echo br(1);
 			echo form_label ( 'Email: ', 'i_author_mail');

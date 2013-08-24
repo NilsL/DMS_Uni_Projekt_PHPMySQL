@@ -10,7 +10,8 @@
 			echo form_input ( array (
 					'id' => 'i_project_name',
 					'name' => 'i_project_name',
-					'placeholder' => 'Project Name' 
+					'placeholder' => 'Project Name',
+               'autofocus' => 'autofocus'
 			) );
 			echo br(1);
 			echo form_label ( 'Project Number: ', 'i_project_number');

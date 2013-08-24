@@ -10,7 +10,8 @@
 			echo form_input ( array (
 					'id' => 'i_class_name',
 					'name' => 'i_class_name',
-					'placeholder' => 'New Classification' 
+					'placeholder' => 'New Classification',
+               'autofocus' => 'autofocus'
 			) );
 			?>
    </p>
