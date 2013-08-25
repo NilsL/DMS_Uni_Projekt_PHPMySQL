@@ -21,10 +21,18 @@ class Classification_model extends CI_Model {
     *
     *
     */
-   function get_Classification() {
+   function get_Classification ($id = NUll) {
+	if (isset ( $id )) {
+		$this->db->where ( 'id', $id );
+		$classification = $this->db->get ( 'storage_classification' );
+		if ($classification->num_rows () > 0) {
+			$row = $classification->result();
+			return $row;
+		}
+	}
       $classifications = $this->db->get('storage_classification');
       if ($classifications->num_rows() > 0) {
-         $tmp = array();
+         $tmp[] = '--- view all ---';
 
          foreach ($classifications->result() as $class) {
             $tmp[$class->id] = $class->name;
@@ -36,6 +44,22 @@ class Classification_model extends CI_Model {
       return FALSE;
    }
 
+   
+   /**
+    * noch nicht final nur für erste tests. läuft aber ohne fehler schon
+    *
+    *
+    */
+   function getHints($entered) {
+   	$this->db->like('name', $entered, 'after');
+   	$result = $this->db->get('storage_classfication');
+   
+   	if ($result->num_rows() > 0) {
+   		return $result;
+   	}
+   	return FALSE;
+   }
+   
    /**
     *
     *

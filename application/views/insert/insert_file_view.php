@@ -6,30 +6,20 @@
 
    <p>
       <?php
-	      $data = array(
-	      		'name'        => 'filename',
-	      		'id'          => 'i_file',
-	      		'style'       => 'width: 330px',
-	      		'onfocus'     => "showDivStation(this, true,'documents')",
-	      		'onclick'     => "removeNull(this)",
-	      		'onkeyup'     => "similarFind(this,'documents')",
-	      		'value'       => '--no choice--',
-	      );
-	      $inputtext = form_input($data);
-	      $options1 = array(0 => '--no choice--');
-			if(isset($all_d)) {
-      			foreach ($all_d as $row) {
-					$options1[$row->document_id] = $row->title;
-				}
-      		}
-      		$data = 'size="6" style="display: none; width: 330px;" onclick="selectStation(this, '."'documents'".')"';
-      		$documents = form_dropdown('documents', $options1, 0, $data);
-      		$inputplusdocuments = $inputtext.br(1).$documents;
-      		$this->table->add_row(array('To Document: ', $inputplusdocuments));
+	        //projekt eingabefeld
+      		echo form_label('Project: ', 'project');
+      		$data = array(
+      				'name'        => 'i_document_projects',
+      				'id'          => 'i_document_projects',
+      				'style'       => 'width: 330px',
+      				'onkeyup'     => 'javascript:showHint(this.value)',
+      		);
+      		echo form_input($data);
+      		$data = 'size="6" style="display: none; width: 330px;" onclick="javascript:putSelected()"';
+      		echo form_dropdown('projects', $all_p, 0, $data);
       		
-			$this->table->add_row(array('File: ', form_upload ( array ('id' => 'i_file', 'name' => 'i_file') )));
-			
-			echo $this->table->generate();
+			echo form_label('File: ', 'file');
+			echo form_upload ( array ('id' => 'i_file', 'name' => 'i_file'));
 			?>
    </p>
    

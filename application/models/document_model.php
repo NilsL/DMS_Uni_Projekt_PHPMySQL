@@ -12,9 +12,77 @@ class Document_model extends CI_Model {
     *
     *
     */
-   function create_Document() {
+	function create_Document($title, $abstract, $class, $project, $keyword, $array_authors) {
+		$this->db->where ( 'title', $title );
+		$query = $this->db->get ( 'storage_document' );
+		if ($query->num_rows == 1) {
+			return false;
+		}
 
-   }
+		$data = array (
+				'title' => $title,
+				'abstract' => $abstract,
+				'classification_id' => $class,
+				'project_id' => $project
+		);
+		$this->db->insert ( 'storage_document', $data );
+		
+		// jetzt kommen alle kreuztabelle dran
+		// gerade eingef¨¹gte document_id wiederfinden
+		$query = $this->db->query ( 'select last_insert_id() as last_id' );
+		$row = $query->row();
+		$document_id = $row-> last_id;
+		
+		// author
+		foreach ( $array_authors as $row ) {
+			$data = array (
+					'document_id' => $document_id,
+					'author_id' => $row
+			);
+			$this->db->insert ( 'storage_document_has_author', $data );
+		}
+		
+		// keyword
+		$keywords = trim ( $keyword );
+		if (! empty ( $keywords )) {
+			// split string
+			$keys = explode ( ",", $keywords );
+			if (! empty ( $keys )) {
+				// durchgehen
+				foreach ( $keys as $row ) {
+					$this->db->where ( 'name', $row );
+					$query = $this->db->get ( 'storage_keyword' );
+					$keyword_id = 0;
+					// falls dies wort noch nie benutzt wurde, wird zuerst angelegt werden
+					if ($query->num_rows == 0) {
+						$data = array (
+								'name' => $row
+						);
+						$this->db->insert ( 'storage_keyword', $data );
+						// die keyword_id wieder kriegen
+						$query = $this->db->query ( 'select last_insert_id() as last_id' );
+						$row = $query->row();
+						$keyword_id = $row-> last_id;
+					} else {
+						// die keyword_id auch wieder kriegen falls dies wort schon da gewesen ist
+						$this->db->select ( 'id' );
+						$this->db->where ( 'name', $row );
+						$query = $this->db->get ( 'storage_keyword' );
+						$row = $query->row ();
+						$keyword_id = $row->id;
+					}
+						
+					// jetzt keyword mit document in verbindung setzen
+					$data = array (
+							'document_id' => $document_id,
+							'keyword_id' => $keyword_id
+					);
+					$this->db->insert ( 'storage_document_has_keyword', $data );
+				}
+			}
+		}
+		return true;
+	}
 
    /**
     *
