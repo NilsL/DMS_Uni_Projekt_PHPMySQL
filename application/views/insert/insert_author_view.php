@@ -6,20 +6,19 @@
 
    <p>
       <?php
-			echo form_label ( 'Name: ', 'i_author_name' );
-			echo form_input ( array (
+     		$this->table->add_row(form_label ( 'Name: ', 'i_author_name' ), form_input ( array (
 					'id' => 'i_author_name',
 					'name' => 'i_author_name',
-					'placeholder' => 'New Author',
-               'autofocus' => 'autofocus'
-			) );
-			echo br(1);
-			echo form_label ( 'Email: ', 'i_author_mail');
-			echo form_input( array (
+					'placeholder' => 'New Author' 
+			) ));
+     		
+     		$this->table->add_row(form_label ( 'Email: ', 'i_author_mail'),form_input( array (
 					'id' => 'i_author_mail',
 					'name' => 'i_author_mail',
 					'placeholder' => 'Emailadress'			
-			));
+			)));
+     		
+     		echo $this->table->generate();
 			?>
    </p>
    

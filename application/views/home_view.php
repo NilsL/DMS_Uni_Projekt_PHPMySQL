@@ -2,7 +2,7 @@
    <h1>HIER KOMMT BLABLA</h1>
 
    <p>
-      SCHNELLSTART UND KURZER INFO TEXT WAS HIER SO GEHT
+     <?php echo anchor('mainDirectory', 'Click here to go to main Directory')?>
    </p>
 </div>
 
