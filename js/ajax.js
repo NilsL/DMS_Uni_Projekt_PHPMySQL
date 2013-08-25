@@ -11,12 +11,20 @@
  *
  *
  */
+//str ist jetzt der inputfeld-element
 function showHint(str) {
+	//die entsprechende dropdown id basteln. bsp: project -> #projects
+	var auswahl = "#" + str.id + "s";
+	//das zusammenhängende model basteln
+	var model = str.id + "_model";
+
     $.ajax({
-        url: "show_Hint?entered=" + str,
-        type: 'GET',
+    	type: 'GET',
+    	//zwei paras: eingabevalue und model
+        url: "show_Hint?entered=" + str.value + "&model=" + model,
         success: function (msg) {
-            $('#projects').html(msg);
+        	//var auswahl wird hier eingesetzt
+          $(auswahl).html(msg);
         }
     });
     return false;
@@ -28,12 +36,17 @@ function showHint(str) {
  *
  *
  */
-function putSelected() {
-    // ausgewählte option aus dem dropdown in var selected speichern
-    // und dann in input field project einfügen
-    var selected = document.getElementById("projects").selectedOptions;
-    document.getElementById("project").value = selected[0].text;
-
+//dropdown-element als para eingeleitet
+function putSelected(obj) {
+    // ausgew盲hlte option aus dem dropdown in var selected speichern
+    // und dann in input field project einf眉gen
+    var selected = document.getElementById(objid).selectedOptions;
+	//dropdown-id leicht zugreifen bsp: projects
+	var objid = obj.id
+	//inputfeld-id durch string-manipulation kriegen. sieht zwar dumm aus aber was solls :) bsp: projects->project
+	var inputid = objid.substr(0, objid.length-1);
+    document.getElementById(inputid).value = selected[0].text;
+    
 }
 
 /**
