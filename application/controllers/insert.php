@@ -44,7 +44,6 @@ class Insert extends CI_Controller {
 	function insert_document() {
 		$data = $this->insert_document_helper ();
 		
-		$data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_document_view';
 		$this->load->view ( 'template/content', $data );
 	}
@@ -56,13 +55,13 @@ class Insert extends CI_Controller {
 		$this->load->model ( 'classification_model' );
 		
 		if ($projects = $this->project_model->get_Project ()) {
-			$data ['all_p'] = $projects;
+			$data ['all_p'] = $projects->result ();
 		}
 		if ($authors = $this->author_model->get_Author ()) {
-			$data ['all_a'] = $authors;
+			$data ['all_a'] = $authors->result ();
 		}
 		if ($classification = $this->classification_model->get_Classification ()) {
-			$data ['all_c'] = $classification;
+			$data ['all_c'] = $classification->result ();
 		}
 		return $data;
 	}
@@ -71,7 +70,6 @@ class Insert extends CI_Controller {
 	function insert_file() {
 		$data = $this->insert_file_helper ();
 		
-		$data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_file_view';
 		$this->load->view ( 'template/content', $data );
 	}
@@ -179,8 +177,8 @@ class Insert extends CI_Controller {
 			
 			$title = $this->input->post ( 'i_document_title' );
 			$abstract = $this->input->post ( 'i_document_abstract' );
-			$class = $this->input->post ( 'i_document_class' );
-			$project = $this->input->post ( 'i_document_project' );
+			$class = $this->input->post ( 'classification' );
+			$project = $this->input->post ( 'projects' );
 			$keyword = $this->input->post ( 'i_document_keywords' );
 			$array_authors = $this->input->post ( 'hiddenid' );
 			
@@ -225,40 +223,4 @@ class Insert extends CI_Controller {
 			}
 		}
 	}
-	
-	/**
-	 * ajax backend function welche vom js script gecalled wird
-	 *
-	 *
-	 */
-	function show_Hint() {
-   	  //getten
-   	  $model = $this->input->get('model');
-      $entered = $this->input->get('entered');
-      
-      //entsprechenden model laden
-      $this->load->model($model);
-      
-      // alle möglichen einträge nach dem model laden die mit dem übergebenen buchstaben beginnen
-      switch ($model) {
-      	case "project_model": 
-      		$hints = $this->project_model->getHints($entered);
-     		break;
-      	case "author_model":
-      		$hints = $this->author_model->getHints($entered);
-      		break;
-      	case "classification_model":
-      		$hints = $this->classification_model->getHints($entered);
-      		break;
-      }
-      
-
-      // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
-      $response = NULL;
-      foreach ($hints->result() as $hint) {
-      	  $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
-      }
-
-      echo $response;
-   }
 }

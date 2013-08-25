@@ -28,16 +28,14 @@
    <p>
       <?php
       echo form_label('Projekt', 'project');
-      //showHint nimmt nicht mehr this.value als para, sondern das ganze this
-      echo form_input(array('id' => 'project', 'name' => 'project', 'placeholder' => 'Projektsuche', 'onkeyup' => 'javascript:showHint(this)'))
+      echo form_input(array('id' => 'project', 'name' => 'project', 'placeholder' => 'Projektsuche', 'onkeyup' => 'javascript:showHint(this.value)'))
       ?>
    </p>
 
    <p>
       <?php
       echo form_label('Projektauswahl', 'projects');
-      //das gleiche wie oben, das element wird ¨¹bergeben
-      $attributes = 'id="projects" size="1" onchange="javascript:putSelected(this)"';
+      $attributes = 'id="projects" size="1" onclick="javascript:putSelected()"';
       echo form_dropdown('projects', $projects, array(), $attributes);
       ?>
    </p>
