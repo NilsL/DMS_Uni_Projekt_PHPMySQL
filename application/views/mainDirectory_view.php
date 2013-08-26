@@ -16,7 +16,11 @@ if (isset ( $all_documents )) {
 				'screenx' => '0',
 				'screeny' => '0' 
 		);
-		$this->table->add_row ( anchor_popup ( 'search/popup?doc_id='. $row->document_id, '<strong>' . $row->title . '</strong>', $atts ), $row->c_name, $row->p_name );
+		if ($this->session->userdata('is_logged_in')) {
+			$this->table->add_row ( anchor_popup ( 'search/popup?doc_id='. $row->document_id, '<strong>' . $row->title . '</strong>', $atts ), $row->c_name, $row->p_name );
+		} else {
+			$this->table->add_row ( '<strong>' . $row->title . '</strong>', $row->c_name, $row->p_name );
+		}
 	}
 	
 	echo $this->table->generate ();

@@ -102,27 +102,24 @@ class Document_model extends CI_Model {
 	//durch foreignkey verknuepfbar sind
    function get_Document($id=NULL) {
    	if (isset ( $id )) {
-      $this->db->select('storage_document.id, title, abstract, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification');
+   		//"storage_author.name AS author" geloescht denn author nicht durch foreignkey zu verknuepfen ist
+      $this->db->select('storage_document.id as document_id, title, abstract, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join f眉r author id zu name
-      $this->db->join('storage_document_has_author', 'storage_document.id = storage_document_has_author.document_id');
-      $this->db->join('storage_author', 'storage_document_has_author.author_id = storage_author.id');
-
-      // join f眉r classification id zu name
+      // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       $this->db->where('storage_document.id', $id);
       $result = $this->db->get('storage_document');
 
-      if ($result->num_rows() == 1) {
-         return $result;
-      }
+   	  if ($result->num_rows () == 1) {
+		 $row = $result->row ();
+		 return $row;
+	  }
    	} 
    	
    	$this->db->select ( 'storage_document.id as document_id, title, abstract, storage_classification.name as c_name, storage_project.name as p_name' );
 	$this->db->join ( 'storage_classification', 'storage_classification.id = storage_document.classification_id' );
-
 	$this->db->join ( 'storage_project', 'storage_project.id = storage_document.project_id' );
 	$documents = $this->db->get ( 'storage_document' );
 	if ($documents->num_rows () > 0) {
@@ -225,6 +222,39 @@ class Document_model extends CI_Model {
    function delete_Document() {
 
    }
+   
+   /**
+    *anhand document_id authors, keywords bzw. Files finden
+    *
+    *
+    */
+	function get_Author($id) {
+		$this->db->select('storage_author.name as a_name');
+		$this->db->join('storage_document_has_author', 'storage_document_has_author.author_id = storage_author.id');
+		$this->db->where('storage_document_has_author.document_id', $id);
+		$authors = $this->db->get('storage_author');
+		if ($authors->num_rows () > 0) {
+			return $authors;
+		}
+	}
+	function get_Keyword($id) {
+		$this->db->select('storage_keyword.name as k_name');
+		$this->db->join('storage_document_has_keyword', 'storage_document_has_keyword.keyword_id = storage_keyword.id');
+		$this->db->where('storage_document_has_keyword.document_id', $id);
+		$keywords = $this->db->get('storage_keyword');
+		if($keywords->num_rows()>0) {
+			return $keywords;
+		}
+	}
+	function get_File($id) {
+		$this->db->select('storage_file.id as f_id, storage_file.file as f_file, storage_file.md5 as f_md5, storage_file.name as f_name');
+		$this->db->join('storage_document_has_file', 'storage_document_has_file.file_id = storage_file.id');
+		$this->db->where('storage_document_has_file.document_id', $id);
+		$files = $this->db->get('storage_file');
+		if($files->num_rows()>0) {
+			return $files;
+		}
+	}
 
 }
 /* End of file document_model.php */
