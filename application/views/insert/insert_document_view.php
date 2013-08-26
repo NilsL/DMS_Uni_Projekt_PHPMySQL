@@ -51,9 +51,12 @@
       		echo form_input($data);
       		echo br(1);
       		echo form_label('Authorauswahl: ', 'authors');
-      		$attributes = 'id="authors" size="1" style="width: 330px;" onclick="javascript:putSelected(this)"';
+      		$attributes = 'id="authors" size="1" style="width: 330px;" onclick="javascript:putSelected(this)" onchange="showRow(this)"';
       		echo form_dropdown('authors', $all_a, array(), $attributes);
       		echo br(1);
+      		//authors ist multichoice, daher diese table hier vorzubereiten
+      		echo "<table id='tab'></table>";
+      		
       		
       		//keyword eingabefeld
       		echo form_label('Keyword: ', 'keyword');

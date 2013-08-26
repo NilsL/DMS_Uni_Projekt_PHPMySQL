@@ -17,7 +17,7 @@ function showHint(str) {
 	var auswahl = "#" + str.id + "s";
 	//das zusammenhängende model basteln
 	var model = str.id + "_model";
-
+	
     $.ajax({
     	type: 'GET',
     	//zwei paras: eingabevalue und model
@@ -40,9 +40,9 @@ function showHint(str) {
 function putSelected(obj) {
     // ausgew盲hlte option aus dem dropdown in var selected speichern
     // und dann in input field project einf眉gen
-    var selected = document.getElementById(objid).selectedOptions;
 	//dropdown-id leicht zugreifen bsp: projects
 	var objid = obj.id
+    var selected = document.getElementById(objid).selectedOptions;
 	//inputfeld-id durch string-manipulation kriegen. sieht zwar dumm aus aber was solls :) bsp: projects->project
 	var inputid = objid.substr(0, objid.length-1);
     document.getElementById(inputid).value = selected[0].text;
@@ -105,4 +105,53 @@ function validateSignUp() {
         alert("Password confirmation must be filled out");
         return false;
     }
+}
+
+/**
+ * multiplechoice
+ * for e.g. authos
+ * pur javascript-tech
+ *
+ */
+//warum hier findet ajax kein einsatz: weil die zwischengespeicherte auswahl sowieso jederzeit nach dem einfuegen von
+//anderem benutzer geloescht werden, ajax schafft nicht das mitzubekommen weil ajax letztlich durch instant-action
+//aktiviert ist wie onclick oder so. ein loeschvorgang von anderem user zaehlt offenbar nicht dazu
+function showRow(obj) {
+	if(obj.value !=0) {
+		//isChoosed helperfunktion, verhindert mehrfachauswahl von einem eintrag
+		if(isChoosed(obj)) {
+			// table ergreifen
+			var tab = document.getElementById('tab');
+			// row inserten
+			var row = tab.insertRow(tab.rows.length);
+			// vier spalten schaffen
+			var idCell = row.insertCell(row.cells.length);
+			var nameCell = row.insertCell(row.cells.length);
+			var buttonCell = row.insertCell(row.cells.length);
+			var hiddenCell = row.insertCell(row.cells.length);
+			// Inhalten einfügen, einmal id und einmal name
+			idCell.innerHTML = obj.value;
+			nameCell.innerHTML = obj.options[obj.selectedIndex].text;
+			//loeschbutton
+			buttonCell.innerHTML = '<input value="Delete" type="button" onclick="deleteRow(this)"/>';
+			//ganz wichtig, dies hidden inputfeld speichert die Userauswahl
+			hiddenCell.innerHTML = '<input type="hidden" name="hiddenid[]" value="' + obj.value + '" />';
+		}
+	}
+}
+//loeschfunktion
+function deleteRow(obj) {
+	var row = obj.parentNode.parentNode;
+	var tab = row.parentNode;
+	tab.deleteRow(row.rowIndex);
+}
+//diese funktion unterbindet dass die bereits ausgewaehlte record noch mal auszuwaehlen ist
+function isChoosed(obj) {
+	//ganze tabelle durchsuchen
+    for (i=0; i < document.getElementById('tab').rows.length; i++) {              
+    	if(document.getElementById('tab').rows[i].cells[0].innerHTML == obj.value) { 
+            return false;
+        }
+    }
+	return true;
 }

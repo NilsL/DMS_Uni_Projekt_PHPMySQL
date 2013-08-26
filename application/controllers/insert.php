@@ -79,7 +79,7 @@ class Insert extends CI_Controller {
 	// insert file helper
 	function insert_file_helper() {
 		$this->load->model ( 'document_model' );
-		if ($documents = $this->document_model->get_Document ()) {
+		if ($documents = $this->document_model->get_all_Document ()) {
 			$data ['all_d'] = $documents;
 		}
 		return $data;
@@ -179,9 +179,10 @@ class Insert extends CI_Controller {
 			
 			$title = $this->input->post ( 'i_document_title' );
 			$abstract = $this->input->post ( 'i_document_abstract' );
-			$class = $this->input->post ( 'i_document_class' );
-			$project = $this->input->post ( 'i_document_project' );
+			$class = $this->input->post ( 'classifications' );
+			$project = $this->input->post ( 'projects' );
 			$keyword = $this->input->post ( 'i_document_keywords' );
+			//authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
 			$array_authors = $this->input->post ( 'hiddenid' );
 			
 			$this->load->model ( 'document_model' );
@@ -249,6 +250,9 @@ class Insert extends CI_Controller {
       		break;
       	case "classification_model":
       		$hints = $this->classification_model->getHints($entered);
+      		break;
+      	case "document_model":
+      		$hints = $this->document_model->getHints($entered);
       		break;
       }
       

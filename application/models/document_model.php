@@ -28,18 +28,26 @@ class Document_model extends CI_Model {
 		$this->db->insert ( 'storage_document', $data );
 		
 		// jetzt kommen alle kreuztabelle dran
-		// gerade eingef��gte document_id wiederfinden
+		// gerade eingefügte document_id wiederfinden
 		$query = $this->db->query ( 'select last_insert_id() as last_id' );
 		$row = $query->row();
 		$document_id = $row-> last_id;
 		
 		// author
 		foreach ( $array_authors as $row ) {
-			$data = array (
-					'document_id' => $document_id,
-					'author_id' => $row
-			);
-			$this->db->insert ( 'storage_document_has_author', $data );
+			//ueberpruefen ob author noch da ist oder evtl von anderen geloescht ist
+			$this->load->model('author_model');
+			if($query = $this->author_model->get_Author($row)) {
+				$data = array (
+						'document_id' => $document_id,
+						'author_id' => $row
+				);
+				$this->db->insert ( 'storage_document_has_author', $data );
+			}
+			//eig. sollte es nicht geloescht werden, hier ist transaction angesagt...
+			else {
+				
+			}
 		}
 		
 		// keyword
@@ -89,14 +97,18 @@ class Document_model extends CI_Model {
     *
     *
     */
-   function get_Document($id) {
+	//jetzt sieht diese getmethode ähnlich aus wie die in anderen models. einziger unterschied ist, dass es die
+	//anderen tabellen beziehen um documents zu fetchen. die anderen tabellen sind vor allem die die unmittelbar
+	//durch foreignkey verknuepfbar sind
+   function get_Document($id=NULL) {
+   	if (isset ( $id )) {
       $this->db->select('storage_document.id, title, abstract, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join für author id zu name
+      // join f眉r author id zu name
       $this->db->join('storage_document_has_author', 'storage_document.id = storage_document_has_author.document_id');
       $this->db->join('storage_author', 'storage_document_has_author.author_id = storage_author.id');
 
-      // join für classification id zu name
+      // join f眉r classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
@@ -105,6 +117,35 @@ class Document_model extends CI_Model {
 
       if ($result->num_rows() == 1) {
          return $result;
+      }
+   	} 
+   	
+   	$this->db->select ( 'storage_document.id as document_id, title, abstract, storage_classification.name as c_name, storage_project.name as p_name' );
+	$this->db->join ( 'storage_classification', 'storage_classification.id = storage_document.classification_id' );
+
+	$this->db->join ( 'storage_project', 'storage_project.id = storage_document.project_id' );
+	$documents = $this->db->get ( 'storage_document' );
+	if ($documents->num_rows () > 0) {
+		return $documents->result ();
+	}
+    return FALSE;
+   }
+   
+   /**
+    * diese funktion dient nur zum dropdownanforderung, kann leider nicht da oben angehaengt werden
+    *
+    *
+    */
+   function get_all_Document() {
+   	$documents = $this->db->get('storage_document');
+      if ($documents->num_rows() > 0) {
+         $tmp[] = '--- view all ---';
+
+         foreach ($documents->result() as $docu) {
+            $tmp[$docu->id] = $docu->title;
+         }
+
+         return $tmp;
       }
 
       return FALSE;
@@ -119,17 +160,17 @@ class Document_model extends CI_Model {
 
       $this->db->select('storage_document.id, title, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join für author id zu name
+      // join f眉r author id zu name
       $this->db->join('storage_document_has_author', 'storage_document.id = storage_document_has_author.document_id');
       $this->db->join('storage_author', 'storage_document_has_author.author_id = storage_author.id');
 
-      // join für classification id zu name
+      // join f眉r classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       if ($keywords) {
          $this->db->distinct('storage_document.id, title, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification, keyword_id');
-         // join für keyword id zu name
+         // join f眉r keyword id zu name
          $this->db->join('storage_document_has_keyword', 'storage_document.id = storage_document_has_keyword.document_id');
          $this->db->join('storage_keyword', 'storage_document_has_keyword.keyword_id = storage_keyword.id');
          $this->db->or_where_in('storage_keyword.name', $keywords);
@@ -148,6 +189,23 @@ class Document_model extends CI_Model {
       }
 
       return FALSE;
+   }
+
+   /**
+    * noch nicht final nur f眉r erste tests. l盲uft aber ohne fehler schon
+    *
+    *
+    */
+   function getHints($entered) {
+   	//here muss alias gestellt werden, denn showHint() in insert.php hat $hint->name fest geschrieben, aber hier heisst es aber title
+   	$this->db->select('id, title as name');
+   	$this->db->like('title', $entered, 'after');
+   	$result = $this->db->get('storage_document');
+   	 
+   	if ($result->num_rows() > 0) {
+   		return $result;
+   	}
+   	return FALSE;
    }
 
    /**
