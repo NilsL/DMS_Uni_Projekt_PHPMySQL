@@ -153,10 +153,11 @@ class Search extends CI_Controller {
 
       $doc_id = $this->input->get('doc_id');
 
-      $data['document'] = $this->document_model->get_Document($doc_id)->row();
+      $data['document'] = $this->document_model->get_Document($doc_id);
 
       $this->load->view('search/popup_view', $data);
    }
 }
+
 /* End of file search.php */
 /* Location: ./application/controllers/search.php */
