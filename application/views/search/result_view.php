@@ -11,7 +11,7 @@
       'screeny'    => '500'
    );
 
-   echo anchor('search', 'Neue Suche', array('id' => 'new-search'));
+   echo anchor('search', 'New Search', array('id' => 'new-search'));
    echo br(2);
 
    // ausgabe der suchergebnisse

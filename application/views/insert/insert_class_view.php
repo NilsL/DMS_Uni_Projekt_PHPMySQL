@@ -6,12 +6,11 @@
 
    <p>
       <?php
-			echo form_label ( 'Name: ', 'i_class_name' );
-			echo form_input ( array (
+      		echo form_label ( 'Name: ', 'i_class_name' );
+      		echo form_input ( array (
 					'id' => 'i_class_name',
 					'name' => 'i_class_name',
-					'placeholder' => 'New Classification',
-               'autofocus' => 'autofocus'
+					'placeholder' => 'New Classification' 
 			) );
 			?>
    </p>

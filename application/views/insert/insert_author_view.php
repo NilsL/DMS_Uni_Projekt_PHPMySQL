@@ -6,16 +6,15 @@
 
    <p>
       <?php
-			echo form_label ( 'Name: ', 'i_author_name' );
-			echo form_input ( array (
+     		echo form_label ( 'Name: ', 'i_author_name' );
+     		echo form_input ( array (
 					'id' => 'i_author_name',
 					'name' => 'i_author_name',
-					'placeholder' => 'New Author',
-               'autofocus' => 'autofocus'
+					'placeholder' => 'New Author' 
 			) );
-			echo br(1);
-			echo form_label ( 'Email: ', 'i_author_mail');
-			echo form_input( array (
+     		
+     		echo form_label ( 'Email: ', 'i_author_mail');
+     		echo form_input( array (
 					'id' => 'i_author_mail',
 					'name' => 'i_author_mail',
 					'placeholder' => 'Emailadress'			

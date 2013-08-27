@@ -12,9 +12,26 @@ class Project_model extends CI_Model {
     *
     *
     */
-   function create_Project() {
-
-   }
+	function create_Project($name, $number) {
+		// mehrfache speicherung ¨¹berpr¨¹fen...
+		$this->db->where ( 'name', $name );
+		$query = $this->db->get ( 'storage_project' );
+		if ($query->num_rows == 1) {
+			return false;
+		}
+		$this->db->where ( 'number', $number );
+		$query = $this->db->get ( 'storage_project' );
+		if ($query->num_rows == 1) {
+			return false;
+		}
+		
+		$data = array (
+				'name' => $name,
+				'number' => $number
+		);
+		$this->db->insert ( 'storage_project', $data );
+		return true;
+	}
 
    /**
     * mit $id gesetzt wird nur das jeweilige project gefetched, sonst alle!

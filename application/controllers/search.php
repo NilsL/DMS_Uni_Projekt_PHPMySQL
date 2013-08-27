@@ -113,17 +113,31 @@ class Search extends CI_Controller {
     *
     */
    function show_Hint() {
-      $this->load->model('project_model');
+   	  //getten
+   	  $model = $this->input->get('model');
       $entered = $this->input->get('entered');
-
-
-      // alle möglichen projekte laden die mit dem übergebenen buchstaben beginnen
-      $hints = $this->project_model->getHints($entered);
+      
+      //entsprechenden model laden
+      $this->load->model($model);
+      
+      // alle möglichen einträge nach dem model laden die mit dem übergebenen buchstaben beginnen
+      switch ($model) {
+      	case "project_model": 
+      		$hints = $this->project_model->getHints($entered);
+     		break;
+      	case "author_model":
+      		$hints = $this->author_model->getHints($entered);
+      		break;
+      	case "classification_model":
+      		$hints = $this->classification_model->getHints($entered);
+      		break;
+      }
+      
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
       $response = NULL;
       foreach ($hints->result() as $hint) {
-         $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
+      	  $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }
 
       echo $response;
@@ -139,9 +153,22 @@ class Search extends CI_Controller {
 
       $doc_id = $this->input->get('doc_id');
 
-      $data['document'] = $this->document_model->get_Document($doc_id)->row();
+      $data['document'] = $this->document_model->get_Document($doc_id);
+      $data['authors'] = $this->document_model->get_Author($doc_id);
+      $data['keywords'] = $this->document_model->get_Keyword($doc_id);
 
       $this->load->view('search/popup_view', $data);
+   }
+   
+   /**
+    * fileDOWNLOAD function
+    *
+    *
+    */
+   function dl_file($id) {
+   	 $this->load->model('file_model');
+   	 //das file finden
+     $this->file_model->download_File($id);
    }
 }
 /* End of file search.php */
