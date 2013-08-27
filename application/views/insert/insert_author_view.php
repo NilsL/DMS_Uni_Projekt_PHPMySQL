@@ -13,11 +13,12 @@
 					'placeholder' => 'New Author' 
 			) );
      		
-     		$this->table->add_row(form_label ( 'Email: ', 'i_author_mail'),form_input( array (
+     		echo form_label ( 'Email: ', 'i_author_mail');
+     		echo form_input( array (
 					'id' => 'i_author_mail',
 					'name' => 'i_author_mail',
 					'placeholder' => 'Emailadress'			
-			)));
+			));
 			?>
    </p>
    
