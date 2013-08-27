@@ -7,52 +7,35 @@
       <?php 
       		//title eingabefeld
       		echo form_label('Title: ', 'title');
-      		echo form_input(array('id' => 'title', 'name' => 'i_document_title', 'placeholder' => 'Title',  'size' => '50', 'autofocus' => 'autofocus'));
+      		echo form_input(array('id' => 'title', 'name' => 'i_document_title', 'placeholder' => 'Title', 'autofocus' => 'autofocus'));
 			echo br(1);
 			
       		//projekt eingabefeld
       		echo form_label('Project: ', 'project');
-      		$data = array(
-      				'name'        => 'i_document_projects',
-      				'id'          => 'project',
-      				'style'       => 'width: 330px',
-      				'onkeyup'     => 'javascript:showHint(this)',
-      		);
-      		echo form_input($data);
+      		echo form_input(array('name' => 'i_document_projects', 'id' => 'project', 'onkeyup' => 'javascript:showHint(this)'));
       		echo br(1);
+
+            // projekt dropdown
       		echo form_label('Projektauswahl: ', 'projects');
-      		$attributes = 'id="projects" size="1" style=" width: 330px;" onclick="javascript:putSelected(this)"';
-      		echo form_dropdown('projects', $all_p, array(), $attributes);
+      		$attributes = 'id="projects" onclick="javascript:putSelected(this)"';
+      		echo form_dropdown('projects', $projects, array(), $attributes);
       		echo br(1);
   
-      		//class eingabefeld
-      		echo form_label('Classification: ', 'classification');
-      		$data = array(
-      				'name'        => 'i_document_classification',
-      				'id'          => 'classification',
-      				'style'       => 'width: 330px',
-      				'onkeyup'     => 'javascript:showHint(this)',
-      		);
-      		echo form_input($data);
-      		echo br(1);
+      		//class dropdown
       		echo form_label('Classificationauswahl: ', 'classifications');
-      		$attributes = 'id="classifications" size="1" style="width: 330px;" onclick="javascript:putSelected(this)"';
-      		echo form_dropdown('classifications', $all_c, array(), $attributes);
+      		$attributes = 'id="classifications"';
+      		echo form_dropdown('classifications', $classifications, array(), $attributes);
       		echo br(1);
       		
       		//author eingabefeld
       		echo form_label('Author: ', 'author');
-      		$data = array(
-      				'name'        => 'i_document_authors',
-      				'id'          => 'author',
-      				'style'       => 'width: 330px',
-      				'onkeyup'     => 'javascript:showHint(this)',
-      		);
-      		echo form_input($data);
+      		echo form_input(array('name' => 'i_document_authors', 'id' => 'author', 'onkeyup' => 'javascript:showHint(this)'));
       		echo br(1);
+
+            // author dropdown
       		echo form_label('Authorauswahl: ', 'authors');
-      		$attributes = 'id="authors" size="1" style="width: 330px;" onclick="javascript:putSelected(this)" onchange="showRow(this)"';
-      		echo form_dropdown('authors', $all_a, array(), $attributes);
+      		$attributes = 'id="authors" onclick="javascript:putSelected(this)" onchange="showRow(this)"';
+      		echo form_dropdown('authors', $authors, array(), $attributes);
       		echo br(1);
       		//authors ist multichoice, daher diese table hier vorzubereiten
       		echo "<table id='tab'></table>";

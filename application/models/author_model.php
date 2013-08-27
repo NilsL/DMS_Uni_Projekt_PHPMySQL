@@ -59,7 +59,7 @@ class Author_model extends CI_Model {
     *
     * @return array|bool liefert <code> FALSE </code> sollte kein Author vorhanden sein.
     */
-   function getAuthors($dropdown = FALSE) {
+   function get_Authors($dropdown = FALSE) {
       if ($dropdown == FALSE) {
          $authors = $this->db->get('storage_author');
 
@@ -70,13 +70,13 @@ class Author_model extends CI_Model {
 
       $authors = $this->db->get('storage_author');
       if ($authors->num_rows() > 0) {
-         $dropdown[] = '--- view all ---';
+         $tmp[] = '--- view all ---';
 
          foreach ($authors->result() as $author) {
-            $dropdown[$author->id] = $author->name;
+            $tmp[$author->id] = $author->name;
          }
 
-         return $dropdown;
+         return $tmp;
       }
 
       return FALSE;

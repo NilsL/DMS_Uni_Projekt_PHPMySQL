@@ -56,13 +56,13 @@ class Insert extends CI_Controller {
 		$this->load->model ( 'classification_model' );
 		
 		if ($projects = $this->project_model->get_Project ()) {
-			$data ['all_p'] = $projects;
+			$data ['projects'] = $projects;
 		}
-		if ($authors = $this->author_model->get_Author ()) {
-			$data ['all_a'] = $authors;
+		if ($authors = $this->author_model->get_Authors (TRUE)) {
+			$data ['authors'] = $authors;
 		}
 		if ($classification = $this->classification_model->get_Classification ()) {
-			$data ['all_c'] = $classification;
+			$data ['classifications'] = $classification;
 		}
 		return $data;
 	}
