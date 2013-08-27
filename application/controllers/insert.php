@@ -215,7 +215,7 @@ class Insert extends CI_Controller {
 			$this->load->model ( 'file_model' );
 			$success = $this->file_model->create_File ( $document_id );
 			
-			if ($success==true) {
+			if ($success===true) {
 				$data ['view'] = 'insert/successful_insert_view';
 				$this->load->view ( 'template/content', $data );
 			} else {

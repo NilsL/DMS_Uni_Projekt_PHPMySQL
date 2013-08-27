@@ -156,6 +156,7 @@ class Search extends CI_Controller {
       $data['document'] = $this->document_model->get_Document($doc_id);
       $data['authors'] = $this->document_model->get_Author($doc_id);
       $data['keywords'] = $this->document_model->get_Keyword($doc_id);
+      $data['files'] = $this->document_model->get_File($doc_id);
 
       $this->load->view('search/popup_view', $data);
    }
@@ -166,9 +167,9 @@ class Search extends CI_Controller {
     *
     */
    function dl_file($id) {
-   	 $this->load->model('file_model');
-   	 //das file finden
-     $this->file_model->download_File($id);
+   	$this->load->model('file_model');
+   	//das file finden
+   	$this->file_model->download_File($id);
    }
 }
 /* End of file search.php */
