@@ -3,9 +3,9 @@ class MainDirectory extends CI_Controller {
 
    function index() {
       $this->load->model('document_model');
-      $query = $this->document_model->get_Documents();
-      if ($query) {
-         $data['all_documents'] = $query;
+      $documents = $this->document_model->get_Documents();
+      if ($documents) {
+         $data['documents'] = $documents;
       }
       $data['view'] = 'mainDirectory_view';
       $this->load->view('template/content', $data);
