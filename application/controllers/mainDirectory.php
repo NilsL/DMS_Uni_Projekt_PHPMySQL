@@ -1,6 +1,5 @@
 <?php
-class MainDirectory extends CI_Controller {
-
+class mainDirectory extends CI_Controller {
 	function index() {
 		$this->load->model('document_model');
 		$query = $this->document_model->get_Document();
@@ -10,5 +9,4 @@ class MainDirectory extends CI_Controller {
 		$data['view'] = 'mainDirectory_view';
 		$this->load->view('template/content', $data);
 	}
-
 }
