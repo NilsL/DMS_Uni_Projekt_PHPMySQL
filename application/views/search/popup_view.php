@@ -7,6 +7,13 @@
          <?= $document->abstract; ?>
       </p>
    </div>
-
-   <?= anchor('PFAD_ZUM_DL_FILE', 'Gesamtes Dokument'); ?>
+  
+   <?php 
+		foreach ($files as $row) {
+			echo anchor('popup/dl_file/'.$row->f_id, $row->f_name);
+			echo nbs(1);
+			echo 'MD5: $row->f_md5';
+			echo nbs(2);
+		}
+	?>
 </div>

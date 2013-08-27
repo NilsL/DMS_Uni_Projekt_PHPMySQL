@@ -96,3 +96,4 @@ $RECYCLE.BIN/
 */cache/!index.html
 */config/config.php
 */config/database.php
+/phpmyadmin/*
