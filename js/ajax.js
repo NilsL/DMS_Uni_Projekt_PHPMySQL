@@ -13,7 +13,7 @@
  */
 function showHint(element) {
   //die entsprechende dropdown id basteln. bsp: project -> #projects
-  var element_id = "#" + element.id;
+  var element_id = "#" + element.id + "s";
   //das zusammenhängende model basteln
   var model = element.id + "_model";
 
