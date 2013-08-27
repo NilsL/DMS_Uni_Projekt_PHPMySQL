@@ -12,18 +12,24 @@ class Project_model extends CI_Model {
     *
     *
     */
-	function create_Classification($name) {
+	function create_Project($name, $number) {
 		// mehrfache speicherung ¨¹berpr¨¹fen...
 		$this->db->where ( 'name', $name );
-		$query = $this->db->get ( 'storage_classification' );
+		$query = $this->db->get ( 'storage_project' );
+		if ($query->num_rows == 1) {
+			return false;
+		}
+		$this->db->where ( 'number', $number );
+		$query = $this->db->get ( 'storage_project' );
 		if ($query->num_rows == 1) {
 			return false;
 		}
 		
 		$data = array (
-				'name' => $name 
+				'name' => $name,
+				'number' => $number
 		);
-		$this->db->insert ( 'storage_classification', $data );
+		$this->db->insert ( 'storage_project', $data );
 		return true;
 	}
 
