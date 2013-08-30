@@ -7,12 +7,12 @@
       <?php 
       		//title eingabefeld
       		echo form_label('Title: ', 'title');
-      		echo form_input(array('id' => 'title', 'name' => 'i_document_title', 'placeholder' => 'Title', 'autofocus' => 'autofocus'));
+      		echo form_input(array('id' => 'title', 'name' => 'input_document_title', 'placeholder' => 'Title', 'autofocus' => 'autofocus'));
 			echo br(1);
 			
       		//projekt eingabefeld
       		echo form_label('Project: ', 'project');
-      		echo form_input(array('name' => 'i_document_projects', 'id' => 'project', 'onkeyup' => 'javascript:showHint(this)'));
+      		echo form_input(array('name' => 'input_document_projects', 'id' => 'project', 'onkeyup' => 'javascript:showHint(this)'));
       		echo br(1);
 
             // projekt dropdown
@@ -29,7 +29,7 @@
       		
       		//author eingabefeld
       		echo form_label('Author: ', 'author');
-      		echo form_input(array('name' => 'i_document_authors', 'id' => 'author', 'onkeyup' => 'javascript:showHint(this)'));
+      		echo form_input(array('name' => 'input_document_authors', 'id' => 'author', 'onkeyup' => 'javascript:showHint(this)'));
       		echo br(1);
 
             // author dropdown
@@ -44,13 +44,13 @@
       		//keyword eingabefeld
       		echo form_label('Keyword: ', 'keyword');
       		echo br(1);
-      		echo form_textarea(array('id' => 'i_document_keywords', 'name' => 'i_document_keywords', 'placeholder' => 'delimited by comma'));
+      		echo form_textarea(array('id' => 'input_document_keywords', 'name' => 'input_document_keywords', 'placeholder' => 'delimited by comma'));
       		echo br(1);
       		
       		//abstract eingabefeld
       		echo form_label('Abstract: ', 'abstract');
       		echo br(1);
-      		echo form_textarea(array('id' => 'i_document_abstract', 'name' => 'i_document_abstract', 'placeholder' => 'Please type your abstract text here'));
+      		echo form_textarea(array('id' => 'input_document_abstract', 'name' => 'input_document_abstract', 'placeholder' => 'Please type your abstract text here'));
       		echo br(1);
       		
       		echo form_submit('add_doc', 'Add Document'); 
