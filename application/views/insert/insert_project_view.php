@@ -6,17 +6,21 @@
 
    <p>
       <?php
-      		$this->table->add_row(form_label ( 'Project Name: ', 'i_project_name' ), form_input ( array (
+      		echo form_label ( 'Project Name: ', 'i_project_name' );
+      		echo form_input ( array (
 					'id' => 'i_project_name',
 					'name' => 'i_project_name',
 					'placeholder' => 'Project Name' 
-			) ));
-			$this->table->add_row(form_label ( 'Project Number: ', 'i_project_number'), form_input( array (
+			) );
+      		
+      		echo br(1);
+      		
+			echo form_label ( 'Project Number: ', 'i_project_number');
+			echo form_input( array (
 					'id' => 'i_project_number',
 					'name' => 'i_project_number',
 					'placeholder' => 'Project Number'			
-			)));
-			echo $this->table->generate();
+			));
 			?>
    </p>
    

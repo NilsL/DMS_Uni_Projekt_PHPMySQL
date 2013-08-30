@@ -182,7 +182,7 @@ class Document_model extends CI_Model {
     * @return bool
     */
    function getHints($entered) {
-      //here muss alias gestellt werden, denn showHint() in insert.php hat $hint->name fest geschrieben, aber hier heisst es aber title
+      //here muss alias gestellt werden, denn showHint() in insert.php hat $hint->name fest geschrieben, aber hier heisst es title
       $this->db->select('id, title as name');
       $this->db->like('title', $entered, 'after');
       $result = $this->db->get('storage_document');

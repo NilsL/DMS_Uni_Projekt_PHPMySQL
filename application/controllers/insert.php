@@ -79,8 +79,9 @@ class Insert extends CI_Controller {
 	// insert file helper
 	function insert_file_helper() {
 		$this->load->model ( 'document_model' );
-		if ($documents = $this->document_model->get_all_Document ()) {
-			$data ['all_d'] = $documents;
+		//einfach alle Documents rausholen
+		if ($documents = $this->document_model->get_Documents (FALSE, FALSE, TRUE)) {
+			$data ['documents'] = $documents;
 		}
 		return $data;
 	}
@@ -88,15 +89,15 @@ class Insert extends CI_Controller {
 	// validierung des geinserteten authors
 	function validate_i_author() {
 		// Author muss name und email haben, alle felder pflicht
-		$this->form_validation->set_rules ( 'i_author_name', 'Author name', 'trim|required|' );
-		$this->form_validation->set_rules ( 'i_author_mail', 'Email', 'trim|required' );
+		$this->form_validation->set_rules ( 'input_author_name', 'Author name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'input_author_mail', 'Email', 'trim|required' );
 		// wenn nicht dann noch mal eingeben
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_author ();
 		} else {
 			// input abgreifen
-			$name = $this->input->post ( 'i_author_name' );
-			$email = $this->input->post ( 'i_author_mail' );
+			$name = $this->input->post ( 'input_author_name' );
+			$email = $this->input->post ( 'input_author_mail' );
 			
 			// author_model laden
 			$this->load->model ( 'author_model' );
@@ -119,12 +120,12 @@ class Insert extends CI_Controller {
 	// validierung der geinserteten classification
 	function validate_i_class() {
 		// es muss doch einen name dafür geben
-		$this->form_validation->set_rules ( 'i_class_name', 'Classification name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'input_class_name', 'Classification name', 'trim|required|' );
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_class ();
 		} else {
 			
-			$name = $this->input->post ( 'i_class_name' );
+			$name = $this->input->post ( 'input_class_name' );
 			$this->load->model ( 'classification_model' );
 			$query = $this->classification_model->create_Classification ( $name );
 			
@@ -142,15 +143,15 @@ class Insert extends CI_Controller {
 	//
 	function validate_i_project() {
 		// project nr muss ausserdem numerisch sein
-		$this->form_validation->set_rules ( 'i_project_name', 'Project Name', 'trim|required|' );
-		$this->form_validation->set_rules ( 'i_project_number', 'Project Number', 'trim|required|numeric' );
+		$this->form_validation->set_rules ( 'input_project_name', 'Project Name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'input_project_number', 'Project Number', 'trim|required|numeric' );
 		
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_project ();
 		} else {
 			
-			$name = $this->input->post ( 'i_project_name' );
-			$number = $this->input->post ( 'i_project_number' );
+			$name = $this->input->post ( 'input_project_name' );
+			$number = $this->input->post ( 'input_project_number' );
 			$this->load->model ( 'project_model' );
 			$query = $this->project_model->create_Project ( $name, $number );
 			
@@ -166,7 +167,7 @@ class Insert extends CI_Controller {
 		}
 	}
 	function validate_i_document() {
-		$this->form_validation->set_rules ( 'i_document_title', 'Title', 'trim|required|' );
+		$this->form_validation->set_rules ( 'input_document_title', 'Title', 'trim|required|' );
 		$this->form_validation->set_rules ( 'projects', 'Project', 'trim|greater_than[0]|' );
 		$this->form_validation->set_rules ( 'classification', 'Classification', 'trim|greater_than[0]|' );
 		// ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
@@ -177,11 +178,11 @@ class Insert extends CI_Controller {
 			$this->insert_document ();
 		} else {
 			
-			$title = $this->input->post ( 'i_document_title' );
-			$abstract = $this->input->post ( 'i_document_abstract' );
+			$title = $this->input->post ( 'input_document_title' );
+			$abstract = $this->input->post ( 'input_document_abstract' );
 			$class = $this->input->post ( 'classifications' );
 			$project = $this->input->post ( 'projects' );
-			$keyword = $this->input->post ( 'i_document_keywords' );
+			$keyword = $this->input->post ( 'input_document_keywords' );
 			//authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
 			$array_authors = $this->input->post ( 'hiddenid' );
 			
@@ -240,7 +241,7 @@ class Insert extends CI_Controller {
       //entsprechenden model laden
       $this->load->model($model);
       
-      // alle möglichen einträge nach dem model laden die mit dem übergebenen buchstaben beginnen
+      // alle moeglichen eintraege nach dem model laden die mit dem uebergebenen buchstaben beginnen
       switch ($model) {
       	case "project_model": 
       		$hints = $this->project_model->getHints($entered);
@@ -248,9 +249,10 @@ class Insert extends CI_Controller {
       	case "author_model":
       		$hints = $this->author_model->getHints($entered);
       		break;
-      	case "classification_model":
+      		//class wird aus dem grund der einfachheit nicht diese funktion zugeteilt
+      	/* case "classification_model":
       		$hints = $this->classification_model->getHints($entered);
-      		break;
+      		break; */
       	case "document_model":
       		$hints = $this->document_model->getHints($entered);
       		break;
