@@ -6,13 +6,12 @@
 
    <p>
       <?php
-      		$this->table->add_row(form_label ( 'Name: ', 'i_class_name' ), form_input ( array (
+      		echo form_label ( 'Name: ', 'input_class_name' );
+      		echo form_input ( array (
 					'id' => 'i_class_name',
 					'name' => 'i_class_name',
 					'placeholder' => 'New Classification' 
-			) ));
-      		
-      		echo $this->table->generate();
+			) );
 			?>
    </p>
    

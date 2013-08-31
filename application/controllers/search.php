@@ -128,9 +128,6 @@ class Search extends CI_Controller {
       	case "author_model":
       		$hints = $this->author_model->getHints($entered);
       		break;
-      	case "classification_model":
-      		$hints = $this->classification_model->getHints($entered);
-      		break;
       }
       
 
@@ -154,7 +151,16 @@ class Search extends CI_Controller {
       $doc_id = $this->input->get('doc_id');
 
       $data['document'] = $this->document_model->get_Document($doc_id);
-
+      
+      //da die informationen aus kreuztabellen auch hergeholt werden muessen, loadet man hier die models
+      $this->load->model('author_model');
+      $this->load->model('keyword_model');
+      $this->load->model('file_model');
+      //und queryergebnis in $data einholen
+	  $data['authors'] = $this->author_model->get_Author_by_DocumentID($doc_id);
+	  $data['keywords'] = $this->keyword_model->get_Keyword_By_DocumentID($doc_id);
+	  $data['files'] = $this->file_model->get_File_By_DocumentID($doc_id);
+	  
       $this->load->view('search/popup_view', $data);
    }
 }

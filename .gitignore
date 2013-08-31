@@ -97,3 +97,4 @@ $RECYCLE.BIN/
 */config/config.php
 */config/database.php
 /phpmyadmin/*
+/uploads/*

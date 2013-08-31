@@ -14,7 +14,7 @@
 function showHint(element) {
   //die entsprechende dropdown id basteln. bsp: project -> #projects
   var element_id = "#" + element.id + "s";
-  //das zusammenhängende model basteln
+  //das zusammenhaengende model basteln
   var model = element.id + "_model";
 
   $.ajax({
@@ -34,10 +34,12 @@ function showHint(element) {
  * @param output_element
  *
  */
-function putSelected (input_element, output_element) {
-  var input_element_id = input_element.id
+function putSelected (input_element) {
+  var input_element_id = input_element.id;
+  //es scheint dieser haessliche ausdruck doch unentbeherlich zu sein :)
+  var output_element_id = input_element_id.substr(0, input_element_id.length-1); 
   var selected = document.getElementById(input_element_id).selectedOptions;
-  document.getElementById(output_element).value = selected[0].text;
+  document.getElementById(output_element_id).value = selected[0].text;
 
 }
 
@@ -106,8 +108,8 @@ function validateSignUp() {
  *
  */
 //warum hier findet ajax kein einsatz: weil die zwischengespeicherte auswahl sowieso jederzeit nach dem einfuegen von
-//anderem benutzer geloescht werden, ajax schafft nicht das mitzubekommen weil ajax letztlich durch instant-action
-//aktiviert ist wie onclick oder so. ein loeschvorgang von anderem user zaehlt offenbar nicht dazu
+//anderem benutzer geloescht werden koennen, ajax schafft nicht das mitzubekommen weil ajax letztlich durch action
+//von dem selben user aktiviert ist wie onclick oder so. ein loeschvorgang von anderem user zaehlt offenbar nicht dazu
 function showRow(obj) {
   if (obj.value != 0) {
     //isChoosed helperfunktion, verhindert mehrfachauswahl von einem eintrag
@@ -121,7 +123,7 @@ function showRow(obj) {
       var nameCell = row.insertCell(row.cells.length);
       var buttonCell = row.insertCell(row.cells.length);
       var hiddenCell = row.insertCell(row.cells.length);
-      // Inhalten einfügen, einmal id und einmal name
+      // Inhalten einfuegen, einmal id und einmal name
       idCell.innerHTML = obj.value;
       nameCell.innerHTML = obj.options[obj.selectedIndex].text;
       //loeschbutton
