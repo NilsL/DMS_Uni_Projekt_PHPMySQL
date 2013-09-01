@@ -1,28 +1,33 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *
- *
- *
+ * Class File_model
  */
 class File_model extends CI_Model {
-	var $F_PATH;
+
 	function __construct() {
 		parent::__construct ();
 		// upload ordner lokalisieren
-		$this->F_PATH = realpath ( APPPATH . '../uploads/' );
-	} 
+//		$this->F_PATH = realpath ( APPPATH . '../uploads/' );
+	}
+   
 	function do_upload() {
 		// libary loading
 		$config ['allowed_types'] = 'doc|docx|odt|pdf';
-		$config ['upload_path'] = $this->F_PATH;
+		$config ['upload_path'] = base_url() . 'uploads/';
 		$config ['max_size'] = '20480';
 		$config ['max_filename'] = '100';
 		// $config['max_width'] = '1024';
 		// $config['max_height'] = '768';
 		$this->load->library ( 'upload', $config );
 	}
-	function create_File($document_id) {
+
+   /**
+    * @param $document_id übergebene Dokumenten ID
+    *
+    * @return bool|string <code> TRUE </code> wenn der Datei insert erfolgreich war, ansonsten ein Error String
+    */
+   function create_File($document_id) {
 		//uploding libray loaden
 		$this->do_upload();
 		
