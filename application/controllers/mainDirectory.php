@@ -3,7 +3,7 @@ class MainDirectory extends CI_Controller {
 
    function index() {
       $this->load->model('document_model');
-      $documents = $this->document_model->get_Documents();
+      $documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE);
       if ($documents) {
          $data['documents'] = $documents;
       }
