@@ -19,8 +19,6 @@
       echo '<p>';
       echo anchor_popup('search/popup?doc_id=' . $document->id, '<strong>Titel: ' . $document->title . '</strong>', $atts);
       echo br(1);
-      echo 'Author: ' . $document->author;
-      echo br(1);
       echo 'Projekt: ' . $document->project;
       echo br(1);
       echo 'Klassifizierung: ' . $document->classification;
