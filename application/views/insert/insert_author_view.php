@@ -8,8 +8,8 @@
       <?php
      		echo form_label ( 'Name: ', 'input_author_name' );
      		echo form_input ( array (
-					'id' => 'i_author_name',
-					'name' => 'i_author_name',
+					'id' => 'input_author_name',
+					'name' => 'input_author_name',
 					'placeholder' => 'New Author' 
 			) );
      		
@@ -17,8 +17,8 @@
      		
      		echo form_label ( 'Email: ', 'input_author_mail');
      		echo form_input( array (
-					'id' => 'i_author_mail',
-					'name' => 'i_author_mail',
+					'id' => 'input_author_mail',
+					'name' => 'input_author_mail',
 					'placeholder' => 'Emailadress'			
 			));
 			?>

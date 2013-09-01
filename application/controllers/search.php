@@ -163,6 +163,17 @@ class Search extends CI_Controller {
 	  
       $this->load->view('search/popup_view', $data);
    }
+   
+   /**
+    * fileDOWNLOAD function
+    *
+    *
+    */
+   function dl_file($id) {
+   	$this->load->model('file_model');
+   	//das file finden
+   	$this->file_model->download_File($id);
+   }
 }
 
 /* End of file search.php */
