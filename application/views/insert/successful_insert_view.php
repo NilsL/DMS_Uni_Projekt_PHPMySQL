@@ -6,7 +6,7 @@
       		echo br(1);
    			echo anchor ( 'insert/insert_author', 'New Author' );
       		echo br(1);
-			if ($this->session->userdata('role') == 2) {
+			if ($this->session->userdata('role') == 1) {
    		   echo anchor('insert/insert_class', 'New Classification');
    		   echo br(1);
   			 }

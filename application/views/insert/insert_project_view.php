@@ -6,19 +6,19 @@
 
    <p>
       <?php
-      		echo form_label ( 'Project Name: ', 'i_project_name' );
+      		echo form_label ( 'Project Name: ', 'input_project_name' );
       		echo form_input ( array (
-					'id' => 'i_project_name',
-					'name' => 'i_project_name',
+					'id' => 'input_project_name',
+					'name' => 'input_project_name',
 					'placeholder' => 'Project Name' 
 			) );
       		
       		echo br(1);
       		
-			echo form_label ( 'Project Number: ', 'i_project_number');
+			echo form_label ( 'Project Number: ', 'input_project_number');
 			echo form_input( array (
-					'id' => 'i_project_number',
-					'name' => 'i_project_number',
+					'id' => 'input_project_number',
+					'name' => 'input_project_number',
 					'placeholder' => 'Project Number'			
 			));
 			?>

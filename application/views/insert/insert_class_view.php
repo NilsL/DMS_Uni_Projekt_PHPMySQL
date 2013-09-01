@@ -8,8 +8,8 @@
       <?php
       		echo form_label ( 'Name: ', 'input_class_name' );
       		echo form_input ( array (
-					'id' => 'i_class_name',
-					'name' => 'i_class_name',
+					'id' => 'input_class_name',
+					'name' => 'input_class_name',
 					'placeholder' => 'New Classification' 
 			) );
 			?>

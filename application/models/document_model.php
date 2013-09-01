@@ -102,23 +102,20 @@ class Document_model extends CI_Model {
     *
     * @return bool liefert <code> FALSE </code> wenn kein Dokument gefunden wurde, ansonsten das Dokument
     */
+   //modifiziert auf neues datenbankstruktur (author join deleted)
    function get_Document($id) {
-      $this->db->select('storage_document.id, title, abstract, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->select('storage_document.id as document_id, title, abstract, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join fuer author id zu name
-      $this->db->join('storage_document_has_author', 'storage_document.id = storage_document_has_author.document_id');
-      $this->db->join('storage_author', 'storage_document_has_author.author_id = storage_author.id');
-
-      // join fuer classification id zu name
+      // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       $this->db->where('storage_document.id', $id);
       $result = $this->db->get('storage_document');
 
-      if ($result->num_rows() == 1) {
-         return $result->row();
-      }
+   	  if ($result->num_rows () == 1) {
+		 return $result->row ();
+	  }
 
       return FALSE;
    }
@@ -132,18 +129,14 @@ class Document_model extends CI_Model {
     */
    function get_Documents($title = FALSE, $keywords = FALSE, $dropdown = FALSE) {
 
-      $this->db->select('storage_document.id, title, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->select('storage_document.id, title, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join fuer author id zu name
-      $this->db->join('storage_document_has_author', 'storage_document.id = storage_document_has_author.document_id');
-      $this->db->join('storage_author', 'storage_document_has_author.author_id = storage_author.id');
-
-      // join fuer classification id zu name
+      // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       if ($keywords) {
-         $this->db->distinct('storage_document.id, title, storage_author.name AS author, storage_project.name AS project, storage_classification.name AS classification, keyword_id');
+         $this->db->distinct('storage_document.id, title, storage_project.name AS project, storage_classification.name AS classification');
          // join fuer keyword id zu name
          $this->db->join('storage_document_has_keyword', 'storage_document.id = storage_document_has_keyword.document_id');
          $this->db->join('storage_keyword', 'storage_document_has_keyword.keyword_id = storage_keyword.id');
@@ -161,6 +154,8 @@ class Document_model extends CI_Model {
       if ($result->num_rows() > 0) {
          // wenn $dropdown TRUE ist wird ein Dropdown konformes Array produziert, sonst normale Resultset Rückgabe
          if ($dropdown) {
+         	//bugfix: $dropdown war noch ein bool, kann nicht direkt als array verwenden
+         	$dropdown = array();
             $dropdown[] = '--- view all ---';
 
             foreach ($result->result() as $docu) {
