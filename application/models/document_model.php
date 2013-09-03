@@ -18,9 +18,12 @@ class Document_model extends CI_Model
      */
     function create_Document($title, $abstract, $class, $project, $keyword, $array_authors)
     {
+        //transaction startet
+        $this->db->trans_begin();
         $this->db->where('title', $title);
         $query = $this->db->get('storage_document');
-        if ($query->num_rows == 1) {
+        if (!$query || $query->num_rows == 1) {
+            $this->db->trans_rollback();
             return FALSE;
         }
 
@@ -33,11 +36,19 @@ class Document_model extends CI_Model
             'created' => $time,
             'last_edited' => $time,
         );
-        $this->db->insert('storage_document', $data);
+        $query = $this->db->insert('storage_document', $data);
+        if(!$query) {
+            $this->db->trans_rollback();
+            return FALSE;
+        }
 
         // jetzt kommen alle kreuztabelle dran
         // gerade eingefügte document_id wiederfinden
         $query = $this->db->query('select last_insert_id() as last_id');
+        if(!$query) {
+            $this->db->trans_rollback();
+            return FALSE;
+        }
         $row = $query->row();
         $document_id = $row->last_id;
 
@@ -50,10 +61,15 @@ class Document_model extends CI_Model
                     'document_id' => $document_id,
                     'author_id' => $row
                 );
-                $this->db->insert('storage_document_has_author', $data);
+                $query = $this->db->insert('storage_document_has_author', $data);
+                if(!$query) {
+                    $this->db->trans_rollback();
+                    return FALSE;
+                }
             } //eig. sollte es nicht geloescht werden, hier ist transaction angesagt...
             else {
-
+                $this->db->trans_rollback();
+                return FALSE;
             }
         }
 
@@ -67,15 +83,27 @@ class Document_model extends CI_Model
                 foreach ($keys as $row) {
                     $this->db->where('name', $row);
                     $query = $this->db->get('storage_keyword');
+                    if(!$query) {
+                        $this->db->trans_rollback();
+                        return FALSE;
+                    }
                     $keyword_id = 0;
                     // falls dies wort noch nie benutzt wurde, wird zuerst angelegt werden
                     if ($query->num_rows == 0) {
                         $data = array(
                             'name' => $row
                         );
-                        $this->db->insert('storage_keyword', $data);
+                        $query = $this->db->insert('storage_keyword', $data)
+                        if(!$query) {
+                            $this->db->trans_rollback();
+                            return FALSE;
+                        }
                         // die keyword_id wieder kriegen
                         $query = $this->db->query('select last_insert_id() as last_id');
+                        if(!$query) {
+                            $this->db->trans_rollback();
+                            return FALSE;
+                        }
                         $row = $query->row();
                         $keyword_id = $row->last_id;
                     } else {
@@ -83,6 +111,10 @@ class Document_model extends CI_Model
                         $this->db->select('id');
                         $this->db->where('name', $row);
                         $query = $this->db->get('storage_keyword');
+                        if(!$query) {
+                            $this->db->trans_rollback();
+                            return FALSE;
+                        }
                         $row = $query->row();
                         $keyword_id = $row->id;
                     }
@@ -92,11 +124,16 @@ class Document_model extends CI_Model
                         'document_id' => $document_id,
                         'keyword_id' => $keyword_id
                     );
-                    $this->db->insert('storage_document_has_keyword', $data);
+                    $query = $this->db->insert('storage_document_has_keyword', $data);
+                    if(!$query) {
+                        $this->db->trans_rollback();
+                        return FALSE;
+                    }
                 }
             }
         }
 
+        $this->db->trans_complete();
         return TRUE;
     }
 
