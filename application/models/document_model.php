@@ -93,7 +93,7 @@ class Document_model extends CI_Model
                         $data = array(
                             'name' => $row
                         );
-                        $query = $this->db->insert('storage_keyword', $data)
+                        $query = $this->db->insert('storage_keyword', $data);
                         if(!$query) {
                             $this->db->trans_rollback();
                             return FALSE;
