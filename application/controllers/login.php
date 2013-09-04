@@ -13,6 +13,7 @@ class Login extends CI_Controller {
     *
     */
    function index() {
+       $data['jQuery'] = TRUE;
       $data['view'] = 'login/login_view';
       $this->load->view('template/content', $data);
    }
@@ -45,6 +46,7 @@ class Login extends CI_Controller {
       }
       else {
          $data['error'] = 'Invalid Login or Password!';
+          $data['jQuery'] = TRUE;
          $data['view']  = 'login/login_view';
          $this->load->view('template/content', $data);
       }
@@ -56,6 +58,7 @@ class Login extends CI_Controller {
     *
     */
    function signup() {
+       $data['jQuery'] = TRUE;
       $data['view'] = 'login/signup_view';
       $this->load->view('template/content', $data);
    }
@@ -91,6 +94,7 @@ class Login extends CI_Controller {
          // geht der db insert schief weil zb db verbindung abbricht etc pp
          // wird umgeleitet auf die signup view
          else {
+             $data['jQuery'] = TRUE;
             $data['view'] = 'signup_view';
             $this->load->view('template/content', $data);
          }
@@ -105,6 +109,29 @@ class Login extends CI_Controller {
    function logout() {
       $this->session->sess_destroy();
       redirect('home');
+   }
+
+    /**
+     * ajax backend function fuer email und username ueberpruefung
+     */
+    function check_input() {
+       //getten
+       $inputed = $this->input->get('inputed');
+       $id = $this->input->get('id');
+       //user_model loaden
+       $this->load->model('user_model');
+
+       $check_result = $this->user_model->checking($inputed, $id);
+
+
+       $response = NULL;
+       //ist $check_result true, congratz...
+       if($check_result) {
+           $response = 'This '.$id. ' can be used!';
+       } else {
+           $response = 'This '.$id. ' is already used!';
+       }
+       echo $response;
    }
 }
 /* End of file login.php */

@@ -113,6 +113,23 @@ class User_model extends CI_Model {
       return FALSE;
    }
 
+    /**
+     * checking the user input in signup
+    */
+    function checking($inputed, $id) {
+        if($id=="email") {
+            $this->db->where('email', $inputed);
+        } else if($id=="username") {
+            $this->db->where('username', $inputed);
+        }
+        $result = $this->db->get('login_users');
+
+        //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+        if($result->num_rows()>0) {
+            return false;
+        }
+        return true;
+    }
 }
 /* End of file user_model.php */
 /* Location: ./application/models/user_model.php */

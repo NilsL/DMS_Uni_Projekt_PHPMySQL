@@ -149,3 +149,38 @@ function isChoosed(obj) {
   }
   return true;
 }
+
+/**
+ * email und username beim signup validieren
+ * @param element
+ * @returns {boolean}
+ */
+function validating(element) {
+    //die entsprechende span id basteln. bsp: email -> #check_email
+    var check_element_id = "#check_" + element.id;
+
+    //wenn es hier um email geht dann muss zuerst die format ueberpruefen
+    if(element.id == 'email') {
+        //regular expression
+        var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
+        if(!myreg.test(element.value)) {
+            //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
+            $(check_element_id).text('Please type a right email adress!');
+            return false;
+        }
+    }
+
+    if(element.value=="") {
+        $(check_element_id).text('');
+    }
+    else {
+        $.ajax({
+            type: 'GET',
+            url: "check_input?inputed=" + element.value + "&id=" + element.id,
+            success: function (msg) {
+                $(check_element_id).text(msg);
+            }
+        });
+    }
+}
+
