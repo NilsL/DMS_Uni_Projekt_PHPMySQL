@@ -37,7 +37,7 @@
    </p>
 
    <p id="login-submit">
-      <?php echo form_button(array('class' => 'signup-button', 'type' => 'submit', 'content' => 'Create Account', 'onClick' => 'return confirm(\'Sind alle Angaben korrekt?\')')); ?>
+      <?php echo form_button(array('class' => 'signup-button', 'type' => 'submit', 'content' => 'Create Account')); ?>
    </p>
 
    <?php echo form_close(); ?>
