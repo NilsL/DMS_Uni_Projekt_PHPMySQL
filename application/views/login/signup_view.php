@@ -30,12 +30,12 @@
 
    <p>
       <?php echo form_label('Password: ', 'password'); ?>
-      <?php echo form_password(array('id' => 'password', 'name' => 'password', 'placeholder' => 'at least 6 characters')); ?>
+      <?php echo form_password(array('id' => 'password', 'name' => 'password', 'placeholder' => 'at least 6 characters', 'onkeyup' => 'matching()')); ?>
    </p>
 
    <p>
       <?php echo form_label('Confirm: ', 'password_confirm'); ?>
-      <?php echo form_password(array('id' => 'password_confirm', 'name' => 'password_confirm', 'placeholder' => 'must match the choosen password', 'onkeyup' => 'matching(this)')); ?>
+      <?php echo form_password(array('id' => 'password_confirm', 'name' => 'password_confirm', 'placeholder' => 'must match the choosen password', 'onkeyup' => 'matching()')); ?>
       <span id='check_password_confirm' style= "border-width: 0;color: red"></span>
    </p>
 

@@ -127,9 +127,9 @@ class Login extends CI_Controller {
        $response = NULL;
        //ist $check_result true, congratz...
        if($check_result) {
-           $response = 'This '.$id. ' can be used!';
+           $response = 'The '.$id. ' can be used!';
        } else {
-           $response = 'This '.$id. ' is already used!';
+           $response = 'The '.$id. ' is already used!';
        }
        echo $response;
    }
