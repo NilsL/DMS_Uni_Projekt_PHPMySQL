@@ -175,7 +175,7 @@ function validating(element) {
     var check_element_id = "#check_" + element.id;
 
     //wenn es hier um email geht dann muss zuerst die format ueberpruefen
-    if(element.id == 'email') {
+    if(element.id == 'email' || element.id == 'author_mail') {
         //regular expression
         var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
         if(!myreg.test(element.value) && element.value.length > 0) {
@@ -189,6 +189,17 @@ function validating(element) {
     if(element.id == 'username') {
         if(element.value.length < 6 && element.value.length > 0) {
             $(check_element_id).text('Username must have at least 6 characters!');
+            return false;
+        }
+    }
+
+    //wenn es hier um project number geht, regular expression aufbauen um es numerisch zu sichern
+    if(element.id == 'project_number') {
+        //regular expression
+        var myreg = /^[0-9,]*$/;
+        if(!myreg.test(element.value) && element.value.length > 0) {
+            //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
+            $(check_element_id).text('The number must be numeric!');
             return false;
         }
     }

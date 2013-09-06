@@ -82,6 +82,18 @@ class Classification_model extends CI_Model {
    function delete_Classification() {
       return TRUE;
    }
+
+    function checking($inputed, $id) {
+        $this->db->where('name', $inputed);
+
+        $result = $this->db->get('storage_classification');
+
+        //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+        if($result->num_rows()>0) {
+            return false;
+        }
+        return true;
+    }
 }
 
 /* End of file classification_model.php */

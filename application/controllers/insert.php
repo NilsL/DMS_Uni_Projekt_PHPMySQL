@@ -23,18 +23,21 @@ class Insert extends CI_Controller {
 	
 	// insert author
 	function insert_author() {
+       $data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_author_view';
 		$this->load->view ( 'template/content', $data );
 	}
 	
 	// insert class
 	function insert_class() {
+       $data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_class_view';
 		$this->load->view ( 'template/content', $data );
 	}
 	
 	// insert project
 	function insert_project() {
+       $data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_project_view';
 		$data ['dropdown'] = 'true';
 		$this->load->view ( 'template/content', $data );
@@ -43,7 +46,7 @@ class Insert extends CI_Controller {
 	// insert document
 	function insert_document() {
 		$data = $this->insert_document_helper ();
-		
+
 		$data ['jQuery'] = TRUE;
 		$data ['view'] = 'insert/insert_document_view';
 		$this->load->view ( 'template/content', $data );
@@ -89,15 +92,15 @@ class Insert extends CI_Controller {
 	// validierung des geinserteten authors
 	function validate_i_author() {
 		// Author muss name und email haben, alle felder pflicht
-		$this->form_validation->set_rules ( 'input_author_name', 'Author name', 'trim|required|' );
-		$this->form_validation->set_rules ( 'input_author_mail', 'Email', 'trim|required' );
+		$this->form_validation->set_rules ( 'author_name', 'Author name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'author_mail', 'Email', 'trim|required' );
 		// wenn nicht dann noch mal eingeben
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_author ();
 		} else {
 			// input abgreifen
-			$name = $this->input->post ( 'input_author_name' );
-			$email = $this->input->post ( 'input_author_mail' );
+			$name = $this->input->post ( 'author_name' );
+			$email = $this->input->post ( 'author_mail' );
 			
 			// author_model laden
 			$this->load->model ( 'author_model' );
@@ -120,12 +123,12 @@ class Insert extends CI_Controller {
 	// validierung der geinserteten classification
 	function validate_i_class() {
 		// es muss doch einen name dafür geben
-		$this->form_validation->set_rules ( 'input_class_name', 'Classification name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'class_name', 'Classification name', 'trim|required|' );
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_class ();
 		} else {
 			
-			$name = $this->input->post ( 'input_class_name' );
+			$name = $this->input->post ( 'class_name' );
 			$this->load->model ( 'classification_model' );
 			$query = $this->classification_model->create_Classification ( $name );
 			
@@ -143,15 +146,15 @@ class Insert extends CI_Controller {
 	//
 	function validate_i_project() {
 		// project nr muss ausserdem numerisch sein
-		$this->form_validation->set_rules ( 'input_project_name', 'Project Name', 'trim|required|' );
-		$this->form_validation->set_rules ( 'input_project_number', 'Project Number', 'trim|required|numeric' );
+		$this->form_validation->set_rules ( 'project_name', 'Project Name', 'trim|required|' );
+		$this->form_validation->set_rules ( 'project_number', 'Project Number', 'trim|required|numeric' );
 		
 		if ($this->form_validation->run () == FALSE) {
 			$this->insert_project ();
 		} else {
 			
-			$name = $this->input->post ( 'input_project_name' );
-			$number = $this->input->post ( 'input_project_number' );
+			$name = $this->input->post ( 'project_name' );
+			$number = $this->input->post ( 'project_number' );
 			$this->load->model ( 'project_model' );
 			$query = $this->project_model->create_Project ( $name, $number );
 			
@@ -167,7 +170,7 @@ class Insert extends CI_Controller {
 		}
 	}
 	function validate_i_document() {
-		$this->form_validation->set_rules ( 'input_document_title', 'Title', 'trim|required|' );
+		$this->form_validation->set_rules ( 'document_title', 'Title', 'trim|required|' );
 		$this->form_validation->set_rules ( 'projects', 'Project', 'trim|greater_than[0]|' );
 		$this->form_validation->set_rules ( 'classification', 'Classification', 'trim|greater_than[0]|' );
 		// ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
@@ -178,7 +181,7 @@ class Insert extends CI_Controller {
 			$this->insert_document ();
 		} else {
 			
-			$title = $this->input->post ( 'input_document_title' );
+			$title = $this->input->post ( 'document_title' );
 			$abstract = $this->input->post ( 'input_document_abstract' );
 			$class = $this->input->post ( 'classifications' );
 			$project = $this->input->post ( 'projects' );
@@ -267,4 +270,44 @@ class Insert extends CI_Controller {
 
       echo $response;
    }
+
+    /**
+     * ajax backend function fuer email und username ueberpruefung
+     */
+    function check_input() {
+        //getten
+        $inputed = $this->input->get('inputed');
+        $id = $this->input->get('id');
+        $id = str_ireplace('_', ' ', $id);
+        //model loaden
+        switch ($id) {
+            case "author name":
+            case "author mail":
+                $this->load->model('author_model');
+                $check_result = $this->author_model->checking($inputed, $id);
+                break;
+            case "classification name":
+                $this->load->model('classification_model');
+                $check_result = $this->classification_model->checking($inputed, $id);
+                break;
+            case "project name":
+            case "project number":
+                $this->load->model('project_model');
+                $check_result = $this->project_model->checking($inputed, $id);
+                break;
+            case "title":
+                $this->load->model('document_model');
+                $check_result = $this->document_model->checking($inputed, $id);
+                break;
+        }
+
+        $response = NULL;
+        //ist $check_result true, congratz...
+        if($check_result) {
+            $response = 'The '.$id. ' can be used!';
+        } else {
+            $response = 'The '.$id. ' is already used!';
+        }
+        echo $response;
+    }
 }

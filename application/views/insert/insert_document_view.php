@@ -7,7 +7,8 @@
       <?php 
       		//title eingabefeld
       		echo form_label('Title: ', 'title');
-      		echo form_input(array('id' => 'title', 'name' => 'input_document_title', 'placeholder' => 'Title', 'autofocus' => 'autofocus'));
+      		echo form_input(array('id' => 'title', 'name' => 'title', 'placeholder' => 'Title', 'autofocus' => 'autofocus', 'onkeyup' => 'validating(this)'));
+           echo "<span id='check_title' style= 'border-width: 0;color: red'></span>";
 			echo br(1);
 			
       		//projekt eingabefeld

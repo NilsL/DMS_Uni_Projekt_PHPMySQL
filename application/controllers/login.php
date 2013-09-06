@@ -123,7 +123,6 @@ class Login extends CI_Controller {
 
        $check_result = $this->user_model->checking($inputed, $id);
 
-
        $response = NULL;
        //ist $check_result true, congratz...
        if($check_result) {

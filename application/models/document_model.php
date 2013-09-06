@@ -247,6 +247,17 @@ class Document_model extends CI_Model
     {
         return FALSE;
     }
+
+    function checking($inputed, $id) {
+        $this->db->where('title', $inputed);
+        $result = $this->db->get('storage_document');
+
+        //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+        if($result->num_rows()>0) {
+            return false;
+        }
+        return true;
+    }
 }
 
 /* End of file document_model.php */
