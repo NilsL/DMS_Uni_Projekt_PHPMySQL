@@ -6,21 +6,24 @@
 
    <p>
       <?php
-     		echo form_label ( 'Name: ', 'input_author_name' );
+     		echo form_label ( 'Name: ', 'author_name' );
      		echo form_input ( array (
-					'id' => 'input_author_name',
-					'name' => 'input_author_name',
-					'placeholder' => 'New Author' 
+					'id' => 'author_name',
+					'name' => 'author_name',
+					'placeholder' => 'New Author',
+                  'onkeyup' => 'validating(this)'
 			) );
-     		
+           echo "<span id='check_author_name' style= 'border-width: 0;color: red'></span>";
      		echo br(1);
      		
-     		echo form_label ( 'Email: ', 'input_author_mail');
+     		echo form_label ( 'Email: ', 'author_mail');
      		echo form_input( array (
-					'id' => 'input_author_mail',
-					'name' => 'input_author_mail',
-					'placeholder' => 'Emailadress'			
+					'id' => 'author_mail',
+					'name' => 'author_mail',
+					'placeholder' => 'Emailadress',
+                  'onkeyup' => 'validating(this)'
 			));
+           echo "<span id='check_author_mail' style= 'border-width: 0;color: red'></span>";
 			?>
    </p>
    
