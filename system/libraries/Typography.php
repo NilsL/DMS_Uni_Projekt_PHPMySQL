@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  *
  * @access      private
- * @category   Helpers
+ * @category    Helpers
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/
+ * @link        http://codeigniter.com/user_guide/helpers/
  */
 class CI_Typography {
 
@@ -56,8 +56,10 @@ class CI_Typography {
     *  - Converts two spaces into entities
     *
     * @access   public
+    *
     * @param   string
     * @param   bool   whether to reduce more then two consecutive newlines to two
+    *
     * @return   string
     */
    function auto_typography($str, $reduce_linebreaks = FALSE) {
@@ -231,7 +233,9 @@ class CI_Typography {
     * double spaces, and ampersands
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function format_characters($str) {
@@ -293,7 +297,9 @@ class CI_Typography {
     * Converts newline characters into either <p> tags or <br />
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function _format_newlines($str) {
@@ -337,7 +343,9 @@ class CI_Typography {
     * likewise double spaces are converted to {@NBS} to prevent entity conversion
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   string
     */
    function _protect_characters($match) {
@@ -350,7 +358,9 @@ class CI_Typography {
     * Convert newlines to HTML line breaks except within PRE tags
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function nl2br_except_pre($str) {

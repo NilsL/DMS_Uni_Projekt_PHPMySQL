@@ -108,7 +108,7 @@ class qrstr {
 
 define('QR_CACHEABLE', FALSE); // use cache - more disk reads but less CPU power, masks and format templates are stored there
 define('QR_CACHE_DIR', FALSE); // used when QR_CACHEABLE === true
-define('QR_LOG_DIR', FALSE); // default error logs dir   
+define('QR_LOG_DIR', FALSE); // default error logs dir
 
 define('QR_FIND_BEST_MASK', TRUE); // if true, estimates best mask (spec. default, but extremally slow; set to false to significant performance boost but (propably) worst quality code
 define('QR_FIND_FROM_RANDOM', 2); // if false, checks all masks available, otherwise value tells count of masks need to be checked, mask id are got randomly
@@ -560,6 +560,7 @@ class QRspec {
 
    /** --------------------------------------------------------------------
     * Put an alignment marker.
+    *
     * @param frame
     * @param width
     * @param ox,oy center coordinate of the pattern
@@ -670,6 +671,7 @@ class QRspec {
 
    /** --------------------------------------------------------------------
     * Put a finder pattern.
+    *
     * @param frame
     * @param width
     * @param ox,oy upper-left coordinate of the pattern

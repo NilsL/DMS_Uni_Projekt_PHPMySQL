@@ -8,8 +8,6 @@
 /**
  * using jQuery to perfom an AJAX request
  * @param element HTML element
- *
- *
  */
 function showHint(element) {
   //die entsprechende dropdown id basteln. bsp: project -> #projects
@@ -34,10 +32,10 @@ function showHint(element) {
  * @param output_element
  *
  */
-function putSelected (input_element) {
+function putSelected(input_element) {
   var input_element_id = input_element.id;
   //es scheint dieser haessliche ausdruck doch unentbeherlich zu sein :)
-  var output_element_id = input_element_id.substr(0, input_element_id.length-1); 
+  var output_element_id = input_element_id.substr(0, input_element_id.length - 1);
   var selected = document.getElementById(input_element_id).selectedOptions;
   document.getElementById(output_element_id).value = selected[0].text;
 
@@ -46,8 +44,6 @@ function putSelected (input_element) {
 /**
  * shows up a form validation
  * for login view
- *
- *
  */
 function validateLogin() {
   var x = document.forms['login']['login'].value;
@@ -65,8 +61,6 @@ function validateLogin() {
 /**
  * shows up a form validation
  * for signup view
- *
- *
  */
 function validateSignUp() {
   var a = document.forms['signup']['first_name'].value;
@@ -90,14 +84,14 @@ function validateSignUp() {
     return false;
   }
   var e = document.getElementById('check_email').innerHTML;
-  if (e != null && e != "" && e!="The email can be used!") {
-       alert(e);
-       return false;
+  if (e != null && e != "" && e != "The email can be used!") {
+    alert(e);
+    return false;
   }
   var f = document.getElementById('check_username').innerHTML;
-  if (f != null && f != "" && f!="The username can be used!") {
-      alert(f);
-      return false;
+  if (f != null && f != "" && f != "The username can be used!") {
+    alert(f);
+    return false;
   }
   var g = document.forms['signup']['password'].value;
   if (g == null || g == "") {
@@ -110,7 +104,7 @@ function validateSignUp() {
     return false;
   }
   var f = document.getElementById('check_password_confirm').innerHTML;
-  if (f != null && f != "" && f!="passwords match!") {
+  if (f != null && f != "" && f != "passwords match!") {
     alert(f);
     return false;
   }
@@ -148,6 +142,7 @@ function showRow(obj) {
     }
   }
 }
+
 //loeschfunktion
 function deleteRow(obj) {
   var row = obj.parentNode.parentNode;
@@ -171,51 +166,51 @@ function isChoosed(obj) {
  * @returns {boolean}
  */
 function validating(element) {
-    //die entsprechende span id basteln. bsp: email -> #check_email
-    var check_element_id = "#check_" + element.id;
+  //die entsprechende span id basteln. bsp: email -> #check_email
+  var check_element_id = "#check_" + element.id;
 
-    //wenn es hier um email geht dann muss zuerst die format ueberpruefen
-    if(element.id == 'email' || element.id == 'author_mail') {
-        //regular expression
-        var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
-        if(!myreg.test(element.value) && element.value.length > 0) {
-            //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
-            $(check_element_id).text('Please type a right email adress!');
-            return false;
-        }
+  //wenn es hier um email geht dann muss zuerst die format ueberpruefen
+  if (element.id == 'email' || element.id == 'author_mail') {
+    //regular expression
+    var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
+    if (!myreg.test(element.value) && element.value.length > 0) {
+      //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
+      $(check_element_id).text('Please type a right email adress!');
+      return false;
     }
+  }
 
-    //wenn es hier hingegen um username handelt dann muss es mind. 6 character enthalten
-    if(element.id == 'username') {
-        if(element.value.length < 6 && element.value.length > 0) {
-            $(check_element_id).text('Username must have at least 6 characters!');
-            return false;
-        }
+  //wenn es hier hingegen um username handelt dann muss es mind. 6 character enthalten
+  if (element.id == 'username') {
+    if (element.value.length < 6 && element.value.length > 0) {
+      $(check_element_id).text('Username must have at least 6 characters!');
+      return false;
     }
+  }
 
-    //wenn es hier um project number geht, regular expression aufbauen um es numerisch zu sichern
-    if(element.id == 'project_number') {
-        //regular expression
-        var myreg = /^[0-9,]*$/;
-        if(!myreg.test(element.value) && element.value.length > 0) {
-            //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
-            $(check_element_id).text('The number must be numeric!');
-            return false;
-        }
+  //wenn es hier um project number geht, regular expression aufbauen um es numerisch zu sichern
+  if (element.id == 'project_number') {
+    //regular expression
+    var myreg = /^[0-9,]*$/;
+    if (!myreg.test(element.value) && element.value.length > 0) {
+      //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
+      $(check_element_id).text('The number must be numeric!');
+      return false;
     }
+  }
 
-    if(element.value.length == 0) {
-        $(check_element_id).text('');
-    }
-    else {
-        $.ajax({
-            type: 'GET',
-            url: "check_input?inputed=" + element.value + "&id=" + element.id,
-            success: function (msg) {
-                $(check_element_id).text(msg);
-            }
-        });
-    }
+  if (element.value.length == 0) {
+    $(check_element_id).text('');
+  }
+  else {
+    $.ajax({
+      type: 'GET',
+      url: "check_input?inputed=" + element.value + "&id=" + element.id,
+      success: function (msg) {
+        $(check_element_id).text(msg);
+      }
+    });
+  }
 }
 
 /**
@@ -223,27 +218,27 @@ function validating(element) {
  * @param element
  */
 function matching() {
-    var confirm = document.getElementById('password_confirm').value;
-    var password = document.getElementById('password').value;
+  var confirm = document.getElementById('password_confirm').value;
+  var password = document.getElementById('password').value;
 
-    //wenn eines von den beiden password-eingabefeldern nicht belegt ist dann nichts anzeigen
-    if(password.length > 0 && password.length < 6) {
-        $("#check_password_confirm").text('password must have at least 6 characters!');
+  //wenn eines von den beiden password-eingabefeldern nicht belegt ist dann nichts anzeigen
+  if (password.length > 0 && password.length < 6) {
+    $("#check_password_confirm").text('password must have at least 6 characters!');
+  }
+  else if (password.length == 0) {
+    $("#check_password_confirm").text('');
+  }
+  else {
+    //ueberpruefen ob beide inputs uebereinstimmt
+    if (confirm == password) {
+      $("#check_password_confirm").text('passwords match!');
     }
-    else if(password.length == 0) {
-        $("#check_password_confirm").text('');
+    else if (confirm.length > 0) {
+      $("#check_password_confirm").text('passwords not match!');
     }
     else {
-        //ueberpruefen ob beide inputs uebereinstimmt
-        if(confirm == password) {
-            $("#check_password_confirm").text('passwords match!');
-        }
-        else if(confirm.length > 0) {
-            $("#check_password_confirm").text('passwords not match!');
-        }
-        else {
-            $("#check_password_confirm").text('');
-        }
+      $("#check_password_confirm").text('');
     }
+  }
 }
 

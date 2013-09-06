@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2006 - 2012, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2006 - 2012, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Shopping Cart
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/cart.html
+ * @category     Shopping Cart
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/cart.html
  */
 class CI_Cart {
 
@@ -74,7 +74,9 @@ class CI_Cart {
     * Insert items into the cart and save it to the session table
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   bool
     */
    function insert($items = array()) {
@@ -122,7 +124,9 @@ class CI_Cart {
     * Insert
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   bool
     */
    function _insert($items = array()) {
@@ -241,8 +245,10 @@ class CI_Cart {
     * product ID and quantity for each item.
     *
     * @access   public
+    *
     * @param   array
     * @param   string
+    *
     * @return   bool
     */
    function update($items = array()) {
@@ -292,7 +298,9 @@ class CI_Cart {
     * product ID and quantity for each item.
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   bool
     */
    function _update($items = array()) {

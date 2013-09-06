@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/form_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/form_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -33,9 +33,11 @@
  * Creates the opening portion of the form.
  *
  * @access   public
+ *
  * @param   string   the URI segments of the form destination
- * @param   array   a key/value pair of attributes
- * @param   array   a key/value pair hidden data
+ * @param   array    a key/value pair of attributes
+ * @param   array    a key/value pair hidden data
+ *
  * @return   string
  */
 if (!function_exists('form_open')) {
@@ -81,9 +83,11 @@ if (!function_exists('form_open')) {
  * Creates the opening portion of the form, but with "multipart/form-data".
  *
  * @access   public
+ *
  * @param   string   the URI segments of the form destination
- * @param   array   a key/value pair of attributes
- * @param   array   a key/value pair hidden data
+ * @param   array    a key/value pair of attributes
+ * @param   array    a key/value pair hidden data
+ *
  * @return   string
  */
 if (!function_exists('form_open_multipart')) {
@@ -108,8 +112,10 @@ if (!function_exists('form_open_multipart')) {
  * array with multiple values.
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_hidden')) {
@@ -148,9 +154,11 @@ if (!function_exists('form_hidden')) {
  * Text Input Field
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_input')) {
@@ -169,9 +177,11 @@ if (!function_exists('form_input')) {
  * Identical to the input function but adds the "password" type
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_password')) {
@@ -194,9 +204,11 @@ if (!function_exists('form_password')) {
  * Identical to the input function but adds the "file" type
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_upload')) {
@@ -217,9 +229,11 @@ if (!function_exists('form_upload')) {
  * Textarea field
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_textarea')) {
@@ -246,10 +260,12 @@ if (!function_exists('form_textarea')) {
  * Multi-select menu
  *
  * @access   public
+ *
  * @param   string
  * @param   array
  * @param   mixed
  * @param   string
+ *
  * @return   type
  */
 if (!function_exists('form_multiselect')) {
@@ -268,10 +284,12 @@ if (!function_exists('form_multiselect')) {
  * Drop-down Menu
  *
  * @access   public
+ *
  * @param   string
  * @param   array
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_dropdown')) {
@@ -327,10 +345,12 @@ if (!function_exists('form_dropdown')) {
  * Checkbox Field
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   bool
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_checkbox')) {
@@ -365,10 +385,12 @@ if (!function_exists('form_checkbox')) {
  * Radio Button
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   bool
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_radio')) {
@@ -389,9 +411,11 @@ if (!function_exists('form_radio')) {
  * Submit Button
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_submit')) {
@@ -408,9 +432,11 @@ if (!function_exists('form_submit')) {
  * Reset Button
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_reset')) {
@@ -427,9 +453,11 @@ if (!function_exists('form_reset')) {
  * Form Button
  *
  * @access   public
+ *
  * @param   mixed
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_button')) {
@@ -451,9 +479,11 @@ if (!function_exists('form_button')) {
  * Form Label Tag
  *
  * @access   public
+ *
  * @param   string   The text to appear onscreen
  * @param   string   The id the label applies to
  * @param   string   Additional attributes
+ *
  * @return   string
  */
 if (!function_exists('form_label')) {
@@ -485,8 +515,10 @@ if (!function_exists('form_label')) {
  * use form_fieldset_close()
  *
  * @access   public
+ *
  * @param   string   The legend text
  * @param   string   Additional attributes
+ *
  * @return   string
  */
 if (!function_exists('form_fieldset')) {
@@ -511,7 +543,9 @@ if (!function_exists('form_fieldset')) {
  * Fieldset Close Tag
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_fieldset_close')) {
@@ -526,7 +560,9 @@ if (!function_exists('form_fieldset_close')) {
  * Form Close Tag
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_close')) {
@@ -543,7 +579,9 @@ if (!function_exists('form_close')) {
  * Formats text so that it can be safely placed in a form field in the event it has HTML tags.
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_prep')) {
@@ -594,7 +632,9 @@ if (!function_exists('form_prep')) {
  * is active it retrieves the info from the validation class
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   mixed
  */
 if (!function_exists('set_value')) {
@@ -620,9 +660,11 @@ if (!function_exists('set_value')) {
  * If Form Validation is active it retrieves the info from the validation class
  *
  * @access   public
+ *
  * @param   string
  * @param   string
  * @param   bool
+ *
  * @return   string
  */
 if (!function_exists('set_select')) {
@@ -667,9 +709,11 @@ if (!function_exists('set_select')) {
  * If Form Validation is active it retrieves the info from the validation class
  *
  * @access   public
+ *
  * @param   string
  * @param   string
  * @param   bool
+ *
  * @return   string
  */
 if (!function_exists('set_checkbox')) {
@@ -714,9 +758,11 @@ if (!function_exists('set_checkbox')) {
  * If Form Validation is active it retrieves the info from the validation class
  *
  * @access   public
+ *
  * @param   string
  * @param   string
  * @param   bool
+ *
  * @return   string
  */
 if (!function_exists('set_radio')) {
@@ -761,9 +807,11 @@ if (!function_exists('set_radio')) {
  * form validation class.
  *
  * @access   public
+ *
  * @param   string
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('form_error')) {
@@ -785,8 +833,10 @@ if (!function_exists('form_error')) {
  * function for the form validation class.
  *
  * @access   public
+ *
  * @param   string
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('validation_errors')) {
@@ -807,8 +857,10 @@ if (!function_exists('validation_errors')) {
  * Helper function used by some of the form helpers
  *
  * @access   private
+ *
  * @param   array
  * @param   array
+ *
  * @return   string
  */
 if (!function_exists('_parse_form_attributes')) {
@@ -848,8 +900,10 @@ if (!function_exists('_parse_form_attributes')) {
  * Helper function used by some of the form helpers
  *
  * @access   private
+ *
  * @param   mixed
  * @param   bool
+ *
  * @return   string
  */
 if (!function_exists('_attributes_to_string')) {

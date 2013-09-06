@@ -8,7 +8,8 @@
       if ($this->session->userdata('is_logged_in')) {
          if ($this->session->userdata('role') == 1) {
             ?>
-            <li><?= anchor('usercontrol', 'User Control');
+            <li><?=
+            anchor('usercontrol', 'User Control');
          } ?></li>
 
          <li><?= anchor('search', 'Search'); ?></li>

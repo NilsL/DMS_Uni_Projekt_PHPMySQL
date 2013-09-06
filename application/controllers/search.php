@@ -1,16 +1,12 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Name: Search Controller
- * Author: Nils Lutz
- * Version: 0.1
+ * Class Search
  */
 class Search extends CI_Controller {
 
    /**
     * CI_Controller Konstruktor + check ob user eingelogt ist
-    *
-    *
     */
    function __construct() {
       parent::__construct();
@@ -19,8 +15,6 @@ class Search extends CI_Controller {
 
    /**
     * soll noch ausgelagert werden in einen helper
-    *
-    *
     */
    function is_logged_in() {
       $is_logged_in = $this->session->userdata('is_logged_in');
@@ -31,9 +25,7 @@ class Search extends CI_Controller {
    }
 
    /**
-    *
-    *
-    *
+    * default index function
     */
    function index() {
       $data['view'] = 'search/search_view';
@@ -42,8 +34,6 @@ class Search extends CI_Controller {
 
    /**
     * erweiterte suche
-    *
-    *
     */
    function search_advanced() {
       $this->load->model('project_model');
@@ -68,8 +58,6 @@ class Search extends CI_Controller {
 
    /**
     * anzeige der suchergebnisse
-    *
-    *
     */
    function show_result() {
       $this->load->model('document_model');
@@ -109,12 +97,10 @@ class Search extends CI_Controller {
 
    /**
     * ajax backend function welche vom js script gecalled wird
-    *
-    *
     */
    function show_Hint() {
-   	  //getten
-   	  $model = $this->input->get('model');
+      //getten
+      $model   = $this->input->get('model');
       $entered = $this->input->get('entered');
 
       //entsprechenden model laden
@@ -122,28 +108,26 @@ class Search extends CI_Controller {
 
       // alle möglichen einträge nach dem model laden die mit dem übergebenen buchstaben beginnen
       switch ($model) {
-      	case "project_model":
-      		$hints = $this->project_model->getHints($entered);
-     		break;
-      	case "author_model":
-      		$hints = $this->author_model->getHints($entered);
-      		break;
+         case "project_model":
+            $hints = $this->project_model->getHints($entered);
+            break;
+         case "author_model":
+            $hints = $this->author_model->getHints($entered);
+            break;
       }
 
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
       $response = NULL;
       foreach ($hints->result() as $hint) {
-      	  $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
+         $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }
 
       echo $response;
    }
 
    /**
-    * popup function
-    *
-    *
+    * loads the popup view
     */
    function popup() {
       $this->load->model('document_model');
@@ -157,24 +141,23 @@ class Search extends CI_Controller {
       $this->load->model('keyword_model');
       $this->load->model('file_model');
       //und queryergebnis in $data einholen
-	  $data['authors'] = $this->author_model->get_Author_by_DocumentID($doc_id);
-	  $data['keywords'] = $this->keyword_model->get_Keyword_By_DocumentID($doc_id);
-	  $data['files'] = $this->file_model->get_File_By_DocumentID($doc_id);
+      $data['authors']  = $this->author_model->get_Author_by_DocumentID($doc_id);
+      $data['keywords'] = $this->keyword_model->get_Keyword_By_DocumentID($doc_id);
+      $data['files']    = $this->file_model->get_File_By_DocumentID($doc_id);
 
       $this->load->view('search/popup_view', $data);
    }
 
    /**
-    * fileDOWNLOAD function
+    * file download function
     *
-    *
+    * @param $file_id
     */
-   function dl_file($id) {
-   	$this->load->model('file_model');
-   	//das file finden
-   	$this->file_model->download_File($id);
+   function dl_file($file_id) {
+      $this->load->model('file_model');
+      //das file finden
+      $this->file_model->download_File($file_id);
    }
 }
-
 /* End of file search.php */
 /* Location: ./application/controllers/search.php */

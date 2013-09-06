@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/email.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/email.html
  */
 class CI_Email {
 
@@ -101,7 +101,9 @@ class CI_Email {
     * Initialize preferences
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    public function initialize($config = array()) {
@@ -163,8 +165,10 @@ class CI_Email {
     * Set FROM
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   void
     */
    public function from($from, $name = '') {
@@ -200,8 +204,10 @@ class CI_Email {
     * Set Reply-to
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   void
     */
    public function reply_to($replyto, $name = '') {
@@ -233,7 +239,9 @@ class CI_Email {
     * Set Recipients
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function to($to) {
@@ -267,7 +275,9 @@ class CI_Email {
     * Set CC
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function cc($cc) {
@@ -293,8 +303,10 @@ class CI_Email {
     * Set BCC
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   void
     */
    public function bcc($bcc, $limit = '') {
@@ -326,7 +338,9 @@ class CI_Email {
     * Set Email Subject
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function subject($subject) {
@@ -342,7 +356,9 @@ class CI_Email {
     * Set Body
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function message($body) {
@@ -367,7 +383,9 @@ class CI_Email {
     * Assign file attachments
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function attach($filename, $disposition = 'attachment') {
@@ -383,8 +401,10 @@ class CI_Email {
     * Add a Header Item
     *
     * @access   protected
+    *
     * @param   string
     * @param   string
+    *
     * @return   void
     */
    protected function _set_header($header, $value) {
@@ -397,7 +417,9 @@ class CI_Email {
     * Convert a String to an Array
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   array
     */
    protected function _str_to_array($email) {
@@ -420,7 +442,9 @@ class CI_Email {
     * Set Multipart Value
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_alt_message($str = '') {
@@ -435,7 +459,9 @@ class CI_Email {
     * Set Mailtype
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_mailtype($type = 'text') {
@@ -450,7 +476,9 @@ class CI_Email {
     * Set Wordwrap
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_wordwrap($wordwrap = TRUE) {
@@ -465,7 +493,9 @@ class CI_Email {
     * Set Protocol
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_protocol($protocol = 'mail') {
@@ -480,7 +510,9 @@ class CI_Email {
     * Set Priority
     *
     * @access   public
+    *
     * @param   integer
+    *
     * @return   void
     */
    public function set_priority($n = 3) {
@@ -507,7 +539,9 @@ class CI_Email {
     * Set Newline Character
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_newline($newline = "\n") {
@@ -528,7 +562,9 @@ class CI_Email {
     * Set CRLF
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    public function set_crlf($crlf = "\n") {
@@ -578,7 +614,9 @@ class CI_Email {
     * Get Mail Protocol
     *
     * @access   protected
+    *
     * @param   bool
+    *
     * @return   string
     */
    protected function _get_protocol($return = TRUE) {
@@ -596,7 +634,9 @@ class CI_Email {
     * Get Mail Encoding
     *
     * @access   protected
+    *
     * @param   bool
+    *
     * @return   string
     */
    protected function _get_encoding($return = TRUE) {
@@ -671,7 +711,9 @@ class CI_Email {
     * Validate Email Address
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    public function validate_email($email) {
@@ -698,7 +740,9 @@ class CI_Email {
     * Email Validation
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    public function valid_email($address) {
@@ -711,7 +755,9 @@ class CI_Email {
     * Clean Extended Email Address: Joe Smith <joe@smith.com>
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    public function clean_email($email) {
@@ -786,8 +832,10 @@ class CI_Email {
     * Word Wrap
     *
     * @access   public
+    *
     * @param   string
     * @param   integer
+    *
     * @return   string
     */
    public function word_wrap($str, $charlim = '') {
@@ -869,7 +917,9 @@ class CI_Email {
     * Build final headers
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   string
     */
    protected function _build_headers() {
@@ -1084,8 +1134,10 @@ class CI_Email {
     * Refer to RFC 2045 http://www.ietf.org/rfc/rfc2045.txt
     *
     * @access   protected
+    *
     * @param   string
     * @param   integer
+    *
     * @return   string
     */
    protected function _prep_quoted_printable($str, $charlim = '') {
@@ -1169,8 +1221,10 @@ class CI_Email {
     * but not identical to quoted-printable, so it has its own method
     *
     * @access   public
+    *
     * @param   str
     * @param   bool   // set to TRUE for processing From: headers
+    *
     * @return   str
     */
    protected function _prep_q_encoding($str, $from = FALSE) {
@@ -1520,7 +1574,9 @@ class CI_Email {
     * SMTP Connect
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   string
     */
    protected function _smtp_connect() {
@@ -1556,8 +1612,10 @@ class CI_Email {
     * Send SMTP command
     *
     * @access   protected
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    protected function _send_command($cmd, $data = '') {
@@ -1791,7 +1849,9 @@ class CI_Email {
     * Set Message
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   string
     */
    protected function _set_error_message($msg, $val = '') {
@@ -1812,7 +1872,9 @@ class CI_Email {
     * Mime Types
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   string
     */
    protected function _mime_types($ext = "") {

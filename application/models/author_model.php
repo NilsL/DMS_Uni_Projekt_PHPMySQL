@@ -99,6 +99,7 @@ class Author_model extends CI_Model {
    }
 
    /**
+    * author update
     * @return bool
     */
    function update_Author() {
@@ -106,42 +107,52 @@ class Author_model extends CI_Model {
    }
 
    /**
+    * author deletion
     * @return bool
     */
    function delete_Author() {
       return FALSE;
    }
-   
+
    /**
-    * @param document_id 
+    * @param document_id
+    *
     * @return bool
     */
    function get_Author_by_DocumentID($document_id) {
-    $this->db->select('storage_author.name as author_name');
-    $this->db->join('storage_document_has_author', 'storage_document_has_author.author_id = storage_author.id');
-    $this->db->where('storage_document_has_author.document_id', $document_id);
-    $authors = $this->db->get('storage_author');
-    if ($authors->num_rows () > 0) {
-        return $authors;
-    }
-    return false;
+      $this->db->select('storage_author.name as author_name');
+      $this->db->join('storage_document_has_author', 'storage_document_has_author.author_id = storage_author.id');
+      $this->db->where('storage_document_has_author.document_id', $document_id);
+      $authors = $this->db->get('storage_author');
+      if ($authors->num_rows() > 0) {
+         return $authors;
+      }
+
+      return FALSE;
    }
 
+   /**
+    * @param $inputed
+    * @param $id
+    *
+    * @return bool
+    */
    function checking($inputed, $id) {
-       if($id=="author mail") {
-           $this->db->where('mail', $inputed);
-       } else if($id=="author name") {
-           $this->db->where('name', $inputed);
-       }
-       $result = $this->db->get('storage_author');
+      if ($id == "author mail") {
+         $this->db->where('mail', $inputed);
+      }
+      else if ($id == "author name") {
+         $this->db->where('name', $inputed);
+      }
+      $result = $this->db->get('storage_author');
 
-       //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
-       if($result->num_rows()>0) {
-           return false;
-       }
-       return true;
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      if ($result->num_rows() > 0) {
+         return FALSE;
+      }
+
+      return TRUE;
    }
 }
-
 /* End of file author_model.php */
 /* Location: ./application/models/author_model.php */

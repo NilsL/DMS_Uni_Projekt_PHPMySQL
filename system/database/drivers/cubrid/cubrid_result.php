@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      Esen Sagynov
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       Esen Sagynov
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0.2
+ * @link         http://codeigniter.com
+ * @since        Version 2.0.2
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * This class extends the parent result class: CI_DB_result
  *
- * @category   Database
+ * @category    Database
  * @author      Esen Sagynov
- * @link      http://codeigniter.com/user_guide/database/
+ * @link        http://codeigniter.com/user_guide/database/
  */
 class CI_DB_cubrid_result extends CI_DB_result {
 

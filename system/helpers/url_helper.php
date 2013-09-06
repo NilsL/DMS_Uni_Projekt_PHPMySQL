@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/url_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/url_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -34,7 +34,9 @@
  * first parameter either as a string or an array.
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('site_url')) {
@@ -55,7 +57,9 @@ if (!function_exists('site_url')) {
  * or a URL to a file can be passed in, e.g. to an image file.
  *
  * @access   public
+ *
  * @param string
+ *
  * @return   string
  */
 if (!function_exists('base_url')) {
@@ -128,9 +132,11 @@ if (!function_exists('index_page')) {
  * Creates an anchor based on the local URL.
  *
  * @access   public
+ *
  * @param   string   the URL
  * @param   string   the link title
- * @param   mixed   any attributes
+ * @param   mixed    any attributes
+ *
  * @return   string
  */
 if (!function_exists('anchor')) {
@@ -165,9 +171,11 @@ if (!function_exists('anchor')) {
  * opens a new window based on the attributes specified.
  *
  * @access   public
+ *
  * @param   string   the URL
  * @param   string   the link title
- * @param   mixed   any attributes
+ * @param   mixed    any attributes
+ *
  * @return   string
  */
 if (!function_exists('anchor_popup')) {
@@ -207,9 +215,11 @@ if (!function_exists('anchor_popup')) {
  * Mailto Link
  *
  * @access   public
+ *
  * @param   string   the email address
  * @param   string   the link title
- * @param   mixed   any attributes
+ * @param   mixed    any attributes
+ *
  * @return   string
  */
 if (!function_exists('mailto')) {
@@ -234,9 +244,11 @@ if (!function_exists('mailto')) {
  * Create a spam-protected mailto link written in Javascript
  *
  * @access   public
+ *
  * @param   string   the email address
  * @param   string   the link title
- * @param   mixed   any attributes
+ * @param   mixed    any attributes
+ *
  * @return   string
  */
 if (!function_exists('safe_mailto')) {
@@ -340,9 +352,11 @@ if (!function_exists('safe_mailto')) {
  * off and add them after the link.
  *
  * @access   public
+ *
  * @param   string   the string
  * @param   string   the type: email, url, or both
- * @param   bool   whether to create pop-up links
+ * @param   bool     whether to create pop-up links
+ *
  * @return   string
  */
 if (!function_exists('auto_link')) {
@@ -397,7 +411,9 @@ if (!function_exists('auto_link')) {
  * Simply adds the http:// part if no scheme is included
  *
  * @access   public
+ *
  * @param   string   the URL
+ *
  * @return   string
  */
 if (!function_exists('prep_url')) {
@@ -426,8 +442,10 @@ if (!function_exists('prep_url')) {
  * as the word separator.
  *
  * @access   public
+ *
  * @param   string   the string
  * @param   string   the separator
+ *
  * @return   string
  */
 if (!function_exists('url_title')) {
@@ -472,8 +490,10 @@ if (!function_exists('url_title')) {
  * Library's set_header() function.
  *
  * @access   public
+ *
  * @param   string   the URL
  * @param   string   the method: location or redirect
+ *
  * @return   string
  */
 if (!function_exists('redirect')) {
@@ -502,8 +522,10 @@ if (!function_exists('redirect')) {
  * Some of the functions use this
  *
  * @access   private
+ *
  * @param   array
  * @param   bool
+ *
  * @return   string
  */
 if (!function_exists('_parse_attributes')) {

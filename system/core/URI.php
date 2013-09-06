@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   URI
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/uri.html
+ * @category     URI
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/uri.html
  */
 class CI_URI {
 
@@ -150,7 +150,9 @@ class CI_URI {
     * Set the URI String
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function _set_uri_string($str) {
@@ -233,7 +235,9 @@ class CI_URI {
     * Filter segments for malicious characters
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _filter_uri($str) {
@@ -313,8 +317,10 @@ class CI_URI {
     * This function returns the URI segment based on the number provided.
     *
     * @access   public
+    *
     * @param   integer
     * @param   bool
+    *
     * @return   string
     */
    function segment($n, $no_result = FALSE) {
@@ -331,8 +337,10 @@ class CI_URI {
     * same result as $this->segment()
     *
     * @access   public
+    *
     * @param   integer
     * @param   bool
+    *
     * @return   string
     */
    function rsegment($n, $no_result = FALSE) {
@@ -358,8 +366,10 @@ class CI_URI {
     *       )
     *
     * @access   public
+    *
     * @param   integer   the starting segment number
-    * @param   array   an array of default values
+    * @param   array     an array of default values
+    *
     * @return   array
     */
    function uri_to_assoc($n = 3, $default = array()) {
@@ -370,8 +380,10 @@ class CI_URI {
     * Identical to above only it uses the re-routed segment array
     *
     * @access   public
+    *
     * @param   integer   the starting segment number
-    * @param   array   an array of default values
+    * @param   array     an array of default values
+    *
     * @return   array
     *
     */
@@ -385,9 +397,11 @@ class CI_URI {
     * Generate a key value pair from the URI string or Re-routed URI string
     *
     * @access   private
+    *
     * @param   integer   the starting segment number
-    * @param   array   an array of default values
-    * @param   string   which array we should use
+    * @param   array     an array of default values
+    * @param   string    which array we should use
+    *
     * @return   array
     */
    function _uri_to_assoc($n = 3, $default = array(), $which = 'segment') {
@@ -459,7 +473,9 @@ class CI_URI {
     *
     *
     * @access   public
+    *
     * @param   array   an associative array of key/values
+    *
     * @return   array
     */
    function assoc_to_uri($array) {
@@ -478,8 +494,10 @@ class CI_URI {
     * Fetch a URI Segment and add a trailing slash
     *
     * @access   public
+    *
     * @param   integer
     * @param   string
+    *
     * @return   string
     */
    function slash_segment($n, $where = 'trailing') {
@@ -492,8 +510,10 @@ class CI_URI {
     * Fetch a URI Segment and add a trailing slash
     *
     * @access   public
+    *
     * @param   integer
     * @param   string
+    *
     * @return   string
     */
    function slash_rsegment($n, $where = 'trailing') {
@@ -506,9 +526,11 @@ class CI_URI {
     * Fetch a URI Segment and add a trailing slash - helper function
     *
     * @access   private
+    *
     * @param   integer
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _slash_segment($n, $where = 'trailing', $which = 'segment') {

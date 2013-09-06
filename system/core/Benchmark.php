@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -23,9 +23,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/benchmark.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/benchmark.html
  */
 class CI_Benchmark {
 
@@ -45,7 +45,9 @@ class CI_Benchmark {
     * execution points can be timed
     *
     * @access   public
+    *
     * @param   string $name   name of the marker
+    *
     * @return   void
     */
    function mark($name) {
@@ -63,9 +65,11 @@ class CI_Benchmark {
     * swap the real value for this variable.
     *
     * @access   public
-    * @param   string   a particular marked point
-    * @param   string   a particular marked point
+    *
+    * @param   string    a particular marked point
+    * @param   string    a particular marked point
     * @param   integer   the number of decimal places
+    *
     * @return   mixed
     */
    function elapsed_time($point1 = '', $point2 = '', $decimals = 4) {

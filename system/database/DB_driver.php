@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -24,9 +24,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Drivers
- * @category   Database
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/database/
+ * @category     Database
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/database/
  */
 class CI_DB_driver {
 
@@ -93,7 +93,9 @@ class CI_DB_driver {
     * Initialize Database Settings
     *
     * @access   private Called by the constructor
+    *
     * @param   mixed
+    *
     * @return   void
     */
    function initialize() {
@@ -151,8 +153,10 @@ class CI_DB_driver {
     * Set client character set
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   resource
     */
    function db_set_charset($charset, $collation) {
@@ -225,8 +229,10 @@ class CI_DB_driver {
     * will raise an error.
     *
     * @access   public
+    *
     * @param   string   An SQL query string
-    * @param   array   An array of binding data
+    * @param   array    An array of binding data
+    *
     * @return   mixed
     */
    function query($sql, $binds = FALSE, $return_object = TRUE) {
@@ -405,7 +411,9 @@ class CI_DB_driver {
     * not require all the features of the main query() function.
     *
     * @access   public
+    *
     * @param   string   the sql query
+    *
     * @return   mixed
     */
    function simple_query($sql) {
@@ -527,8 +535,10 @@ class CI_DB_driver {
     * Compile Bindings
     *
     * @access   public
+    *
     * @param   string   the sql statement
-    * @param   array   an array of bind data
+    * @param   array    an array of bind data
+    *
     * @return   string
     */
    function compile_binds($sql, $binds) {
@@ -566,7 +576,9 @@ class CI_DB_driver {
     * Determines if a query is a "write" type.
     *
     * @access   public
+    *
     * @param   string   An SQL query string
+    *
     * @return   boolean
     */
    function is_write_type($sql) {
@@ -583,7 +595,9 @@ class CI_DB_driver {
     * Calculate the aggregate query elapsed time
     *
     * @access   public
+    *
     * @param   integer   The number of decimal places
+    *
     * @return   integer
     */
    function elapsed_time($decimals = 6) {
@@ -623,7 +637,9 @@ class CI_DB_driver {
     * Sets boolean and null types
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   mixed
     */
    function escape($str) {
@@ -649,7 +665,9 @@ class CI_DB_driver {
     * specific escaping for LIKE conditions
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   mixed
     */
    function escape_like_str($str) {
@@ -665,7 +683,9 @@ class CI_DB_driver {
     * position is the primary key
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   string
     */
    function primary($table = '') {
@@ -736,7 +756,9 @@ class CI_DB_driver {
     * Fetch MySQL Field Names
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   array
     */
    function list_fields($table = '') {
@@ -783,8 +805,10 @@ class CI_DB_driver {
    /**
     * Determine if a particular field exists
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   boolean
     */
    function field_exists($field_name, $table_name) {
@@ -797,7 +821,9 @@ class CI_DB_driver {
     * Returns an object with field data
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   object
     */
    function field_data($table = '') {
@@ -820,8 +846,10 @@ class CI_DB_driver {
     * Generate an insert string
     *
     * @access   public
+    *
     * @param   string   the table upon which the query will be performed
-    * @param   array   an associative array data of key/values
+    * @param   array    an associative array data of key/values
+    *
     * @return   string
     */
    function insert_string($table, $data) {
@@ -842,9 +870,11 @@ class CI_DB_driver {
     * Generate an update string
     *
     * @access   public
+    *
     * @param   string   the table upon which the query will be performed
-    * @param   array   an associative array data of key/values
-    * @param   mixed   the "where" statement
+    * @param   array    an associative array data of key/values
+    * @param   mixed    the "where" statement
+    *
     * @return   string
     */
    function update_string($table, $data, $where) {
@@ -886,7 +916,9 @@ class CI_DB_driver {
     * Tests whether the string has an SQL operator
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   bool
     */
    function _has_operator($str) {
@@ -904,8 +936,10 @@ class CI_DB_driver {
     * Enables a native PHP function to be run, using a platform agnostic wrapper.
     *
     * @access   public
+    *
     * @param   string   the function name
-    * @param   mixed   any parameters needed by the function
+    * @param   mixed    any parameters needed by the function
+    *
     * @return   mixed
     */
    function call_function($function) {
@@ -939,7 +973,9 @@ class CI_DB_driver {
     * Set Cache Directory Path
     *
     * @access   public
+    *
     * @param   string   the path to the cache directory
+    *
     * @return   void
     */
    function cache_set_path($path = '') {
@@ -1051,9 +1087,11 @@ class CI_DB_driver {
     * Display an error message
     *
     * @access   public
-    * @param   string   the error message
-    * @param   string   any "swap" values
+    *
+    * @param   string    the error message
+    * @param   string    any "swap" values
     * @param   boolean   whether to localize the message
+    *
     * @return   string   sends the application/error_db.php template
     */
    function display_error($error = '', $swap = '', $native = FALSE) {
@@ -1098,7 +1136,9 @@ class CI_DB_driver {
     * This function adds backticks if appropriate based on db type
     *
     * @access   private
+    *
     * @param   mixed   the item to escape
+    *
     * @return   mixed   the item with backticks
     */
    function protect_identifiers($item, $prefix_single = FALSE) {
@@ -1128,10 +1168,12 @@ class CI_DB_driver {
     * the correct identifiers.
     *
     * @access   private
+    *
     * @param   string
     * @param   bool
     * @param   mixed
     * @param   bool
+    *
     * @return   string
     */
    function _protect_identifiers($item, $prefix_single = FALSE, $protect_identifiers = NULL, $field_exists = TRUE) {

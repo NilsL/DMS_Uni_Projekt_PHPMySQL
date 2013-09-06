@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/html_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/html_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -34,8 +34,10 @@
  * Second param is the size of the heading tag.
  *
  * @access   public
+ *
  * @param   string
  * @param   integer
+ *
  * @return   string
  */
 if (!function_exists('heading')) {
@@ -54,8 +56,10 @@ if (!function_exists('heading')) {
  * Generates an HTML unordered list from an single or multi-dimensional array.
  *
  * @access   public
+ *
  * @param   array
  * @param   mixed
+ *
  * @return   string
  */
 if (!function_exists('ul')) {
@@ -72,8 +76,10 @@ if (!function_exists('ul')) {
  * Generates an HTML ordered list from an single or multi-dimensional array.
  *
  * @access   public
+ *
  * @param   array
  * @param   mixed
+ *
  * @return   string
  */
 if (!function_exists('ol')) {
@@ -90,10 +96,12 @@ if (!function_exists('ol')) {
  * Generates an HTML ordered list from an single or multi-dimensional array.
  *
  * @access   private
+ *
  * @param   string
  * @param   mixed
  * @param   mixed
  * @param   integer
+ *
  * @return   string
  */
 if (!function_exists('_list')) {
@@ -159,7 +167,9 @@ if (!function_exists('_list')) {
  * Generates HTML BR tags based on number supplied
  *
  * @access   public
+ *
  * @param   integer
+ *
  * @return   string
  */
 if (!function_exists('br')) {
@@ -176,7 +186,9 @@ if (!function_exists('br')) {
  * Generates an <img /> element
  *
  * @access   public
+ *
  * @param   mixed
+ *
  * @return   string
  */
 if (!function_exists('img')) {
@@ -227,7 +239,9 @@ if (!function_exists('img')) {
  * doctypes config file.
  *
  * @access   public
+ *
  * @param   string   type   The doctype to be generated
+ *
  * @return   string
  */
 if (!function_exists('doctype')) {
@@ -264,12 +278,14 @@ if (!function_exists('doctype')) {
  * Generates link to a CSS file
  *
  * @access   public
- * @param   mixed   stylesheet hrefs or an array
- * @param   string   rel
- * @param   string   type
- * @param   string   title
- * @param   string   media
+ *
+ * @param   mixed     stylesheet hrefs or an array
+ * @param   string    rel
+ * @param   string    type
+ * @param   string    title
+ * @param   string    media
  * @param   boolean   should index_page be added to the css path
+ *
  * @return   string
  */
 if (!function_exists('link_tag')) {
@@ -330,7 +346,9 @@ if (!function_exists('link_tag')) {
  * Generates meta tags from an array of key/values
  *
  * @access   public
+ *
  * @param   array
+ *
  * @return   string
  */
 if (!function_exists('meta')) {
@@ -367,7 +385,9 @@ if (!function_exists('meta')) {
  * Generates non-breaking space entities based on number supplied
  *
  * @access   public
+ *
  * @param   integer
+ *
  * @return   string
  */
 if (!function_exists('nbs')) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -18,9 +18,9 @@
 /**
  * Database Utility Class
  *
- * @category   Database
+ * @category    Database
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/database/
+ * @link        http://codeigniter.com/user_guide/database/
  */
 class CI_DB_forge {
 
@@ -48,7 +48,9 @@ class CI_DB_forge {
     * Create database
     *
     * @access   public
+    *
     * @param   string   the database name
+    *
     * @return   bool
     */
    function create_database($db_name) {
@@ -67,7 +69,9 @@ class CI_DB_forge {
     * Drop database
     *
     * @access   public
+    *
     * @param   string   the database name
+    *
     * @return   bool
     */
    function drop_database($db_name) {
@@ -86,8 +90,10 @@ class CI_DB_forge {
     * Add Key
     *
     * @access   public
+    *
     * @param   string   key
     * @param   string   type
+    *
     * @return   void
     */
    function add_key($key = '', $primary = FALSE) {
@@ -117,7 +123,9 @@ class CI_DB_forge {
     * Add Field
     *
     * @access   public
+    *
     * @param   string   collation
+    *
     * @return   void
     */
    function add_field($field = '') {
@@ -157,7 +165,9 @@ class CI_DB_forge {
     * Create Table
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   bool
     */
    function create_table($table = '', $if_not_exists = FALSE) {
@@ -182,7 +192,9 @@ class CI_DB_forge {
     * Drop Table
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   bool
     */
    function drop_table($table_name) {
@@ -201,8 +213,10 @@ class CI_DB_forge {
     * Rename Table
     *
     * @access   public
+    *
     * @param   string   the old table name
     * @param   string   the new table name
+    *
     * @return   bool
     */
    function rename_table($table_name, $new_table_name) {
@@ -221,9 +235,11 @@ class CI_DB_forge {
     * Column Add
     *
     * @access   public
+    *
     * @param   string   the table name
     * @param   string   the column name
     * @param   string   the column definition
+    *
     * @return   bool
     */
    function add_column($table = '', $field = array(), $after_field = '') {
@@ -260,8 +276,10 @@ class CI_DB_forge {
     * Column Drop
     *
     * @access   public
+    *
     * @param   string   the table name
     * @param   string   the column name
+    *
     * @return   bool
     */
    function drop_column($table = '', $column_name = '') {
@@ -285,9 +303,11 @@ class CI_DB_forge {
     * Column Modify
     *
     * @access   public
+    *
     * @param   string   the table name
     * @param   string   the column name
     * @param   string   the column definition
+    *
     * @return   bool
     */
    function modify_column($table = '', $field = array()) {

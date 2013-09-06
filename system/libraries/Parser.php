@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Parser
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/parser.html
+ * @category     Parser
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/parser.html
  */
 class CI_Parser {
 
@@ -37,9 +37,11 @@ class CI_Parser {
     * replacing them with the data in the second param
     *
     * @access   public
+    *
     * @param   string
     * @param   array
     * @param   bool
+    *
     * @return   string
     */
    public function parse($template, $data, $return = FALSE) {
@@ -58,9 +60,11 @@ class CI_Parser {
     * replacing them with the data in the second param
     *
     * @access   public
+    *
     * @param   string
     * @param   array
     * @param   bool
+    *
     * @return   string
     */
    function parse_string($template, $data, $return = FALSE) {
@@ -76,9 +80,11 @@ class CI_Parser {
     * replacing them with the data in the second param
     *
     * @access   public
+    *
     * @param   string
     * @param   array
     * @param   bool
+    *
     * @return   string
     */
    function _parse($template, $data, $return = FALSE) {
@@ -109,8 +115,10 @@ class CI_Parser {
     *  Set the left/right variable delimiters
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   void
     */
    function set_delimiters($l = '{', $r = '}') {
@@ -124,9 +132,11 @@ class CI_Parser {
     *  Parse a single key/value
     *
     * @access   private
+    *
     * @param   string
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _parse_single($key, $val, $string) {
@@ -141,9 +151,11 @@ class CI_Parser {
     * Parses tag pairs:  {some_tag} string... {/some_tag}
     *
     * @access   private
+    *
     * @param   string
     * @param   array
     * @param   string
+    *
     * @return   string
     */
    function _parse_pair($variable, $data, $string) {
@@ -175,8 +187,10 @@ class CI_Parser {
     *  Matches a variable pair
     *
     * @access   private
+    *
     * @param   string
     * @param   string
+    *
     * @return   mixed
     */
    function _match_pair($string, $variable) {

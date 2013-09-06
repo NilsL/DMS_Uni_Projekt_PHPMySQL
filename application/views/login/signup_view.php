@@ -17,7 +17,7 @@
    <p>
       <?php echo form_label('Email: ', 'email'); ?>
       <?php echo form_input(array('id' => 'email', 'name' => 'email', 'placeholder' => 'jondoe@jondoe.com', 'onblur' => 'validating(this)')); ?>
-      <span id='check_email' style= "border-width: 0;color: red"></span>
+      <span id='check_email' style="border-width: 0;color: red"></span>
    </p>
 
    <legend>Login Info</legend>
@@ -25,7 +25,7 @@
    <p>
       <?php echo form_label('Username: ', 'username'); ?>
       <?php echo form_input(array('id' => 'username', 'name' => 'username', 'placeholder' => 'jondoe', 'onkeyup' => 'validating(this)')); ?>
-      <span id='check_username' style= "border-width: 0;color: red"></span>
+      <span id='check_username' style="border-width: 0;color: red"></span>
    </p>
 
    <p>
@@ -36,7 +36,7 @@
    <p>
       <?php echo form_label('Confirm: ', 'password_confirm'); ?>
       <?php echo form_password(array('id' => 'password_confirm', 'name' => 'password_confirm', 'placeholder' => 'must match the choosen password', 'onkeyup' => 'matching()')); ?>
-      <span id='check_password_confirm' style= "border-width: 0;color: red"></span>
+      <span id='check_password_confirm' style="border-width: 0;color: red"></span>
    </p>
 
    <p id="login-submit">
