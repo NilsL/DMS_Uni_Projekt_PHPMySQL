@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -18,9 +18,9 @@
 /**
  * Database Utility Class
  *
- * @category   Database
+ * @category    Database
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/database/
+ * @link        http://codeigniter.com/user_guide/database/
  */
 class CI_DB_utility extends CI_DB_forge {
 
@@ -74,7 +74,9 @@ class CI_DB_utility extends CI_DB_forge {
     * Determine if a particular database exists
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   boolean
     */
    function database_exists($database_name) {
@@ -96,7 +98,9 @@ class CI_DB_utility extends CI_DB_forge {
     * Optimize Table
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   bool
     */
    function optimize_table($table_name) {
@@ -154,7 +158,9 @@ class CI_DB_utility extends CI_DB_forge {
     * Repair Table
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   bool
     */
    function repair_table($table_name) {
@@ -179,10 +185,12 @@ class CI_DB_utility extends CI_DB_forge {
     * Generate CSV from a query result object
     *
     * @access   public
+    *
     * @param   object   The query result object
     * @param   string   The delimiter - comma by default
     * @param   string   The newline character - \n by default
     * @param   string   The enclosure - double quote by default
+    *
     * @return   string
     */
    function csv_from_result($query, $delim = ",", $newline = "\n", $enclosure = '"') {
@@ -218,8 +226,10 @@ class CI_DB_utility extends CI_DB_forge {
     * Generate XML data from a query result object
     *
     * @access   public
+    *
     * @param   object   The query result object
-    * @param   array   Any preferences
+    * @param   array    Any preferences
+    *
     * @return   string
     */
    function xml_from_result($query, $params = array()) {

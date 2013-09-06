@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Security
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/security.html
+ * @category     Security
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/security.html
  */
 class CI_Security {
 
@@ -245,6 +245,7 @@ class CI_Security {
     *
     * @param   mixed   string or array
     * @param   bool
+    *
     * @return   string
     */
    public function xss_clean($str, $is_image = FALSE) {
@@ -470,6 +471,7 @@ class CI_Security {
     *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    public function entity_decode($str, $charset = 'UTF-8') {
@@ -490,6 +492,7 @@ class CI_Security {
     *
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    public function sanitize_filename($str, $relative_path = FALSE) {
@@ -546,6 +549,7 @@ class CI_Security {
     * things like j a v a s c r i p t
     *
     * @param   type
+    *
     * @return   type
     */
    protected function _compact_exploded_words($matches) {
@@ -617,6 +621,7 @@ class CI_Security {
     * Callback function for xss_clean() to remove naughty HTML elements
     *
     * @param   array
+    *
     * @return   string
     */
    protected function _sanitize_naughty_html($matches) {
@@ -641,6 +646,7 @@ class CI_Security {
     * PHP 5.2+ on link-heavy strings
     *
     * @param   array
+    *
     * @return   string
     */
    protected function _js_link_removal($match) {
@@ -666,6 +672,7 @@ class CI_Security {
     * PHP 5.2+ on image tag heavy strings
     *
     * @param   array
+    *
     * @return   string
     */
    protected function _js_img_removal($match) {
@@ -688,6 +695,7 @@ class CI_Security {
     * Used as a callback for XSS Clean
     *
     * @param   array
+    *
     * @return   string
     */
    protected function _convert_attribute($match) {
@@ -702,6 +710,7 @@ class CI_Security {
     * Filters tag attributes for consistency and safety
     *
     * @param   string
+    *
     * @return   string
     */
    protected function _filter_attributes($str) {
@@ -724,6 +733,7 @@ class CI_Security {
     * Used as a callback for XSS Clean
     *
     * @param   array
+    *
     * @return   string
     */
    protected function _decode_entity($match) {
@@ -738,6 +748,7 @@ class CI_Security {
     * Called by xss_clean()
     *
     * @param   string
+    *
     * @return   string
     */
    protected function _validate_entities($str) {
@@ -782,6 +793,7 @@ class CI_Security {
     * A utility function for xss_clean()
     *
     * @param   string
+    *
     * @return   string
     */
    protected function _do_never_allowed($str) {

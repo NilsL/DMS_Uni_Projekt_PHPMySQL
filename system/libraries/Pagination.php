@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Pagination
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/pagination.html
+ * @category     Pagination
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/pagination.html
  */
 class CI_Pagination {
 
@@ -64,6 +64,7 @@ class CI_Pagination {
     * Constructor
     *
     * @access   public
+    *
     * @param   array   initialization parameters
     */
    public function __construct($params = array()) {
@@ -84,7 +85,9 @@ class CI_Pagination {
     * Initialize Preferences
     *
     * @access   public
+    *
     * @param   array   initialization parameters
+    *
     * @return   void
     */
    function initialize($params = array()) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/security_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/security_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -31,8 +31,10 @@
  * XSS Filtering
  *
  * @access   public
+ *
  * @param   string
  * @param   bool   whether or not the content is an image file
+ *
  * @return   string
  */
 if (!function_exists('xss_clean')) {
@@ -49,7 +51,9 @@ if (!function_exists('xss_clean')) {
  * Sanitize Filename
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('sanitize_filename')) {
@@ -66,7 +70,9 @@ if (!function_exists('sanitize_filename')) {
  * Hash encode a string
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('do_hash')) {
@@ -86,7 +92,9 @@ if (!function_exists('do_hash')) {
  * Strip Image Tags
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('strip_image_tags')) {
@@ -104,7 +112,9 @@ if (!function_exists('strip_image_tags')) {
  * Convert PHP tags to entities
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('encode_php_tags')) {

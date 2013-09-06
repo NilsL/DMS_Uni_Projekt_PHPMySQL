@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 4.3.2 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2006 - 2012 EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0
+ * @link         http://codeigniter.com
+ * @since        Version 2.0
  * @filesource
  */
 
@@ -20,8 +20,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Core
- * @author      ExpressionEngine Dev Team
+ * @category     Core
+ * @author       ExpressionEngine Dev Team
  * @link
  */
 
@@ -33,6 +33,7 @@ class CI_Cache_dummy extends CI_Driver {
     * Since this is the dummy class, it's always going to return FALSE.
     *
     * @param   string
+    *
     * @return   Boolean      FALSE
     */
    public function get($id) {
@@ -45,7 +46,7 @@ class CI_Cache_dummy extends CI_Driver {
     * Cache Save
     *
     * @param   string      Unique Key
-    * @param   mixed      Data to store
+    * @param   mixed       Data to store
     * @param   int         Length of time (in seconds) to cache the data
     *
     * @return   boolean      TRUE, Simulating success
@@ -59,7 +60,7 @@ class CI_Cache_dummy extends CI_Driver {
    /**
     * Delete from Cache
     *
-    * @param   mixed      unique identifier of the item in the cache
+    * @param   mixed        unique identifier of the item in the cache
     * @param   boolean      TRUE, simulating success
     */
    public function delete($id) {
@@ -83,6 +84,7 @@ class CI_Cache_dummy extends CI_Driver {
     * Cache Info
     *
     * @param   string      user/filehits
+    *
     * @return   boolean      FALSE
     */
    public function cache_info($type = NULL) {
@@ -95,6 +97,7 @@ class CI_Cache_dummy extends CI_Driver {
     * Get Cache Metadata
     *
     * @param   mixed      key to get cache metadata on
+    *
     * @return   boolean      FALSE
     */
    public function get_metadata($id) {

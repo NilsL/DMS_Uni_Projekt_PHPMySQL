@@ -1,15 +1,11 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *
- *
- *
+ * Class Sidebar_model
  */
 class Sidebar_model extends CI_Model {
 
    /**
-    *
-    *
     *
     */
    function get_Sidebar() {
@@ -17,27 +13,31 @@ class Sidebar_model extends CI_Model {
    }
 
    /**
-    *
-    *
-    *
+    * @return bool
     */
    function get_recent_Uploads() {
-      $this->db->limit(3);
-      $recent_Uploads = $this->db->get('storage_document');
+      $this->db->order_by('created', 'desc');
+      $this->db->limit(5);
+      $query = $this->db->get('storage_document');
+      if ($query->num_rows() > 0) {
+         return $query;
+      }
 
-      return $recent_Uploads;
+      return FALSE;
    }
 
    /**
-    *
-    *
-    *
+    * @return bool
     */
    function get_last_Edited() {
-      $this->db->limit(3);
-      $last_Edited = $this->db->get('storage_document');
+      $this->db->order_by('last_edited', 'desc');
+      $this->db->limit(5);
+      $query = $this->db->get('storage_document');
+      if ($query->num_rows() > 0) {
+         return $query;
+      }
 
-      return $last_Edited;
+      return FALSE;
    }
 }
 /* End of file sidebar_model.php */

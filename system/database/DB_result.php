@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  * This class will not be called directly. Rather, the adapter
  * class for the specific database will extend and instantiate it.
  *
- * @category   Database
+ * @category    Database
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/database/
+ * @link        http://codeigniter.com/user_guide/database/
  */
 class CI_DB_result {
 
@@ -42,7 +42,9 @@ class CI_DB_result {
     * Query result.  Acts as a wrapper function for the following functions.
     *
     * @access   public
+    *
     * @param   string   can be "object" or "array"
+    *
     * @return   mixed   either a result object or array
     */
    public function result($type = 'object') {
@@ -57,6 +59,7 @@ class CI_DB_result {
     * Custom query result.
     *
     * @param class_name A string that represents the type of object you want back
+    *
     * @return array of objects
     */
    public function custom_result_object($class_name) {
@@ -148,8 +151,10 @@ class CI_DB_result {
     * Query result.  Acts as a wrapper function for the following functions.
     *
     * @access   public
+    *
     * @param   string
     * @param   string   can be "object" or "array"
+    *
     * @return   mixed   either a result object or array
     */
    public function row($n = 0, $type = 'object') {

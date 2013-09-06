@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/calendar.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/calendar.html
  */
 class CI_Calendar {
 
@@ -67,7 +67,9 @@ class CI_Calendar {
     * Accepts an associative array as input, containing display preferences
     *
     * @access   public
+    *
     * @param   array   config preferences
+    *
     * @return   void
     */
    function initialize($config = array()) {
@@ -84,9 +86,11 @@ class CI_Calendar {
     * Generate the calendar
     *
     * @access   public
+    *
     * @param   integer   the year
     * @param   integer   the month
-    * @param   array   the data to be shown in the calendar cells
+    * @param   array     the data to be shown in the calendar cells
+    *
     * @return   string
     */
    function generate($year = '', $month = '', $data = array()) {
@@ -240,7 +244,9 @@ class CI_Calendar {
     * month provided.
     *
     * @access   public
+    *
     * @param   integer   the month
+    *
     * @return   string
     */
    function get_month_name($month) {
@@ -269,7 +275,9 @@ class CI_Calendar {
     * on the type.  Options: long, short, abrev
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   array
     */
    function get_day_names($day_type = '') {
@@ -304,8 +312,10 @@ class CI_Calendar {
     * increment and the month will become January.
     *
     * @access   public
+    *
     * @param   integer   the month
     * @param   integer   the year
+    *
     * @return   array
     */
    function adjust_date($month, $year) {
@@ -337,8 +347,10 @@ class CI_Calendar {
     * Total days in a given month
     *
     * @access   public
+    *
     * @param   integer   the month
     * @param   integer   the year
+    *
     * @return   integer
     */
    function get_total_days($month, $year) {

@@ -16,23 +16,40 @@ class Document_model extends CI_Model {
     * @return bool
     */
    function create_Document($title, $abstract, $class, $project, $keyword, $array_authors) {
+      //transaction startet
+      $this->db->trans_begin();
       $this->db->where('title', $title);
       $query = $this->db->get('storage_document');
-      if ($query->num_rows == 1) {
+      if (!$query || $query->num_rows == 1) {
+         $this->db->trans_rollback();
+
          return FALSE;
       }
 
-      $data = array(
+      $time  = time();
+      $data  = array(
          'title'             => $title,
          'abstract'          => $abstract,
          'classification_id' => $class,
-         'project_id'        => $project
+         'project_id'        => $project,
+         'created'           => $time,
+         'last_edited'       => $time,
       );
-      $this->db->insert('storage_document', $data);
+      $query = $this->db->insert('storage_document', $data);
+      if (!$query) {
+         $this->db->trans_rollback();
+
+         return FALSE;
+      }
 
       // jetzt kommen alle kreuztabelle dran
       // gerade eingefügte document_id wiederfinden
-      $query       = $this->db->query('select last_insert_id() as last_id');
+      $query = $this->db->query('select last_insert_id() as last_id');
+      if (!$query) {
+         $this->db->trans_rollback();
+
+         return FALSE;
+      }
       $row         = $query->row();
       $document_id = $row->last_id;
 
@@ -41,15 +58,21 @@ class Document_model extends CI_Model {
          //ueberpruefen ob author noch da ist oder evtl von anderen geloescht ist
          $this->load->model('author_model');
          if ($query = $this->author_model->get_Author($row)) {
-            $data = array(
+            $data  = array(
                'document_id' => $document_id,
                'author_id'   => $row
             );
-            $this->db->insert('storage_document_has_author', $data);
-         }
-         //eig. sollte es nicht geloescht werden, hier ist transaction angesagt...
-         else {
+            $query = $this->db->insert('storage_document_has_author', $data);
+            if (!$query) {
+               $this->db->trans_rollback();
 
+               return FALSE;
+            }
+         } //eig. sollte es nicht geloescht werden, hier ist transaction angesagt...
+         else {
+            $this->db->trans_rollback();
+
+            return FALSE;
          }
       }
 
@@ -62,16 +85,31 @@ class Document_model extends CI_Model {
             // durchgehen
             foreach ($keys as $row) {
                $this->db->where('name', $row);
-               $query      = $this->db->get('storage_keyword');
+               $query = $this->db->get('storage_keyword');
+               if (!$query) {
+                  $this->db->trans_rollback();
+
+                  return FALSE;
+               }
                $keyword_id = 0;
                // falls dies wort noch nie benutzt wurde, wird zuerst angelegt werden
                if ($query->num_rows == 0) {
-                  $data = array(
+                  $data  = array(
                      'name' => $row
                   );
-                  $this->db->insert('storage_keyword', $data);
+                  $query = $this->db->insert('storage_keyword', $data);
+                  if (!$query) {
+                     $this->db->trans_rollback();
+
+                     return FALSE;
+                  }
                   // die keyword_id wieder kriegen
-                  $query      = $this->db->query('select last_insert_id() as last_id');
+                  $query = $this->db->query('select last_insert_id() as last_id');
+                  if (!$query) {
+                     $this->db->trans_rollback();
+
+                     return FALSE;
+                  }
                   $row        = $query->row();
                   $keyword_id = $row->last_id;
                }
@@ -79,20 +117,32 @@ class Document_model extends CI_Model {
                   // die keyword_id auch wieder kriegen falls dies wort schon da gewesen ist
                   $this->db->select('id');
                   $this->db->where('name', $row);
-                  $query      = $this->db->get('storage_keyword');
+                  $query = $this->db->get('storage_keyword');
+                  if (!$query) {
+                     $this->db->trans_rollback();
+
+                     return FALSE;
+                  }
                   $row        = $query->row();
                   $keyword_id = $row->id;
                }
 
                // jetzt keyword mit document in verbindung setzen
-               $data = array(
+               $data  = array(
                   'document_id' => $document_id,
                   'keyword_id'  => $keyword_id
                );
-               $this->db->insert('storage_document_has_keyword', $data);
+               $query = $this->db->insert('storage_document_has_keyword', $data);
+               if (!$query) {
+                  $this->db->trans_rollback();
+
+                  return FALSE;
+               }
             }
          }
       }
+
+      $this->db->trans_complete();
 
       return TRUE;
    }
@@ -104,7 +154,7 @@ class Document_model extends CI_Model {
     */
    //modifiziert auf neues datenbankstruktur (author join deleted)
    function get_Document($id) {
-      $this->db->select('storage_document.id as document_id, title, abstract, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->select('storage_document.id as document_id, title, abstract, created, last_edited, storage_project.name AS project, storage_classification.name AS classification');
 
       // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
@@ -113,9 +163,9 @@ class Document_model extends CI_Model {
       $this->db->where('storage_document.id', $id);
       $result = $this->db->get('storage_document');
 
-   	  if ($result->num_rows () == 1) {
-		 return $result->row ();
-	  }
+      if ($result->num_rows() == 1) {
+         return $result->row();
+      }
 
       return FALSE;
    }
@@ -129,7 +179,7 @@ class Document_model extends CI_Model {
     */
    function get_Documents($title = FALSE, $keywords = FALSE, $dropdown = FALSE) {
 
-      $this->db->select('storage_document.id, title, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->select('storage_document.id, title, created, last_edited, storage_project.name AS project, storage_classification.name AS classification');
 
       // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
@@ -154,8 +204,8 @@ class Document_model extends CI_Model {
       if ($result->num_rows() > 0) {
          // wenn $dropdown TRUE ist wird ein Dropdown konformes Array produziert, sonst normale Resultset Rückgabe
          if ($dropdown) {
-         	//bugfix: $dropdown war noch ein bool, kann nicht direkt als array verwenden
-         	$dropdown = array();
+            //bugfix: $dropdown war noch ein bool, kann nicht direkt als array verwenden
+            $dropdown   = array();
             $dropdown[] = '--- view all ---';
 
             foreach ($result->result() as $docu) {
@@ -202,7 +252,24 @@ class Document_model extends CI_Model {
    function delete_Document() {
       return FALSE;
    }
-}
 
+   /**
+    * @param $inputed
+    * @param $id
+    *
+    * @return bool
+    */
+   function checking($inputed, $id) {
+      $this->db->where('title', $inputed);
+      $result = $this->db->get('storage_document');
+
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      if ($result->num_rows() > 0) {
+         return FALSE;
+      }
+
+      return TRUE;
+   }
+}
 /* End of file document_model.php */
 /* Location: ./application/models/document_model.php */

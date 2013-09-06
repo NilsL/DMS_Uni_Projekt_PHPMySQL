@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      EllisLab Dev Team
- * @copyright   Copyright (c) 2006 - 2012, EllisLab, Inc.
+ * @author       EllisLab Dev Team
+ * @copyright    Copyright (c) 2006 - 2012, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -23,8 +23,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      Reactor Engineers
+ * @category     Libraries
+ * @author       Reactor Engineers
  * @link
  */
 class CI_Migration {
@@ -85,6 +85,7 @@ class CI_Migration {
     * choice
     *
     * @param   int   Target schema version
+    *
     * @return   mixed   TRUE if already latest, FALSE if failed, int if upgraded
     */
    public function version($target_version) {
@@ -283,6 +284,7 @@ class CI_Migration {
     * Stores the current schema version
     *
     * @param   int   Migration reached
+    *
     * @return   bool
     */
    protected function _update_version($migrations) {
@@ -297,6 +299,7 @@ class CI_Migration {
     * Enable the use of CI super-global
     *
     * @param   mixed $var
+    *
     * @return   mixed
     */
    public function __get($var) {

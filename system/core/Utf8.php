@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0
+ * @link         http://codeigniter.com
+ * @since        Version 2.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   UTF-8
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/utf8.html
+ * @category     UTF-8
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/utf8.html
  */
 class CI_Utf8 {
 
@@ -74,7 +74,9 @@ class CI_Utf8 {
     * Ensures strings are UTF-8
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function clean_string($str) {
@@ -95,7 +97,9 @@ class CI_Utf8 {
     * problems in XML
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function safe_ascii_for_xml($str) {
@@ -110,8 +114,10 @@ class CI_Utf8 {
     * Attempts to convert a string to UTF-8
     *
     * @access   public
+    *
     * @param   string
     * @param   string   - input encoding
+    *
     * @return   string
     */
    function convert_to_utf8($str, $encoding) {
@@ -136,7 +142,9 @@ class CI_Utf8 {
     * Tests if a string is standard 7-bit ASCII or not
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function _is_ascii($str) {

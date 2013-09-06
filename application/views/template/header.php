@@ -20,12 +20,12 @@
    <?php if (isset($jQuery)) {
       echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>';
    } ?>
-      <script type="text/javascript" src="<?php echo base_url(); ?>js/ajax.js"></script>
+   <script type="text/javascript" src="<?php echo base_url(); ?>js/ajax.js"></script>
 </head>
 
 <body>
 <!--debugging options-->
-<?//= $this->db->last_query(); ?>
+<? //= $this->db->last_query(); ?>
 <div class="container">
    <div id="header" class="span-24 last">
       <br/>

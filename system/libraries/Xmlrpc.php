@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -25,9 +25,9 @@ if (!function_exists('xml_parser_create')) {
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   XML-RPC
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @category     XML-RPC
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class CI_Xmlrpc {
 
@@ -325,9 +325,9 @@ class CI_Xmlrpc {
 /**
  * XML-RPC Client class
  *
- * @category   XML-RPC
+ * @category    XML-RPC
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @link        http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class XML_RPC_Client extends CI_Xmlrpc {
    var $path = '';
@@ -399,9 +399,9 @@ class XML_RPC_Client extends CI_Xmlrpc {
 /**
  * XML-RPC Response class
  *
- * @category   XML-RPC
+ * @category    XML-RPC
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @link        http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class XML_RPC_Response {
    var $val = 0;
@@ -553,9 +553,9 @@ class XML_RPC_Response {
 /**
  * XML-RPC Message class
  *
- * @category   XML-RPC
+ * @category    XML-RPC
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @link        http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class XML_RPC_Message extends CI_Xmlrpc {
    var $payload;
@@ -1095,9 +1095,9 @@ class XML_RPC_Message extends CI_Xmlrpc {
 /**
  * XML-RPC Values class
  *
- * @category   XML-RPC
+ * @category    XML-RPC
  * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @link        http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class XML_RPC_Values extends CI_Xmlrpc {
    var $me = array();

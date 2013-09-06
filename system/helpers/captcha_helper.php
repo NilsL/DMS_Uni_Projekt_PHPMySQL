@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/xml_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/xml_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -31,10 +31,12 @@
  * Create CAPTCHA
  *
  * @access   public
- * @param   array   array of data for the CAPTCHA
+ *
+ * @param   array    array of data for the CAPTCHA
  * @param   string   path to create the image in
  * @param   string   URL to the CAPTCHA image folder
  * @param   string   server path to font
+ *
  * @return   string
  */
 if (!function_exists('create_captcha')) {

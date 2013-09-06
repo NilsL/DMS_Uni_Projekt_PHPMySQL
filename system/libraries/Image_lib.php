@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Image_lib
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/image_lib.html
+ * @category     Image_lib
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/image_lib.html
  */
 class CI_Image_lib {
 
@@ -80,6 +80,7 @@ class CI_Image_lib {
     * Constructor
     *
     * @param   string
+    *
     * @return   void
     */
    public function __construct($props = array()) {
@@ -117,7 +118,9 @@ class CI_Image_lib {
     * initialize image preferences
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   bool
     */
    function initialize($props = array()) {
@@ -404,7 +407,9 @@ class CI_Image_lib {
     * This function will resize or crop
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function image_process_gd($action = 'resize') {
@@ -502,7 +507,9 @@ class CI_Image_lib {
     * This function will resize, crop or rotate
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function image_process_imagemagick($action = 'resize') {
@@ -570,7 +577,9 @@ class CI_Image_lib {
     * This function will resize, crop or rotate
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function image_process_netpbm($action = 'resize') {
@@ -776,7 +785,9 @@ class CI_Image_lib {
     * of watermarking based on the specified preference.
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function watermark() {
@@ -1037,7 +1048,9 @@ class CI_Image_lib {
     * based on the type of image being processed
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   resource
     */
    function image_create_gd($path = '', $image_type = '') {
@@ -1093,7 +1106,9 @@ class CI_Image_lib {
     * to the specified destination
     *
     * @access   public
+    *
     * @param   resource
+    *
     * @return   bool
     */
    function image_save_gd($resource) {
@@ -1153,7 +1168,9 @@ class CI_Image_lib {
     * Dynamically outputs an image
     *
     * @access   public
+    *
     * @param   resource
+    *
     * @return   void
     */
    function image_display_gd($resource) {
@@ -1227,7 +1244,9 @@ class CI_Image_lib {
     * A helper function that gets info about the file
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   mixed
     */
    function get_image_properties($path = '', $return = FALSE) {
@@ -1285,7 +1304,9 @@ class CI_Image_lib {
     *              );
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   array
     */
    function size_calculator($vals) {
@@ -1327,7 +1348,9 @@ class CI_Image_lib {
     * $array['name'] = 'my.cool';
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   array
     */
    function explode_name($source_image) {
@@ -1380,7 +1403,9 @@ class CI_Image_lib {
     * Set error message
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_error($msg) {
@@ -1408,7 +1433,9 @@ class CI_Image_lib {
     * Show error messages
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function display_errors($open = '<p>', $close = '</p>') {

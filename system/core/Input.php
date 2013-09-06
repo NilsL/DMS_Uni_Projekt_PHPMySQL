@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Input
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/input.html
+ * @category     Input
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/input.html
  */
 class CI_Input {
 
@@ -109,9 +109,11 @@ class CI_Input {
     * This is a helper function to retrieve values from global arrays
     *
     * @access   private
+    *
     * @param   array
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    function _fetch_from_array(&$array, $index = '', $xss_clean = FALSE) {
@@ -132,8 +134,10 @@ class CI_Input {
     * Fetch an item from the GET array
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    function get($index = NULL, $xss_clean = FALSE) {
@@ -158,8 +162,10 @@ class CI_Input {
     * Fetch an item from the POST array
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    function post($index = NULL, $xss_clean = FALSE) {
@@ -185,8 +191,10 @@ class CI_Input {
     * Fetch an item from either the GET array or the POST
     *
     * @access   public
+    *
     * @param   string   The index key
-    * @param   bool   XSS cleaning
+    * @param   bool     XSS cleaning
+    *
     * @return   string
     */
    function get_post($index = '', $xss_clean = FALSE) {
@@ -204,8 +212,10 @@ class CI_Input {
     * Fetch an item from the COOKIE array
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    function cookie($index = '', $xss_clean = FALSE) {
@@ -221,13 +231,15 @@ class CI_Input {
     * array in the first parameter containing all the values.
     *
     * @access   public
+    *
     * @param   mixed
     * @param   string   the value of the cookie
     * @param   string   the number of seconds until expiration
     * @param   string   the cookie domain.  Usually:  .yourdomain.com
     * @param   string   the cookie path
     * @param   string   the cookie prefix
-    * @param   bool   true makes the cookie secure
+    * @param   bool     true makes the cookie secure
+    *
     * @return   void
     */
    function set_cookie($name = '', $value = '', $expire = '', $domain = '', $path = '/', $prefix = '', $secure = FALSE) {
@@ -269,8 +281,10 @@ class CI_Input {
     * Fetch an item from the SERVER array
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   string
     */
    function server($index = '', $xss_clean = FALSE) {
@@ -331,8 +345,10 @@ class CI_Input {
     * Validate IP Address
     *
     * @access   public
+    *
     * @param   string
     * @param   string   ipv4 or ipv6
+    *
     * @return   bool
     */
    public function valid_ip($ip, $which = '') {
@@ -380,7 +396,9 @@ class CI_Input {
     * Updated version suggested by Geert De Deckere
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   bool
     */
    protected function _valid_ipv4($ip) {
@@ -413,7 +431,9 @@ class CI_Input {
     * Validate IPv6 Address
     *
     * @access   protected
+    *
     * @param   string
+    *
     * @return   bool
     */
    protected function _valid_ipv6($str) {
@@ -586,7 +606,9 @@ class CI_Input {
     * standardizes newline characters to \n
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _clean_input_data($str) {
@@ -641,7 +663,9 @@ class CI_Input {
     * only named with alpha-numeric text and a few other items.
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _clean_input_keys($str) {
@@ -702,8 +726,9 @@ class CI_Input {
     *
     * Returns the value of a single member of the headers class member
     *
-    * @param   string      array key for $this->headers
+    * @param   string       array key for $this->headers
     * @param   boolean      XSS Clean or not
+    *
     * @return   mixed      FALSE on failure, string on success
     */
    public function get_request_header($index, $xss_clean = FALSE) {

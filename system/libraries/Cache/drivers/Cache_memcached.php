@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 4.3.2 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2006 - 2012 EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0
+ * @link         http://codeigniter.com
+ * @since        Version 2.0
  * @filesource
  */
 
@@ -20,8 +20,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Core
- * @author      ExpressionEngine Dev Team
+ * @category     Core
+ * @author       ExpressionEngine Dev Team
  * @link
  */
 
@@ -43,6 +43,7 @@ class CI_Cache_memcached extends CI_Driver {
     * Fetch from cache
     *
     * @param   mixed      unique key id
+    *
     * @return   mixed      data on success/false on failure
     */
    public function get($id) {
@@ -57,8 +58,9 @@ class CI_Cache_memcached extends CI_Driver {
     * Save
     *
     * @param   string      unique identifier
-    * @param   mixed      data being cached
+    * @param   mixed       data being cached
     * @param   int         time to live
+    *
     * @return   boolean   true on success, false on failure
     */
    public function save($id, $data, $ttl = 60) {
@@ -78,6 +80,7 @@ class CI_Cache_memcached extends CI_Driver {
     * Delete from Cache
     *
     * @param   mixed      key to be deleted.
+    *
     * @return   boolean   true on success, false on failure
     */
    public function delete($id) {
@@ -101,6 +104,7 @@ class CI_Cache_memcached extends CI_Driver {
     * Cache Info
     *
     * @param   null      type not supported in memcached
+    *
     * @return   mixed      array on success, false on failure
     */
    public function cache_info($type = NULL) {
@@ -113,6 +117,7 @@ class CI_Cache_memcached extends CI_Driver {
     * Get Cache Metadata
     *
     * @param   mixed      key to get cache metadata on
+    *
     * @return   mixed      FALSE on failure, array on success.
     */
    public function get_metadata($id) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Logging
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/general/errors.html
+ * @category     Logging
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/general/errors.html
  */
 class CI_Log {
 
@@ -62,7 +62,8 @@ class CI_Log {
     *
     * @param   string   the error level
     * @param   string   the error message
-    * @param   bool   whether the error is a native PHP error
+    * @param   bool     whether the error is a native PHP error
+    *
     * @return   bool
     */
    public function write_log($level = 'error', $msg, $php_error = FALSE) {

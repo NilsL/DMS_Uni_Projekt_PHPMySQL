@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Uploads
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/file_uploading.html
+ * @category     Uploads
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/file_uploading.html
  */
 class CI_Upload {
 
@@ -73,6 +73,7 @@ class CI_Upload {
     * Initialize preferences
     *
     * @param   array
+    *
     * @return   void
     */
    public function initialize($config = array()) {
@@ -344,6 +345,7 @@ class CI_Upload {
     * Set Upload Path
     *
     * @param   string
+    *
     * @return   void
     */
    public function set_upload_path($path) {
@@ -362,6 +364,7 @@ class CI_Upload {
     *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    public function set_filename($path, $filename) {
@@ -400,6 +403,7 @@ class CI_Upload {
     * Set Maximum File Size
     *
     * @param   integer
+    *
     * @return   void
     */
    public function set_max_filesize($n) {
@@ -412,6 +416,7 @@ class CI_Upload {
     * Set Maximum File Name Length
     *
     * @param   integer
+    *
     * @return   void
     */
    public function set_max_filename($n) {
@@ -424,6 +429,7 @@ class CI_Upload {
     * Set Maximum Image Width
     *
     * @param   integer
+    *
     * @return   void
     */
    public function set_max_width($n) {
@@ -436,6 +442,7 @@ class CI_Upload {
     * Set Maximum Image Height
     *
     * @param   integer
+    *
     * @return   void
     */
    public function set_max_height($n) {
@@ -448,6 +455,7 @@ class CI_Upload {
     * Set Allowed File Types
     *
     * @param   string
+    *
     * @return   void
     */
    public function set_allowed_types($types) {
@@ -467,6 +475,7 @@ class CI_Upload {
     * Uses GD to determine the width/height/type of image
     *
     * @param   string
+    *
     * @return   void
     */
    public function set_image_properties($path = '') {
@@ -495,6 +504,7 @@ class CI_Upload {
     * will be run through the XSS filter.
     *
     * @param   bool
+    *
     * @return   void
     */
    public function set_xss_clean($flag = FALSE) {
@@ -672,6 +682,7 @@ class CI_Upload {
     * Extract the file extension
     *
     * @param   string
+    *
     * @return   string
     */
    public function get_extension($filename) {
@@ -686,6 +697,7 @@ class CI_Upload {
     * Clean the file name for security
     *
     * @param   string
+    *
     * @return   string
     */
    public function clean_file_name($filename) {
@@ -729,6 +741,7 @@ class CI_Upload {
     * Limit the File Name Length
     *
     * @param   string
+    *
     * @return   string
     */
    public function limit_filename_length($filename, $length) {
@@ -819,6 +832,7 @@ class CI_Upload {
     * Set an error message
     *
     * @param   string
+    *
     * @return   void
     */
    public function set_error($msg) {
@@ -846,6 +860,7 @@ class CI_Upload {
     *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    public function display_errors($open = '<p>', $close = '</p>') {
@@ -866,6 +881,7 @@ class CI_Upload {
     * the "allowed types" set by the developer
     *
     * @param   string
+    *
     * @return   string
     */
    public function mimes_types($mime) {
@@ -898,6 +914,7 @@ class CI_Upload {
     * http://httpd.apache.org/docs/1.3/mod/mod_mime.html#multipleext
     *
     * @param   string
+    *
     * @return   string
     */
    protected function _prep_filename($filename) {
@@ -932,6 +949,7 @@ class CI_Upload {
     * The input array is expected to be $_FILES[$field]
     *
     * @param   array
+    *
     * @return   void
     */
    protected function _file_mime_type($file) {

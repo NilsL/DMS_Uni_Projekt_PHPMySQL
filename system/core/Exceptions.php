@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Exceptions
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/exceptions.html
+ * @category     Exceptions
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/exceptions.html
  */
 class CI_Exceptions {
    var $action;
@@ -77,10 +77,12 @@ class CI_Exceptions {
     * This function logs PHP generated error messages
     *
     * @access   private
+    *
     * @param   string   the error severity
     * @param   string   the error string
     * @param   string   the error filepath
     * @param   string   the error line number
+    *
     * @return   string
     */
    function log_exception($severity, $message, $filepath, $line) {
@@ -95,8 +97,10 @@ class CI_Exceptions {
     * 404 Page Not Found Handler
     *
     * @access   private
+    *
     * @param   string   the page
-    * @param   bool   log error yes/no
+    * @param   bool     log error yes/no
+    *
     * @return   string
     */
    function show_404($page = '', $log_error = TRUE) {
@@ -122,10 +126,12 @@ class CI_Exceptions {
     * it using the specified template.
     *
     * @access   private
+    *
     * @param   string   the heading
     * @param   string   the message
     * @param   string   the template name
     * @param   int      the status code
+    *
     * @return   string
     */
    function show_error($heading, $message, $template = 'error_general', $status_code = 500) {
@@ -150,10 +156,12 @@ class CI_Exceptions {
     * Native PHP error handler
     *
     * @access   private
+    *
     * @param   string   the error severity
     * @param   string   the error string
     * @param   string   the error filepath
     * @param   string   the error line number
+    *
     * @return   string
     */
    function show_php_error($severity, $message, $filepath, $line) {

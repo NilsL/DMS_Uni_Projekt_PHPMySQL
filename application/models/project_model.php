@@ -1,42 +1,42 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *
- *
- *
+ * Class Project_model
  */
 class Project_model extends CI_Model {
 
    /**
+    * @param $name
+    * @param $number
     *
-    *
-    *
+    * @return bool
     */
-	function create_Project($name, $number) {
-		// mehrfache speicherung ¨¹berpr¨¹fen...
-		$this->db->where ( 'name', $name );
-		$query = $this->db->get ( 'storage_project' );
-		if ($query->num_rows == 1) {
-			return false;
-		}
-		$this->db->where ( 'number', $number );
-		$query = $this->db->get ( 'storage_project' );
-		if ($query->num_rows == 1) {
-			return false;
-		}
-		
-		$data = array (
-				'name' => $name,
-				'number' => $number
-		);
-		$this->db->insert ( 'storage_project', $data );
-		return true;
-	}
+   function create_Project($name, $number) {
+      // mehrfache speicherung ueberpruefen...
+      $this->db->where('name', $name);
+      $query = $this->db->get('storage_project');
+      if ($query->num_rows == 1) {
+         return FALSE;
+      }
+      $this->db->where('number', $number);
+      $query = $this->db->get('storage_project');
+      if ($query->num_rows == 1) {
+         return FALSE;
+      }
+
+      $data = array(
+         'name'   => $name,
+         'number' => $number
+      );
+      $this->db->insert('storage_project', $data);
+
+      return TRUE;
+   }
 
    /**
-    * mit $id gesetzt wird nur das jeweilige project gefetched, sonst alle!
+    * @param null $id
     *
-    *
+    * @return array|bool
     */
    function get_Project($id = NULL) {
       if (isset($id)) {
@@ -65,9 +65,9 @@ class Project_model extends CI_Model {
    }
 
    /**
-    * noch nicht final nur fÃ¼r erste tests. lÃ¤uft aber ohne fehler schon
+    * @param $entered
     *
-    *
+    * @return bool
     */
    function getHints($entered) {
       $this->db->like('name', $entered, 'after');
@@ -76,12 +76,11 @@ class Project_model extends CI_Model {
       if ($result->num_rows() > 0) {
          return $result;
       }
+
       return FALSE;
    }
 
    /**
-    *
-    *
     *
     */
    function update_Project() {
@@ -90,13 +89,33 @@ class Project_model extends CI_Model {
 
    /**
     *
-    *
-    *
     */
    function delete_Project() {
 
    }
 
+   /**
+    * @param $inputed
+    * @param $id
+    *
+    * @return bool
+    */
+   function checking($inputed, $id) {
+      if ($id == "project name") {
+         $this->db->where('name', $inputed);
+      }
+      else if ($id == "project number") {
+         $this->db->where('number', $inputed);
+      }
+      $result = $this->db->get('storage_project');
+
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      if ($result->num_rows() > 0) {
+         return FALSE;
+      }
+
+      return TRUE;
+   }
 }
 /* End of file project_model.php */
 /* Location: ./application/models/project_model.php */

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/encryption.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/encryption.html
  */
 class CI_Hooks {
 
@@ -101,7 +101,9 @@ class CI_Hooks {
     * Calls a particular hook
     *
     * @access   private
+    *
     * @param   string   the hook name
+    *
     * @return   mixed
     */
    function _call_hook($which = '') {
@@ -129,7 +131,9 @@ class CI_Hooks {
     * Runs a particular hook
     *
     * @access   private
+    *
     * @param   array   the hook details
+    *
     * @return   bool
     */
    function _run_hook($data) {

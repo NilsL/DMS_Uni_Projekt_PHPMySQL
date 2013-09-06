@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @author      ExpressionEngine Dev Team
- * @category   Libraries
- * @link      http://codeigniter.com/user_guide/general/routing.html
+ * @author       ExpressionEngine Dev Team
+ * @category     Libraries
+ * @link         http://codeigniter.com/user_guide/general/routing.html
  */
 class CI_Router {
 
@@ -204,8 +204,10 @@ class CI_Router {
     * input, and sets the current class/method
     *
     * @access   private
+    *
     * @param   array
     * @param   bool
+    *
     * @return   void
     */
    function _set_request($segments = array()) {
@@ -240,7 +242,9 @@ class CI_Router {
     * the controller.
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   array
     */
    function _validate_request($segments) {
@@ -366,7 +370,9 @@ class CI_Router {
     * Set the class name
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_class($class) {
@@ -391,7 +397,9 @@ class CI_Router {
     *  Set the method name
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_method($method) {
@@ -420,7 +428,9 @@ class CI_Router {
     *  Set the directory name
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_directory($dir) {
@@ -445,7 +455,9 @@ class CI_Router {
     *  Set the controller overrides
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   null
     */
    function _set_overrides($routing) {

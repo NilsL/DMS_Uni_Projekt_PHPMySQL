@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -28,9 +28,9 @@ if (!class_exists('CI_Xmlrpc')) {
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   XML-RPC
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/xmlrpc.html
+ * @category     XML-RPC
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/xmlrpc.html
  */
 class CI_Xmlrpcs extends CI_Xmlrpc {
    var $methods = array(); //array of methods mapped to function names and signatures
@@ -60,7 +60,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Initialize Prefs and Serve
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   void
     */
    function initialize($config = array()) {
@@ -135,10 +137,12 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Add Method to Class
     *
     * @access   public
+    *
     * @param   string   method name
     * @param   string   function
     * @param   string   signature
     * @param   string   docstring
+    *
     * @return   void
     */
    function add_to_map($methodname, $function, $sig, $doc) {
@@ -155,7 +159,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Parse Server Request
     *
     * @access   public
+    *
     * @param   string   data
+    *
     * @return   object   xmlrpc response
     */
    function parseRequest($data = '') {
@@ -247,7 +253,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Executes the Method
     *
     * @access   protected
+    *
     * @param   object
+    *
     * @return   mixed
     */
    function _execute($m) {
@@ -348,7 +356,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Server Function:  List Methods
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function listMethods($m) {
@@ -374,7 +384,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Server Function:  Return Signature for Method
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function methodSignature($m) {
@@ -413,7 +425,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Server Function:  Doc String for Method
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function methodHelp($m) {
@@ -436,7 +450,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     * Server Function:  Multi-call
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function multicall($m) {
@@ -476,7 +492,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     *  Multi-call Function:  Error Handling
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function multicall_error($err) {
@@ -495,7 +513,9 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
     *  Multi-call Function:  Processes method
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   object
     */
    function do_multicall($call) {

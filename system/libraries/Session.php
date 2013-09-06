@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Sessions
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/sessions.html
+ * @category     Sessions
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/sessions.html
  */
 class CI_Session {
 
@@ -394,7 +394,9 @@ class CI_Session {
     * Fetch a specific item from the session array
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function userdata($item) {
@@ -419,8 +421,10 @@ class CI_Session {
     * Add or change data in the "userdata" array
     *
     * @access   public
+    *
     * @param   mixed
     * @param   string
+    *
     * @return   void
     */
    function set_userdata($newdata = array(), $newval = '') {
@@ -466,8 +470,10 @@ class CI_Session {
     * until the next request
     *
     * @access   public
+    *
     * @param   mixed
     * @param   string
+    *
     * @return   void
     */
    function set_flashdata($newdata = array(), $newval = '') {
@@ -489,7 +495,9 @@ class CI_Session {
     * Keeps existing flashdata available to next request.
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function keep_flashdata($key) {
@@ -510,7 +518,9 @@ class CI_Session {
     * Fetch a specific flashdata item from the session array
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function flashdata($key) {
@@ -625,7 +635,9 @@ class CI_Session {
     * marker, so when it gets unserialized the slashes will be preserved
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   string
     */
    function _serialize($data) {
@@ -654,7 +666,9 @@ class CI_Session {
     * temporary slash markers back to actual slashes
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   string
     */
    function _unserialize($data) {

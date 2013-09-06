@@ -18,7 +18,7 @@ class Classification_model extends CI_Model {
          return FALSE;
       }
 
-      $data = array('name' => $name);
+      $data   = array('name' => $name);
       $result = $this->db->insert('storage_classification', $data);
 
       return $result;
@@ -70,6 +70,7 @@ class Classification_model extends CI_Model {
    }
 
    /**
+    * updates a classification
     * @return bool
     */
    function update_Classification() {
@@ -77,12 +78,31 @@ class Classification_model extends CI_Model {
    }
 
    /**
+    * classification deletion
     * @return bool
     */
    function delete_Classification() {
       return TRUE;
    }
-}
 
+   /**
+    * @param $inputed
+    * @param $id
+    *
+    * @return bool
+    */
+   function checking($inputed, $id) {
+      $this->db->where('name', $inputed);
+
+      $result = $this->db->get('storage_classification');
+
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      if ($result->num_rows() > 0) {
+         return FALSE;
+      }
+
+      return TRUE;
+   }
+}
 /* End of file classification_model.php */
 /* Location: ./application/models/classification_model.php */
