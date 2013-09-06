@@ -8,13 +8,13 @@ class File_model extends CI_Model {
 	function __construct() {
 		parent::__construct ();
 		// upload ordner lokalisieren
-//		$this->F_PATH = realpath ( APPPATH . '../uploads/' );
+		$this->F_PATH = realpath ( APPPATH . '../uploads/' );
 	}
    
 	function do_upload() {
 		// libary loading
 		$config ['allowed_types'] = 'doc|docx|odt|pdf';
-		$config ['upload_path'] = base_url() . 'uploads/';
+		$config ['upload_path'] = $this->F_PATH;
 		$config ['max_size'] = '20480';
 		$config ['max_filename'] = '100';
 		// $config['max_width'] = '1024';
