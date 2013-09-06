@@ -6,21 +6,25 @@
 
    <p>
       <?php
-      		echo form_label ( 'Project Name: ', 'input_project_name' );
+      		echo form_label ( 'Project Name: ', 'project_name' );
       		echo form_input ( array (
-					'id' => 'input_project_name',
-					'name' => 'input_project_name',
-					'placeholder' => 'Project Name' 
+					'id' => 'project_name',
+					'name' => 'project_name',
+					'placeholder' => 'Project Name',
+                  'onkeyup' => 'validating(this)'
 			) );
+           echo "<span id='check_project_name' style= 'border-width: 0;color: red'></span>";
       		
       		echo br(1);
       		
-			echo form_label ( 'Project Number: ', 'input_project_number');
+			echo form_label ( 'Project Number: ', 'project_number');
 			echo form_input( array (
-					'id' => 'input_project_number',
-					'name' => 'input_project_number',
-					'placeholder' => 'Project Number'			
+					'id' => 'project_number',
+					'name' => 'project_number',
+					'placeholder' => 'Project Number',
+                  'onkeyup' => 'validating(this)'
 			));
+           echo "<span id='check_project_number' style= 'border-width: 0;color: red'></span>";
 			?>
    </p>
    
