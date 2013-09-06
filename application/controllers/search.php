@@ -116,20 +116,20 @@ class Search extends CI_Controller {
    	  //getten
    	  $model = $this->input->get('model');
       $entered = $this->input->get('entered');
-      
+
       //entsprechenden model laden
       $this->load->model($model);
-      
+
       // alle möglichen einträge nach dem model laden die mit dem übergebenen buchstaben beginnen
       switch ($model) {
-      	case "project_model": 
+      	case "project_model":
       		$hints = $this->project_model->getHints($entered);
      		break;
       	case "author_model":
       		$hints = $this->author_model->getHints($entered);
       		break;
       }
-      
+
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
       $response = NULL;
@@ -151,7 +151,7 @@ class Search extends CI_Controller {
       $doc_id = $this->input->get('doc_id');
 
       $data['document'] = $this->document_model->get_Document($doc_id);
-      
+
       //da die informationen aus kreuztabellen auch hergeholt werden muessen, loadet man hier die models
       $this->load->model('author_model');
       $this->load->model('keyword_model');
@@ -160,10 +160,10 @@ class Search extends CI_Controller {
 	  $data['authors'] = $this->author_model->get_Author_by_DocumentID($doc_id);
 	  $data['keywords'] = $this->keyword_model->get_Keyword_By_DocumentID($doc_id);
 	  $data['files'] = $this->file_model->get_File_By_DocumentID($doc_id);
-	  
+
       $this->load->view('search/popup_view', $data);
    }
-   
+
    /**
     * fileDOWNLOAD function
     *

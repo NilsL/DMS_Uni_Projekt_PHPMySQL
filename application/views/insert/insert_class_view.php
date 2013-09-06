@@ -6,12 +6,14 @@
 
    <p>
       <?php
-      		echo form_label ( 'Name: ', 'input_class_name' );
+      		echo form_label ( 'Name: ', 'classification_name' );
       		echo form_input ( array (
-					'id' => 'input_class_name',
-					'name' => 'input_class_name',
-					'placeholder' => 'New Classification' 
+					'id' => 'classification_name',
+					'name' => 'classification_name',
+					'placeholder' => 'New Classification',
+                  'onkeyup' => 'validating(this)'
 			) );
+           echo "<span id='check_classification_name' style= 'border-width: 0;color: red'></span>";
 			?>
    </p>
    

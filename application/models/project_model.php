@@ -13,7 +13,7 @@ class Project_model extends CI_Model {
     *
     */
 	function create_Project($name, $number) {
-		// mehrfache speicherung ¨¹berpr¨¹fen...
+		// mehrfache speicherung ueberpruefen...
 		$this->db->where ( 'name', $name );
 		$query = $this->db->get ( 'storage_project' );
 		if ($query->num_rows == 1) {
@@ -97,6 +97,20 @@ class Project_model extends CI_Model {
 
    }
 
+    function checking($inputed, $id) {
+        if($id=="project name") {
+            $this->db->where('name', $inputed);
+        } else if($id=="project number") {
+            $this->db->where('number', $inputed);
+        }
+        $result = $this->db->get('storage_project');
+
+        //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+        if($result->num_rows()>0) {
+            return false;
+        }
+        return true;
+    }
 }
 /* End of file project_model.php */
 /* Location: ./application/models/project_model.php */
