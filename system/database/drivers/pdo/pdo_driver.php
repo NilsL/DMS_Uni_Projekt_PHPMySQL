@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @author      EllisLab Dev Team
- * @link      http://codeigniter.com
- * @since      Version 2.1.2
+ * @author       EllisLab Dev Team
+ * @link         http://codeigniter.com
+ * @since        Version 2.1.2
  * @filesource
  */
 
@@ -24,9 +24,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Drivers
- * @category   Database
- * @author      EllisLab Dev Team
- * @link      http://codeigniter.com/user_guide/database/
+ * @category     Database
+ * @author       EllisLab Dev Team
+ * @link         http://codeigniter.com/user_guide/database/
  */
 class CI_DB_pdo_driver extends CI_DB {
 
@@ -145,8 +145,10 @@ class CI_DB_pdo_driver extends CI_DB {
     * Set client character set
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   resource
     */
    function db_set_charset($charset, $collation) {
@@ -172,7 +174,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * Execute the query
     *
     * @access   private called by the base class
+    *
     * @param   string   an SQL query
+    *
     * @return   object
     */
    function _execute($sql) {
@@ -204,7 +208,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * If needed, each database adapter can prep the query string
     *
     * @access   private called by execute()
+    *
     * @param   string   an SQL query
+    *
     * @return   string
     */
    function _prep_query($sql) {
@@ -289,8 +295,10 @@ class CI_DB_pdo_driver extends CI_DB {
     * Escape String
     *
     * @access   public
+    *
     * @param   string
     * @param   bool   whether or not the string will be used in a LIKE condition
+    *
     * @return   string
     */
    function escape_str($str, $like = FALSE) {
@@ -369,7 +377,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * the specified database
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function count_all($table = '') {
@@ -397,7 +407,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific query string so that the table names can be fetched
     *
     * @access   private
+    *
     * @param   boolean
+    *
     * @return   string
     */
    function _list_tables($prefix_limit = FALSE) {
@@ -419,7 +431,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific query string so that the column names can be fetched
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   string
     */
    function _list_columns($table = '') {
@@ -434,7 +448,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific query so that the column data can be retrieved
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   object
     */
    function _field_data($table) {
@@ -475,7 +491,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * This function escapes column and table names
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _escape_identifiers($item) {
@@ -513,7 +531,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * about operator precedence in harmony with SQL standards
     *
     * @access   public
+    *
     * @param   type
+    *
     * @return   type
     */
    function _from_tables($tables) {
@@ -532,9 +552,11 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific insert string from the supplied data
     *
     * @access   public
+    *
     * @param   string   the table name
-    * @param   array   the insert keys
-    * @param   array   the insert values
+    * @param   array    the insert keys
+    * @param   array    the insert values
+    *
     * @return   string
     */
    function _insert($table, $keys, $values) {
@@ -549,9 +571,11 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific insert string from the supplied data
     *
     * @access  public
+    *
     * @param   string  the table name
     * @param   array   the insert keys
     * @param   array   the insert values
+    *
     * @return  string
     */
    function _insert_batch($table, $keys, $values) {
@@ -566,11 +590,13 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific update string from the supplied data
     *
     * @access   public
+    *
     * @param   string   the table name
-    * @param   array   the update data
-    * @param   array   the where clause
-    * @param   array   the orderby clause
-    * @param   array   the limit clause
+    * @param   array    the update data
+    * @param   array    the where clause
+    * @param   array    the orderby clause
+    * @param   array    the limit clause
+    *
     * @return   string
     */
    function _update($table, $values, $where, $orderby = array(), $limit = FALSE) {
@@ -599,9 +625,11 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific batch update string from the supplied data
     *
     * @access   public
+    *
     * @param   string   the table name
-    * @param   array   the update data
-    * @param   array   the where clause
+    * @param   array    the update data
+    * @param   array    the where clause
+    *
     * @return   string
     */
    function _update_batch($table, $values, $index, $where = NULL) {
@@ -648,7 +676,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * This function maps to "DELETE FROM table"
     *
     * @access   public
+    *
     * @param   string   the table name
+    *
     * @return   string
     */
    function _truncate($table) {
@@ -663,9 +693,11 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific delete string from the supplied data
     *
     * @access   public
+    *
     * @param   string   the table name
-    * @param   array   the where clause
+    * @param   array    the where clause
     * @param   string   the limit clause
+    *
     * @return   string
     */
    function _delete($table, $where = array(), $like = array(), $limit = FALSE) {
@@ -694,9 +726,11 @@ class CI_DB_pdo_driver extends CI_DB {
     * Generates a platform-specific LIMIT clause
     *
     * @access   public
-    * @param   string   the sql query string
+    *
+    * @param   string    the sql query string
     * @param   integer   the number of rows to limit the query to
     * @param   integer   the offset value
+    *
     * @return   string
     */
    function _limit($sql, $limit, $offset) {
@@ -727,7 +761,9 @@ class CI_DB_pdo_driver extends CI_DB {
     * Close DB Connection
     *
     * @access   public
+    *
     * @param   resource
+    *
     * @return   void
     */
    function _close($conn_id) {

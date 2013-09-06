@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/config.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/config.html
  */
 class CI_Config {
 
@@ -53,9 +53,11 @@ class CI_Config {
     * Sets the $config data from the primary config.php file as a class variable
     *
     * @access   public
+    *
     * @param   string   the config file name
     * @param   boolean  if configuration values should be loaded into their own section
     * @param   boolean  true if errors should just return false, false if an error message should be displayed
+    *
     * @return  boolean  if the file was successfully loaded or not
     */
    function __construct() {
@@ -84,9 +86,11 @@ class CI_Config {
     * Load Config File
     *
     * @access   public
+    *
     * @param   string   the config file name
     * @param   boolean  if configuration values should be loaded into their own section
     * @param   boolean  true if errors should just return false, false if an error message should be displayed
+    *
     * @return   boolean   if the file was loaded correctly
     */
    function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE) {
@@ -163,9 +167,11 @@ class CI_Config {
     *
     *
     * @access   public
+    *
     * @param   string   the config item name
     * @param   string   the index name
     * @param   bool
+    *
     * @return   string
     */
    function item($item, $index = '') {
@@ -197,8 +203,10 @@ class CI_Config {
     * Fetch a config file item - adds slash after item (if item is not empty)
     *
     * @access   public
+    *
     * @param   string   the config item name
     * @param   bool
+    *
     * @return   string
     */
    function slash_item($item) {
@@ -219,7 +227,9 @@ class CI_Config {
     * Returns base_url . index_page [. uri_string]
     *
     * @access   public
+    *
     * @param   string   the URI string
+    *
     * @return   string
     */
    function site_url($uri = '') {
@@ -244,7 +254,9 @@ class CI_Config {
     * Returns base_url [. uri_string]
     *
     * @access public
+    *
     * @param string $uri
+    *
     * @return string
     */
    function base_url($uri = '') {
@@ -257,7 +269,9 @@ class CI_Config {
     * Build URI string for use in Config::site_url() and Config::base_url()
     *
     * @access protected
+    *
     * @param  $uri
+    *
     * @return string
     */
    protected function _uri_string($uri) {
@@ -303,8 +317,10 @@ class CI_Config {
     * Set a config file item
     *
     * @access   public
+    *
     * @param   string   the config item key
     * @param   string   the config item value
+    *
     * @return   void
     */
    function set_item($item, $value) {
@@ -321,7 +337,9 @@ class CI_Config {
     * to be assigned or overriden by variables contained in the index.php file
     *
     * @access   private
+    *
     * @param   array
+    *
     * @return   void
     */
    function _assign_to_config($items = array()) {

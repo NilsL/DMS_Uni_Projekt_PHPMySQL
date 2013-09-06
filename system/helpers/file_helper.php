@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/file_helpers.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/file_helpers.html
  */
 
 // ------------------------------------------------------------------------
@@ -33,7 +33,9 @@
  * Opens the file specfied in the path and returns it as a string.
  *
  * @access   public
+ *
  * @param   string   path to file
+ *
  * @return   string
  */
 if (!function_exists('read_file')) {
@@ -73,8 +75,10 @@ if (!function_exists('read_file')) {
  * Creates a new file if non-existent.
  *
  * @access   public
+ *
  * @param   string   path to file
  * @param   string   file data
+ *
  * @return   bool
  */
 if (!function_exists('write_file')) {
@@ -103,8 +107,10 @@ if (!function_exists('write_file')) {
  * within the supplied base directory will be nuked as well.
  *
  * @access   public
+ *
  * @param   string   path to file
- * @param   bool   whether to delete any directories found in the path
+ * @param   bool     whether to delete any directories found in the path
+ *
  * @return   bool
  */
 if (!function_exists('delete_files')) {
@@ -148,9 +154,11 @@ if (!function_exists('delete_files')) {
  * Any sub-folders contained within the specified path are read as well.
  *
  * @access   public
+ *
  * @param   string   path to source
- * @param   bool   whether to include the path as part of the filename
- * @param   bool   internal variable to determine recursion status - do not use in calls
+ * @param   bool     whether to include the path as part of the filename
+ * @param   bool     internal variable to determine recursion status - do not use in calls
+ *
  * @return   array
  */
 if (!function_exists('get_filenames')) {
@@ -192,9 +200,11 @@ if (!function_exists('get_filenames')) {
  * Any sub-folders contained within the specified path are read as well.
  *
  * @access   public
+ *
  * @param   string   path to source
- * @param   bool   Look only at the top level directory specified?
- * @param   bool   internal variable to determine recursion status - do not use in calls
+ * @param   bool     Look only at the top level directory specified?
+ * @param   bool     internal variable to determine recursion status - do not use in calls
+ *
  * @return   array
  */
 if (!function_exists('get_dir_file_info')) {
@@ -239,8 +249,10 @@ if (!function_exists('get_dir_file_info')) {
  * Returns FALSE if the file cannot be found.
  *
  * @access   public
+ *
  * @param   string   path to file
- * @param   mixed   array or comma separated string of information returned
+ * @param   mixed    array or comma separated string of information returned
+ *
  * @return   array
  */
 if (!function_exists('get_file_info')) {
@@ -300,7 +312,9 @@ if (!function_exists('get_file_info')) {
  * It should NOT be trusted, and should certainly NOT be used for security
  *
  * @access   public
+ *
  * @param   string   path to file
+ *
  * @return   mixed
  */
 if (!function_exists('get_mime_by_extension')) {
@@ -346,7 +360,9 @@ if (!function_exists('get_mime_by_extension')) {
  * standard symbolic notation representing that value
  *
  * @access   public
+ *
  * @param   int
+ *
  * @return   string
  */
 if (!function_exists('symbolic_permissions')) {
@@ -404,7 +420,9 @@ if (!function_exists('symbolic_permissions')) {
  * a three character string representing the file's octal permissions
  *
  * @access   public
+ *
  * @param   int
+ *
  * @return   string
  */
 if (!function_exists('octal_permissions')) {

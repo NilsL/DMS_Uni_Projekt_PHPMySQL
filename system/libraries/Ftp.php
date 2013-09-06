@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/ftp.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/ftp.html
  */
 class CI_FTP {
 
@@ -54,7 +54,9 @@ class CI_FTP {
     * Initialize preferences
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    function initialize($config = array()) {
@@ -74,7 +76,9 @@ class CI_FTP {
     * FTP Connect
     *
     * @access   public
+    *
     * @param   array    the connection values
+    *
     * @return   bool
     */
    function connect($config = array()) {
@@ -151,8 +155,10 @@ class CI_FTP {
     * Internally, this parameter is only used by the "mirror" function below.
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   bool
     */
    function changedir($path = '', $supress_debug = FALSE) {
@@ -179,7 +185,9 @@ class CI_FTP {
     * Create a directory
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function mkdir($path = '', $permissions = NULL) {
@@ -211,9 +219,11 @@ class CI_FTP {
     * Upload a file to the server
     *
     * @access   public
+    *
     * @param   string
     * @param   string
     * @param   string
+    *
     * @return   bool
     */
    function upload($locpath, $rempath, $mode = 'auto', $permissions = NULL) {
@@ -260,9 +270,11 @@ class CI_FTP {
     * Download a file from a remote server to the local server
     *
     * @access   public
+    *
     * @param   string
     * @param   string
     * @param   string
+    *
     * @return   bool
     */
    function download($rempath, $locpath, $mode = 'auto') {
@@ -298,9 +310,11 @@ class CI_FTP {
     * Rename (or move) a file
     *
     * @access   public
+    *
     * @param   string
     * @param   string
     * @param   bool
+    *
     * @return   bool
     */
    function rename($old_file, $new_file, $move = FALSE) {
@@ -329,8 +343,10 @@ class CI_FTP {
     * Move a file
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   bool
     */
    function move($old_file, $new_file) {
@@ -343,7 +359,9 @@ class CI_FTP {
     * Rename (or move) a file
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function delete_file($filepath) {
@@ -371,7 +389,9 @@ class CI_FTP {
     * containted within it.
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   bool
     */
    function delete_dir($filepath) {
@@ -413,8 +433,10 @@ class CI_FTP {
     * Set file permissions
     *
     * @access   public
+    *
     * @param   string   the file path
     * @param   string   the permissions
+    *
     * @return   bool
     */
    function chmod($path, $perm) {
@@ -470,8 +492,10 @@ class CI_FTP {
     * of the original file path will be recreated on the server.
     *
     * @access   public
+    *
     * @param   string   path to source with trailing slash
     * @param   string   path to destination - include the base folder with trailing slash
+    *
     * @return   bool
     */
    function mirror($locpath, $rempath) {
@@ -516,7 +540,9 @@ class CI_FTP {
     * Extract the file extension
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _getext($filename) {
@@ -536,7 +562,9 @@ class CI_FTP {
     * Set the upload type
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   string
     */
    function _settype($ext) {
@@ -566,8 +594,10 @@ class CI_FTP {
     * Close the connection
     *
     * @access   public
+    *
     * @param   string   path to source
     * @param   string   path to destination
+    *
     * @return   bool
     */
    function close() {
@@ -584,7 +614,9 @@ class CI_FTP {
     * Display error message
     *
     * @access   private
+    *
     * @param   string
+    *
     * @return   bool
     */
    function _error($line) {

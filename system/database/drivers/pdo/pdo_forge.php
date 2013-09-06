@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @author      EllisLab Dev Team
- * @link      http://codeigniter.com
- * @since      Version 2.1.2
+ * @author       EllisLab Dev Team
+ * @link         http://codeigniter.com
+ * @since        Version 2.1.2
  * @filesource
  */
 
@@ -18,9 +18,9 @@
 /**
  * PDO Forge Class
  *
- * @category   Database
+ * @category    Database
  * @author      EllisLab Dev Team
- * @link      http://codeigniter.com/database/
+ * @link        http://codeigniter.com/database/
  */
 class CI_DB_pdo_forge extends CI_DB_forge {
 
@@ -28,7 +28,9 @@ class CI_DB_pdo_forge extends CI_DB_forge {
     * Create database
     *
     * @access   private
+    *
     * @param   string   the database name
+    *
     * @return   bool
     */
    function _create_database() {
@@ -47,7 +49,9 @@ class CI_DB_pdo_forge extends CI_DB_forge {
     * Drop database
     *
     * @access   private
+    *
     * @param   string   the database name
+    *
     * @return   bool
     */
    function _drop_database($name) {
@@ -66,11 +70,13 @@ class CI_DB_pdo_forge extends CI_DB_forge {
     * Create Table
     *
     * @access   private
-    * @param   string   the table name
-    * @param   array   the fields
-    * @param   mixed   primary key(s)
-    * @param   mixed   key(s)
+    *
+    * @param   string    the table name
+    * @param   array     the fields
+    * @param   mixed     primary key(s)
+    * @param   mixed     key(s)
     * @param   boolean   should 'IF NOT EXISTS' be added to the SQL
+    *
     * @return   bool
     */
    function _create_table($table, $fields, $primary_keys, $keys, $if_not_exists) {
@@ -176,13 +182,15 @@ class CI_DB_pdo_forge extends CI_DB_forge {
     * Called by add_column(), drop_column(), and column_alter(),
     *
     * @access   private
-    * @param   string   the ALTER type (ADD, DROP, CHANGE)
-    * @param   string   the column name
-    * @param   string   the table name
-    * @param   string   the column definition
-    * @param   string   the default value
+    *
+    * @param   string    the ALTER type (ADD, DROP, CHANGE)
+    * @param   string    the column name
+    * @param   string    the table name
+    * @param   string    the column definition
+    * @param   string    the default value
     * @param   boolean   should 'NOT NULL' be added
-    * @param   string   the field after which we should add the new field
+    * @param   string    the field after which we should add the new field
+    *
     * @return   object
     */
    function _alter_table($alter_type, $table, $column_name, $column_definition = '', $default_value = '', $null = '', $after_field = '') {
@@ -223,8 +231,10 @@ class CI_DB_pdo_forge extends CI_DB_forge {
     * Generates a platform-specific query so that a table can be renamed
     *
     * @access   private
+    *
     * @param   string   the old table name
     * @param   string   the new table name
+    *
     * @return   string
     */
    function _rename_table($table_name, $new_table_name) {

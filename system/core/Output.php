@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Output
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/output.html
+ * @category     Output
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/output.html
  */
 class CI_Output {
 
@@ -128,7 +128,9 @@ class CI_Output {
     * Sets the output string
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_output($output) {
@@ -145,7 +147,9 @@ class CI_Output {
     * Appends data onto the output string
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function append_output($output) {
@@ -170,8 +174,10 @@ class CI_Output {
     * how to permit header data to be saved with the cache data...
     *
     * @access   public
+    *
     * @param   string
     * @param   bool
+    *
     * @return   void
     */
    function set_header($header, $replace = TRUE) {
@@ -195,7 +201,9 @@ class CI_Output {
     * Set Content Type Header
     *
     * @access   public
+    *
     * @param   string   extension of the file we're outputting
+    *
     * @return   void
     */
    function set_content_type($mime_type) {
@@ -226,8 +234,10 @@ class CI_Output {
     * moved to Common procedural functions in 1.7.2
     *
     * @access   public
+    *
     * @param   int      the status code
     * @param   string
+    *
     * @return   void
     */
    function set_status_header($code = 200, $text = '') {
@@ -242,7 +252,9 @@ class CI_Output {
     * Enable/disable Profiler
     *
     * @access   public
+    *
     * @param   bool
+    *
     * @return   void
     */
    function enable_profiler($val = TRUE) {
@@ -259,7 +271,9 @@ class CI_Output {
     * Allows override of default / config settings for Profiler section display
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    function set_profiler_sections($sections) {
@@ -276,7 +290,9 @@ class CI_Output {
     * Set Cache
     *
     * @access   public
+    *
     * @param   integer
+    *
     * @return   void
     */
    function cache($time) {
@@ -299,7 +315,9 @@ class CI_Output {
     * benchmark timer so the page rendering speed and memory usage can be shown.
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   mixed
     */
    function _display($output = '') {
@@ -420,7 +438,9 @@ class CI_Output {
     * Write a Cache File
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function _write_cache($output) {
@@ -470,8 +490,10 @@ class CI_Output {
     * Update/serve a cached file
     *
     * @access   public
+    *
     * @param   object   config class
     * @param   object   uri class
+    *
     * @return   void
     */
    function _display_cache(&$CFG, &$URI) {

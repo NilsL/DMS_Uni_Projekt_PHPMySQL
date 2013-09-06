@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/string_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/string_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -39,7 +39,9 @@
  * this/that/theother
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('trim_slashes')) {
@@ -56,7 +58,9 @@ if (!function_exists('trim_slashes')) {
  * Removes slashes contained in a string or in an array
  *
  * @access   public
+ *
  * @param   mixed   string or array
+ *
  * @return   mixed   string or array
  */
 if (!function_exists('strip_slashes')) {
@@ -82,7 +86,9 @@ if (!function_exists('strip_slashes')) {
  * Removes single and double quotes from a string
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('strip_quotes')) {
@@ -99,7 +105,9 @@ if (!function_exists('strip_quotes')) {
  * Converts single and double quotes to entities
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('quotes_to_entities')) {
@@ -123,7 +131,9 @@ if (!function_exists('quotes_to_entities')) {
  * http://www.some-site.com/index.php
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('reduce_double_slashes')) {
@@ -146,9 +156,11 @@ if (!function_exists('reduce_double_slashes')) {
  * Fred, Bill, Joe, Jimmy
  *
  * @access   public
+ *
  * @param   string
  * @param   string   the character you wish to reduce
- * @param   bool   TRUE/FALSE - whether to trim the character from the beginning/end
+ * @param   bool     TRUE/FALSE - whether to trim the character from the beginning/end
+ *
  * @return   string
  */
 if (!function_exists('reduce_multiples')) {
@@ -171,8 +183,10 @@ if (!function_exists('reduce_multiples')) {
  * Useful for generating passwords or hashes.
  *
  * @access   public
- * @param   string   type of random string.  basic, alpha, alunum, numeric, nozero, unique, md5, encrypt and sha1
+ *
+ * @param   string    type of random string.  basic, alpha, alunum, numeric, nozero, unique, md5, encrypt and sha1
  * @param   integer   number of characters
+ *
  * @return   string
  */
 if (!function_exists('random_string')) {
@@ -230,9 +244,10 @@ if (!function_exists('random_string')) {
 /**
  * Add's _1 to a string or increment the ending number to allow _2, _3, etc
  *
- * @param   string $str  required
+ * @param   string $str        required
  * @param   string $separator  What should the duplicate number be appended with
- * @param   string $first  Which number should be used for the first dupe increment
+ * @param   string $first      Which number should be used for the first dupe increment
+ *
  * @return  string
  */
 function increment_string($str, $separator = '_', $first = 1) {
@@ -249,7 +264,9 @@ function increment_string($str, $separator = '_', $first = 1) {
  * Allows strings to be alternated.  See docs...
  *
  * @access   public
+ *
  * @param   string (as many parameters as needed)
+ *
  * @return   string
  */
 if (!function_exists('alternator')) {
@@ -273,8 +290,10 @@ if (!function_exists('alternator')) {
  * Repeater function
  *
  * @access   public
+ *
  * @param   string
  * @param   integer   number of repeats
+ *
  * @return   string
  */
 if (!function_exists('repeater')) {

@@ -1,15 +1,12 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
- * Name: Usercontrol Controller
- * Author: Nils Lutz
- * Version: 0.1
+ * Class Usercontrol
  */
 class Usercontrol extends CI_Controller {
 
    /**
     * CI_Controller Konstruktor + check ob user eingelogt ist
-    *
-    *
     */
    function __construct() {
       parent::__construct();
@@ -18,8 +15,6 @@ class Usercontrol extends CI_Controller {
 
    /**
     * soll noch ausgelagert werden in einen helper
-    *
-    *
     */
    function is_logged_in() {
       $is_logged_in = $this->session->userdata('is_logged_in');
@@ -31,8 +26,6 @@ class Usercontrol extends CI_Controller {
 
    /**
     * index function, sollte $message gesetzt sein wird es in der view angezeigt
-    *
-    *
     */
    function index($message = NULL) {
       $this->load->model('user_model');
@@ -50,8 +43,6 @@ class Usercontrol extends CI_Controller {
 
    /**
     * einzel user edit view, wenn $success gesetzt ist wird die Meldung mit ausgegeben
-    *
-    *
     */
    function show_User($success = NULL) {
       $user_id = $this->input->post('user_id');
@@ -72,9 +63,7 @@ class Usercontrol extends CI_Controller {
    }
 
    /**
-    *
-    *
-    *
+    * user update
     */
    function update_User() {
       $id           = $this->input->post('user_id');
@@ -93,9 +82,7 @@ class Usercontrol extends CI_Controller {
    }
 
    /**
-    *
-    *
-    *
+    * user deletion
     */
    function delete_User() {
       $id = $this->input->post('user_id');

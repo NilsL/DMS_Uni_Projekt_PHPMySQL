@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/directory_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/directory_helper.html
  */
 
 
@@ -34,7 +34,9 @@
  * Takes a plural word and makes it singular
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   str
  */
 if (!function_exists('singular')) {
@@ -90,8 +92,10 @@ if (!function_exists('singular')) {
  * Takes a singular word and makes it plural
  *
  * @access   public
+ *
  * @param   string
  * @param   bool
+ *
  * @return   str
  */
 if (!function_exists('plural')) {
@@ -139,7 +143,9 @@ if (!function_exists('plural')) {
  * Takes multiple words separated by spaces or underscores and camelizes them
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   str
  */
 if (!function_exists('camelize')) {
@@ -159,7 +165,9 @@ if (!function_exists('camelize')) {
  * Takes multiple words separated by spaces and underscores them
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   str
  */
 if (!function_exists('underscore')) {
@@ -176,7 +184,9 @@ if (!function_exists('underscore')) {
  * Takes multiple words separated by underscores and changes them to spaces
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   str
  */
 if (!function_exists('humanize')) {

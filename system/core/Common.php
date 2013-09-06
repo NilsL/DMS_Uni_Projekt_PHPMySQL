@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   codeigniter
- * @category   Common Functions
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/
+ * @category     Common Functions
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/
  */
 
 // ------------------------------------------------------------------------
@@ -36,7 +36,9 @@
  * we'll set a static variable.
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   bool   TRUE if the current version is $version or higher
  */
 if (!function_exists('is_php')) {
@@ -106,9 +108,11 @@ if (!function_exists('is_really_writable')) {
  * previously been instantiated the variable is returned.
  *
  * @access   public
+ *
  * @param   string   the class name being requested
  * @param   string   the directory where the class should be found
  * @param   string   the class name prefix
+ *
  * @return   object
  */
 if (!function_exists('load_class')) {
@@ -328,8 +332,10 @@ if (!function_exists('log_message')) {
  * Set HTTP Status Header
  *
  * @access   public
+ *
  * @param   int      the status code
  * @param   string
+ *
  * @return   void
  */
 if (!function_exists('set_status_header')) {
@@ -455,7 +461,9 @@ if (!function_exists('_exception_handler')) {
  * between ascii characters, like Java\0script.
  *
  * @access   public
+ *
  * @param   string
+ *
  * @return   string
  */
 if (!function_exists('remove_invisible_characters')) {
@@ -486,7 +494,9 @@ if (!function_exists('remove_invisible_characters')) {
  * Returns HTML escaped variable
  *
  * @access   public
+ *
  * @param   mixed
+ *
  * @return   mixed
  */
 if (!function_exists('html_escape')) {

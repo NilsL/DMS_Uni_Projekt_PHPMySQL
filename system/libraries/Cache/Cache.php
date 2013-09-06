@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 4.3.2 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2006 - 2012 EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0
+ * @link         http://codeigniter.com
+ * @since        Version 2.0
  * @filesource
  */
 
@@ -20,8 +20,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Core
- * @author      ExpressionEngine Dev Team
+ * @category     Core
+ * @author       ExpressionEngine Dev Team
  * @link
  */
 class CI_Cache extends CI_Driver_Library {
@@ -56,6 +56,7 @@ class CI_Cache extends CI_Driver_Library {
     * if not, return FALSE
     *
     * @param   string
+    *
     * @return   mixed      value that is stored/FALSE on failure
     */
    public function get($id) {
@@ -68,7 +69,7 @@ class CI_Cache extends CI_Driver_Library {
     * Cache Save
     *
     * @param   string      Unique Key
-    * @param   mixed      Data to store
+    * @param   mixed       Data to store
     * @param   int         Length of time (in seconds) to cache the data
     *
     * @return   boolean      true on success/false on failure
@@ -83,6 +84,7 @@ class CI_Cache extends CI_Driver_Library {
     * Delete from Cache
     *
     * @param   mixed      unique identifier of the item in the cache
+    *
     * @return   boolean      true on success/false on failure
     */
    public function delete($id) {
@@ -106,6 +108,7 @@ class CI_Cache extends CI_Driver_Library {
     * Cache Info
     *
     * @param   string      user/filehits
+    *
     * @return   mixed      array on success, false on failure
     */
    public function cache_info($type = 'user') {
@@ -118,6 +121,7 @@ class CI_Cache extends CI_Driver_Library {
     * Get Cache Metadata
     *
     * @param   mixed      key to get cache metadata on
+    *
     * @return   mixed      return value from child method
     */
    public function get_metadata($id) {
@@ -132,6 +136,7 @@ class CI_Cache extends CI_Driver_Library {
     * Initialize class properties based on the configuration array.
     *
     * @param   array
+    *
     * @return   void
     */
    private function _initialize($config) {
@@ -161,6 +166,7 @@ class CI_Cache extends CI_Driver_Library {
     * Is the requested driver supported in this environment?
     *
     * @param   string   The driver to test.
+    *
     * @return   array
     */
    public function is_supported($driver) {
@@ -179,6 +185,7 @@ class CI_Cache extends CI_Driver_Library {
     * __get()
     *
     * @param   child
+    *
     * @return   object
     */
    public function __get($child) {

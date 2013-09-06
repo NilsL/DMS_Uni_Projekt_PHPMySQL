@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'form_validation', 'session', 'encryp
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'form', 'html', 'download');
+$autoload['helper'] = array('url', 'form', 'html', 'download', 'date');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('sidebar_model');
 
 
 /* End of file autoload.php */

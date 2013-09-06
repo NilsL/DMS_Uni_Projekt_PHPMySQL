@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/smiley_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/smiley_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -34,8 +34,10 @@
  * an array of aliases to loosely couple the smiley array to the view.
  *
  * @access   public
- * @param   mixed   alias name or array of alias->field_id pairs
+ *
+ * @param   mixed    alias name or array of alias->field_id pairs
  * @param   string   field_id if alias name was passed in
+ *
  * @return   array
  */
 if (!function_exists('smiley_js')) {
@@ -117,7 +119,9 @@ EOF;
  * into a form field.
  *
  * @access   public
+ *
  * @param   string   the URL to the folder containing the smiley img
+ *
  * @return   array
  */
 if (!function_exists('get_clickable_smileys')) {
@@ -164,8 +168,10 @@ if (!function_exists('get_clickable_smileys')) {
  * Takes a string as input and swaps any contained smileys for the actual image
  *
  * @access   public
+ *
  * @param   string   the text to be parsed
  * @param   string   the URL to the folder containing the smiley img
+ *
  * @return   string
  */
 if (!function_exists('parse_smileys')) {
@@ -228,8 +234,10 @@ if (!function_exists('_get_smiley_array')) {
  * DEPRECATED as of version 1.7.2, use smiley_js instead
  *
  * @access   public
+ *
  * @param   string   form name
  * @param   string   field name
+ *
  * @return   string
  */
 if (!function_exists('js_insert_smiley')) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2006 - 2012 EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 2.0
+ * @link         http://codeigniter.com
+ * @since        Version 2.0
  * @filesource
  */
 
@@ -20,8 +20,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Core
- * @author      ExpressionEngine Dev Team
+ * @category     Core
+ * @author       ExpressionEngine Dev Team
  * @link
  */
 
@@ -34,6 +34,7 @@ class CI_Cache_apc extends CI_Driver {
     * if not, return FALSE
     *
     * @param   string
+    *
     * @return   mixed      value that is stored/FALSE on failure
     */
    public function get($id) {
@@ -48,7 +49,7 @@ class CI_Cache_apc extends CI_Driver {
     * Cache Save
     *
     * @param   string      Unique Key
-    * @param   mixed      Data to store
+    * @param   mixed       Data to store
     * @param   int         Length of time (in seconds) to cache the data
     *
     * @return   boolean      true on success/false on failure
@@ -62,7 +63,7 @@ class CI_Cache_apc extends CI_Driver {
    /**
     * Delete from Cache
     *
-    * @param   mixed      unique identifier of the item in the cache
+    * @param   mixed        unique identifier of the item in the cache
     * @param   boolean      true on success/false on failure
     */
    public function delete($id) {
@@ -86,6 +87,7 @@ class CI_Cache_apc extends CI_Driver {
     * Cache Info
     *
     * @param   string      user/filehits
+    *
     * @return   mixed      array on success, false on failure
     */
    public function cache_info($type = NULL) {
@@ -98,6 +100,7 @@ class CI_Cache_apc extends CI_Driver {
     * Get Cache Metadata
     *
     * @param   mixed      key to get cache metadata on
+    *
     * @return   mixed      array on success/false on failure
     */
    public function get_metadata($id) {

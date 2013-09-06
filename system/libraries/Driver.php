@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      EllisLab Dev Team
- * @copyright   Copyright (c) 2006 - 2012, EllisLab, Inc.
+ * @author       EllisLab Dev Team
+ * @copyright    Copyright (c) 2006 - 2012, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -23,8 +23,8 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      EllisLab Dev Team
+ * @category     Libraries
+ * @author       EllisLab Dev Team
  * @link
  */
 class CI_Driver_Library {
@@ -96,8 +96,8 @@ class CI_Driver_Library {
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      EllisLab Dev Team
+ * @category     Libraries
+ * @author       EllisLab Dev Team
  * @link
  */
 class CI_Driver {
@@ -114,6 +114,7 @@ class CI_Driver {
     * Decorates the child with the parent driver lib's methods and properties
     *
     * @param   object
+    *
     * @return   void
     */
    public function decorate($parent) {
@@ -154,8 +155,10 @@ class CI_Driver {
     * Handles access to the parent driver library's methods
     *
     * @access   public
+    *
     * @param   string
     * @param   array
+    *
     * @return   mixed
     */
    public function __call($method, $args = array()) {
@@ -176,6 +179,7 @@ class CI_Driver {
     * Handles reading of the parent driver library's properties
     *
     * @param   string
+    *
     * @return   mixed
     */
    public function __get($var) {
@@ -193,6 +197,7 @@ class CI_Driver {
     *
     * @param   string
     * @param   array
+    *
     * @return   mixed
     */
    public function __set($var, $val) {

@@ -1,16 +1,12 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *
- *
- *
+ * Class User_model
  */
 class User_model extends CI_Model {
 
    /**
-    * einen user erzeugen und in der DB ablegen
-    *
-    *
+    * @return mixed
     */
    function create_User() {
 
@@ -29,9 +25,9 @@ class User_model extends CI_Model {
    }
 
    /**
-    * returns one users
+    * @param null $id
     *
-    *
+    * @return bool
     */
    function get_User($id = NULL) {
       if (!isset($id)) {
@@ -57,9 +53,10 @@ class User_model extends CI_Model {
    }
 
    /**
-    * update a user
+    * @param $id
+    * @param $data
     *
-    *
+    * @return mixed
     */
    function update_User($id, $data) {
       $this->db->where('users_id', $id);
@@ -69,9 +66,9 @@ class User_model extends CI_Model {
    }
 
    /**
-    * delete a user
+    * @param $id
     *
-    *
+    * @return mixed
     */
    function delete_User($id) {
       $this->db->where('users_id', $id);
@@ -81,9 +78,7 @@ class User_model extends CI_Model {
    }
 
    /**
-    * user input mit der DB abgleichen
-    * @return gibt die user id zurück oder FALSE falls validierung fail war
-    *
+    * @return bool
     */
    function validate() {
       $this->db->where('password', hash('sha256', $this->input->post('password')));
@@ -94,13 +89,14 @@ class User_model extends CI_Model {
       if ($result->num_rows() == 1) {
          return $result->row()->users_id;
       }
+
       return FALSE;
    }
 
    /**
+    * @param $user_id
     *
-    *
-    *
+    * @return bool
     */
    function get_Role($user_id) {
       $this->db->select('role');
@@ -110,9 +106,29 @@ class User_model extends CI_Model {
       if ($result->num_rows() == 1) {
          return $result->row()->role;
       }
+
       return FALSE;
    }
 
+   /**
+    * checking the user input in signup
+    */
+   function checking($inputed, $id) {
+      if ($id == "email") {
+         $this->db->where('email', $inputed);
+      }
+      else if ($id == "username") {
+         $this->db->where('username', $inputed);
+      }
+      $result = $this->db->get('login_users');
+
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      if ($result->num_rows() > 0) {
+         return FALSE;
+      }
+
+      return TRUE;
+   }
 }
 /* End of file user_model.php */
 /* Location: ./application/models/user_model.php */

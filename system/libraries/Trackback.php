@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Trackbacks
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/trackback.html
+ * @category     Trackbacks
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/trackback.html
  */
 class CI_Trackback {
 
@@ -50,7 +50,9 @@ class CI_Trackback {
     * Send Trackback
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   bool
     */
    function send($tb_data) {
@@ -164,7 +166,9 @@ class CI_Trackback {
     * the most common one.
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function send_error($message = 'Incomplete Information') {
@@ -194,7 +198,9 @@ class CI_Trackback {
     * Fetch a particular item
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function data($item) {
@@ -210,8 +216,10 @@ class CI_Trackback {
     * the server.  Returns TRUE on success, FALSE on failure
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   bool
     */
    function process($url, $data) {
@@ -276,7 +284,9 @@ class CI_Trackback {
     * space) and puts each URL into an array
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function extract_urls($urls) {
@@ -310,7 +320,9 @@ class CI_Trackback {
     * Simply adds "http://" if missing
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function validate_url($url) {
@@ -327,7 +339,9 @@ class CI_Trackback {
     * Find the Trackback URL's ID
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function get_id($url) {
@@ -369,7 +383,9 @@ class CI_Trackback {
     * Convert Reserved XML characters to Entities
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function convert_xml($str) {
@@ -396,9 +412,11 @@ class CI_Trackback {
     * Limits the string based on the character count. Will preserve complete words.
     *
     * @access   public
+    *
     * @param   string
     * @param   integer
     * @param   string
+    *
     * @return   string
     */
    function limit_characters($str, $n = 500, $end_char = '&#8230;') {
@@ -430,7 +448,9 @@ class CI_Trackback {
     * to character entities
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function convert_ascii($str) {
@@ -470,7 +490,9 @@ class CI_Trackback {
     * Set error message
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_error($msg) {
@@ -484,8 +506,10 @@ class CI_Trackback {
     * Show error messages
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function display_errors($open = '<p>', $close = '</p>') {

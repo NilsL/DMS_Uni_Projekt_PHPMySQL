@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Language
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/language.html
+ * @category     Language
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/language.html
  */
 class CI_Lang {
 
@@ -54,11 +54,13 @@ class CI_Lang {
     * Load a language file
     *
     * @access   public
-    * @param   mixed   the name of the language file to be loaded. Can be an array
+    *
+    * @param   mixed    the name of the language file to be loaded. Can be an array
     * @param   string   the language (english, etc.)
-    * @param   bool   return loaded array of translations
-    * @param   bool   add suffix to $langfile
+    * @param   bool     return loaded array of translations
+    * @param   bool     add suffix to $langfile
     * @param   string   alternative path to look for language file
+    *
     * @return   mixed
     */
    function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '') {
@@ -127,7 +129,9 @@ class CI_Lang {
     * Fetch a single line of text from the language array
     *
     * @access   public
+    *
     * @param   string $line   the language line
+    *
     * @return   string
     */
    function line($line = '') {

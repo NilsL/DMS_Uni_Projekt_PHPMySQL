@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Libraries
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/encryption.html
+ * @category     Libraries
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/encryption.html
  */
 class CI_Encrypt {
 
@@ -56,7 +56,9 @@ class CI_Encrypt {
     * Mcrypt is sensitive to keys that are not the correct length
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function get_key($key = '') {
@@ -82,7 +84,9 @@ class CI_Encrypt {
     * Set the encryption key
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_key($key = '') {
@@ -103,8 +107,10 @@ class CI_Encrypt {
     * even if the supplied message and key are the same.
     *
     * @access   public
+    *
     * @param   string   the string to encode
     * @param   string   the key
+    *
     * @return   string
     */
    function encode($string, $key = '') {
@@ -128,8 +134,10 @@ class CI_Encrypt {
     * Reverses the above process
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function decode($string, $key = '') {
@@ -166,9 +174,11 @@ class CI_Encrypt {
     * For more details, see http://codeigniter.com/user_guide/installation/upgrade_200.html#encryption
     *
     * @access   public
+    *
     * @param   string
     * @param   int      (mcrypt mode constant)
     * @param   string
+    *
     * @return   string
     */
    function encode_from_legacy($string, $legacy_mode = MCRYPT_MODE_ECB, $key = '') {
@@ -214,8 +224,10 @@ class CI_Encrypt {
     * encoded bit-string using XOR
     *
     * @access   private
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _xor_encode($string, $key) {
@@ -243,8 +255,10 @@ class CI_Encrypt {
     * plain-text original message
     *
     * @access   private
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _xor_decode($string, $key) {
@@ -266,8 +280,10 @@ class CI_Encrypt {
     * Takes a string and key as input and computes the difference using XOR
     *
     * @access   private
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _xor_merge($string, $key) {
@@ -286,8 +302,10 @@ class CI_Encrypt {
     * Encrypt using Mcrypt
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function mcrypt_encode($data, $key) {
@@ -303,8 +321,10 @@ class CI_Encrypt {
     * Decrypt using Mcrypt
     *
     * @access   public
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function mcrypt_decode($data, $key) {
@@ -331,8 +351,10 @@ class CI_Encrypt {
     * Function description
     *
     * @access   private
+    *
     * @param   string
     * @param   string
+    *
     * @return   string
     */
    function _add_cipher_noise($data, $key) {
@@ -360,7 +382,9 @@ class CI_Encrypt {
     * Function description
     *
     * @access   public
+    *
     * @param   type
+    *
     * @return   type
     */
    function _remove_cipher_noise($data, $key) {
@@ -391,7 +415,9 @@ class CI_Encrypt {
     * Set the Mcrypt Cipher
     *
     * @access   public
+    *
     * @param   constant
+    *
     * @return   string
     */
    function set_cipher($cipher) {
@@ -404,7 +430,9 @@ class CI_Encrypt {
     * Set the Mcrypt Mode
     *
     * @access   public
+    *
     * @param   constant
+    *
     * @return   string
     */
    function set_mode($mode) {
@@ -449,7 +477,9 @@ class CI_Encrypt {
     * Set the Hash type
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function set_hash($type = 'sha1') {
@@ -462,7 +492,9 @@ class CI_Encrypt {
     * Hash encode a string
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function hash($str) {
@@ -475,7 +507,9 @@ class CI_Encrypt {
     * Generate an SHA1 Hash
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   string
     */
    function sha1($str) {

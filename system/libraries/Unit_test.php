@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.3.1
+ * @link         http://codeigniter.com
+ * @since        Version 1.3.1
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   UnitTesting
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/uri.html
+ * @category     UnitTesting
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/uri.html
  */
 class CI_Unit_test {
 
@@ -58,7 +58,9 @@ class CI_Unit_test {
     * Runs the supplied tests
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    function set_test_items($items = array()) {
@@ -75,9 +77,11 @@ class CI_Unit_test {
     * Runs the supplied tests
     *
     * @access   public
+    *
     * @param   mixed
     * @param   mixed
     * @param   string
+    *
     * @return   string
     */
    function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '') {
@@ -170,7 +174,9 @@ class CI_Unit_test {
     * Causes the evaluation to use === rather than ==
     *
     * @access   public
+    *
     * @param   bool
+    *
     * @return   null
     */
    function use_strict($state = TRUE) {
@@ -185,7 +191,9 @@ class CI_Unit_test {
     * Enables/disables unit testing
     *
     * @access   public
+    *
     * @param   bool
+    *
     * @return   null
     */
    function active($state = TRUE) {
@@ -248,7 +256,9 @@ class CI_Unit_test {
     * This lets us set the template to be used to display results
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_template($template) {

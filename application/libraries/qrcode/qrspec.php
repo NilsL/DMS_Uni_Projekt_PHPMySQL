@@ -270,6 +270,7 @@ class QRspec {
 
    /** --------------------------------------------------------------------
     * Put an alignment marker.
+    *
     * @param frame
     * @param width
     * @param ox,oy center coordinate of the pattern
@@ -380,6 +381,7 @@ class QRspec {
 
    /** --------------------------------------------------------------------
     * Put a finder pattern.
+    *
     * @param frame
     * @param width
     * @param ox,oy upper-left coordinate of the pattern

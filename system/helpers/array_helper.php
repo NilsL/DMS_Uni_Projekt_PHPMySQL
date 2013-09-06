@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/array_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/array_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -34,9 +34,11 @@
  * If the element is empty it returns FALSE (or whatever you specify as the default value.)
  *
  * @access   public
+ *
  * @param   string
  * @param   array
  * @param   mixed
+ *
  * @return   mixed   depends on what the array contains
  */
 if (!function_exists('element')) {
@@ -55,7 +57,9 @@ if (!function_exists('element')) {
  * Random Element - Takes an array as input and returns a random element
  *
  * @access   public
+ *
  * @param   array
+ *
  * @return   mixed   depends on what the array contains
  */
 if (!function_exists('random_element')) {
@@ -77,9 +81,11 @@ if (!function_exists('random_element')) {
  * it is not set.
  *
  * @access   public
+ *
  * @param   array
  * @param   array
  * @param   mixed
+ *
  * @return   mixed   depends on what the array contains
  */
 if (!function_exists('elements')) {

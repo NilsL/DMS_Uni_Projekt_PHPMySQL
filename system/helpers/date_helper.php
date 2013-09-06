@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -20,9 +20,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Helpers
- * @category   Helpers
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/helpers/date_helper.html
+ * @category     Helpers
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/helpers/date_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -71,8 +71,10 @@ if (!function_exists('now')) {
  * match the date codes.
  *
  * @access   public
+ *
  * @param   string
  * @param   integer
+ *
  * @return   integer
  */
 if (!function_exists('mdate')) {
@@ -97,8 +99,10 @@ if (!function_exists('mdate')) {
  * Returns a date formatted according to the submitted standard.
  *
  * @access   public
- * @param   string   the chosen format
+ *
+ * @param   string    the chosen format
  * @param   integer   Unix timestamp
+ *
  * @return   string
  */
 if (!function_exists('standard_date')) {
@@ -132,8 +136,10 @@ if (!function_exists('standard_date')) {
  *   10 days 14 hours 36 minutes 47 seconds
  *
  * @access   public
+ *
  * @param   integer   a number of seconds
  * @param   integer   Unix timestamp
+ *
  * @return   integer
  */
 if (!function_exists('timespan')) {
@@ -231,8 +237,10 @@ if (!function_exists('timespan')) {
  * for the given month/year. Takes leap years into consideration.
  *
  * @access   public
- * @param   integer a numeric month
+ *
+ * @param   integer   a numeric month
  * @param   integer   a numeric year
+ *
  * @return   integer
  */
 if (!function_exists('days_in_month')) {
@@ -263,7 +271,9 @@ if (!function_exists('days_in_month')) {
  * Converts a local Unix timestamp to GMT
  *
  * @access   public
+ *
  * @param   integer Unix timestamp
+ *
  * @return   integer
  */
 if (!function_exists('local_to_gmt')) {
@@ -285,9 +295,11 @@ if (!function_exists('local_to_gmt')) {
  * submitted
  *
  * @access   public
- * @param   integer Unix timestamp
+ *
+ * @param   integer  Unix timestamp
  * @param   string   timezone
- * @param   bool   whether DST is active
+ * @param   bool     whether DST is active
+ *
  * @return   integer
  */
 if (!function_exists('gmt_to_local')) {
@@ -312,7 +324,9 @@ if (!function_exists('gmt_to_local')) {
  * Converts a MySQL Timestamp to Unix
  *
  * @access   public
+ *
  * @param   integer Unix timestamp
+ *
  * @return   integer
  */
 if (!function_exists('mysql_to_unix')) {
@@ -345,9 +359,11 @@ if (!function_exists('mysql_to_unix')) {
  * Formats Unix timestamp to the following prototype: 2006-08-21 11:35 PM
  *
  * @access   public
- * @param   integer Unix timestamp
- * @param   bool   whether to show seconds
+ *
+ * @param   integer  Unix timestamp
+ * @param   bool     whether to show seconds
  * @param   string   format: us or euro
+ *
  * @return   string
  */
 if (!function_exists('unix_to_human')) {
@@ -381,7 +397,9 @@ if (!function_exists('unix_to_human')) {
  * Reverses the above process
  *
  * @access   public
+ *
  * @param   string   format: us or euro
+ *
  * @return   integer
  */
 if (!function_exists('human_to_unix')) {
@@ -443,9 +461,11 @@ if (!function_exists('human_to_unix')) {
  * Generates a drop-down menu of timezones.
  *
  * @access   public
+ *
  * @param   string   timezone
  * @param   string   classname
  * @param   string   menu name
+ *
  * @return   string
  */
 if (!function_exists('timezone_menu')) {
@@ -484,7 +504,9 @@ if (!function_exists('timezone_menu')) {
  * for various other ones in this library
  *
  * @access   public
+ *
  * @param   string   timezone
+ *
  * @return   string
  */
 if (!function_exists('timezones')) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.3.1
+ * @link         http://codeigniter.com
+ * @since        Version 1.3.1
  * @filesource
  */
 
@@ -22,9 +22,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   HTML Tables
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/uri.html
+ * @category     HTML Tables
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/uri.html
  */
 class CI_Table {
 
@@ -47,7 +47,9 @@ class CI_Table {
     * Set the template
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    function set_template($template) {
@@ -66,7 +68,9 @@ class CI_Table {
     * Can be passed as an array or discreet params
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   void
     */
    function set_heading() {
@@ -83,8 +87,10 @@ class CI_Table {
     * displayed in a table that has a fixed column count.
     *
     * @access   public
+    *
     * @param   array
     * @param   int
+    *
     * @return   void
     */
    function make_columns($array = array(), $col_limit = 0) {
@@ -124,7 +130,9 @@ class CI_Table {
     * Can be passed as an array or discreet params
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   void
     */
    function set_empty($value) {
@@ -139,7 +147,9 @@ class CI_Table {
     * Can be passed as an array or discreet params
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   void
     */
    function add_row() {
@@ -155,7 +165,9 @@ class CI_Table {
     * Ensures a standard associative array format for all cell data
     *
     * @access   public
+    *
     * @param   type
+    *
     * @return   type
     */
    function _prep_args($args) {
@@ -192,7 +204,9 @@ class CI_Table {
     * Add a table caption
     *
     * @access   public
+    *
     * @param   string
+    *
     * @return   void
     */
    function set_caption($caption) {
@@ -205,7 +219,9 @@ class CI_Table {
     * Generate the table
     *
     * @access   public
+    *
     * @param   mixed
+    *
     * @return   string
     */
    function generate($table_data = NULL) {
@@ -351,7 +367,9 @@ class CI_Table {
     * Set table data from a database result object
     *
     * @access   public
+    *
     * @param   object
+    *
     * @return   void
     */
    function _set_from_object($query) {
@@ -383,7 +401,9 @@ class CI_Table {
     * Set table data from an array
     *
     * @access   public
+    *
     * @param   array
+    *
     * @return   void
     */
    function _set_from_array($data, $set_heading = TRUE) {

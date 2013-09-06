@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      Esen Sagynov
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       Esen Sagynov
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -18,9 +18,9 @@
 /**
  * CUBRID Utility Class
  *
- * @category   Database
+ * @category    Database
  * @author      Esen Sagynov
- * @link      http://codeigniter.com/user_guide/database/
+ * @link        http://codeigniter.com/user_guide/database/
  */
 class CI_DB_cubrid_utility extends CI_DB_utility {
 
@@ -52,9 +52,11 @@ class CI_DB_cubrid_utility extends CI_DB_utility {
     * Generates a platform-specific query so that a table can be optimized
     *
     * @access   private
+    *
     * @param   string   the table name
+    *
     * @return   object
-    * @link   http://www.cubrid.org/manual/840/en/Optimize%20Database
+    * @link     http://www.cubrid.org/manual/840/en/Optimize%20Database
     */
    function _optimize_table($table) {
       // No SQL based support in CUBRID as of version 8.4.0. Database or
@@ -71,9 +73,11 @@ class CI_DB_cubrid_utility extends CI_DB_utility {
     * Generates a platform-specific query so that a table can be repaired
     *
     * @access   private
+    *
     * @param   string   the table name
+    *
     * @return   object
-    * @link   http://www.cubrid.org/manual/840/en/Checking%20Database%20Consistency
+    * @link     http://www.cubrid.org/manual/840/en/Checking%20Database%20Consistency
     */
    function _repair_table($table) {
       // Not supported in CUBRID as of version 8.4.0. Database or
@@ -87,7 +91,9 @@ class CI_DB_cubrid_utility extends CI_DB_utility {
     * CUBRID Export
     *
     * @access   private
+    *
     * @param   array   Preferences
+    *
     * @return   mixed
     */
    function _backup($params = array()) {

@@ -5,11 +5,11 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package      CodeIgniter
- * @author      ExpressionEngine Dev Team
- * @copyright   Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @author       ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license      http://codeigniter.com/user_guide/license.html
- * @link      http://codeigniter.com
- * @since      Version 1.0
+ * @link         http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -26,9 +26,9 @@
  *
  * @package      CodeIgniter
  * @subpackage   Libraries
- * @category   Encryption
- * @author      ExpressionEngine Dev Team
- * @link      http://codeigniter.com/user_guide/libraries/zip.html
+ * @category     Encryption
+ * @author       ExpressionEngine Dev Team
+ * @link         http://codeigniter.com/user_guide/libraries/zip.html
  */
 class CI_Zip {
 
@@ -56,7 +56,9 @@ class CI_Zip {
     * Lets you add a virtual directory into which you can place files.
     *
     * @access   public
+    *
     * @param   mixed   the directory name. Can be string or array
+    *
     * @return   void
     */
    function add_dir($directory) {
@@ -79,6 +81,7 @@ class CI_Zip {
     *   If this is a newly created file/dir, we will set the time to 'now'
     *
     * @param string   path to file
+    *
     * @return array   filemtime/filemdate
     */
    function _get_mod_time($dir) {
@@ -97,7 +100,9 @@ class CI_Zip {
     * Add Directory
     *
     * @access   private
+    *
     * @param   string   the directory name
+    *
     * @return   void
     */
    function _add_dir($dir, $file_mtime, $file_mdate) {
@@ -148,8 +153,10 @@ class CI_Zip {
     * sure you use add_dir() first to create the folder.
     *
     * @access   public
+    *
     * @param   mixed
     * @param   string
+    *
     * @return   void
     */
    function add_data($filepath, $data = NULL) {
@@ -173,8 +180,10 @@ class CI_Zip {
     * Add Data to Zip
     *
     * @access   private
+    *
     * @param   string   the file name/path
     * @param   string   the data to be encoded
+    *
     * @return   void
     */
    function _add_data($filepath, $data, $file_mtime, $file_mdate) {
@@ -258,7 +267,9 @@ class CI_Zip {
     * is in the original file path will be recreated in the zip file.
     *
     * @access   public
+    *
     * @param   string   path to source
+    *
     * @return   bool
     */
    function read_dir($path, $preserve_filepath = TRUE, $root_path = NULL) {
@@ -328,7 +339,9 @@ class CI_Zip {
     * Lets you write a file
     *
     * @access   public
+    *
     * @param   string   the file name
+    *
     * @return   bool
     */
    function archive($filepath) {
@@ -350,8 +363,10 @@ class CI_Zip {
     * Download
     *
     * @access   public
+    *
     * @param   string   the file name
     * @param   string   the data to be encoded
+    *
     * @return   bool
     */
    function download($filename = 'backup.zip') {
