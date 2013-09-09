@@ -18,13 +18,6 @@ class Document_model extends CI_Model {
    function create_Document($title, $abstract, $class, $project, $keyword, $array_authors) {
       //transaction startet
       $this->db->trans_begin();
-      $this->db->where('title', $title);
-      $query = $this->db->get('storage_document');
-      if (!$query || $query->num_rows == 1) {
-         $this->db->trans_rollback();
-
-         return FALSE;
-      }
 
       $time  = time();
       $data  = array(
@@ -38,7 +31,6 @@ class Document_model extends CI_Model {
       $query = $this->db->insert('storage_document', $data);
       if (!$query) {
          $this->db->trans_rollback();
-
          return FALSE;
       }
 
@@ -265,10 +257,9 @@ class Document_model extends CI_Model {
 
       //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
       if ($result->num_rows() > 0) {
-         return FALSE;
+         return "This title is already used!";
       }
-
-      return TRUE;
+      return FALSE;
    }
 }
 /* End of file document_model.php */

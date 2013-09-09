@@ -196,25 +196,35 @@ class Insert extends CI_Controller {
     * validierung des documents
     */
    function validate_i_document() {
-      $this->form_validation->set_rules('document_title', 'Title', 'trim|required|');
+      $this->form_validation->set_rules('title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
       $this->form_validation->set_rules('classification', 'Classification', 'trim|greater_than[0]|');
       // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
       // darum fehlermeldung muss neu definiert werden
       $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
+      $this->form_validation->set_rules('input_document_keywords', 'Keywords', 'trim|required|');
+      $this->form_validation->set_rules('input_document_abstract', 'Abstract', 'trim|required|');
 
       if ($this->form_validation->run() == FALSE) {
          $this->insert_document();
       }
       else {
+         //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
+         $array_authors = $this->input->post('hiddenid');
+         //aber es kann sein dass der user gar keinen author ausgewaehlt hat, das war nicht bei form_validation durchgefuehrt
+         if(!$array_authors) {
+             $data           = $this->insert_document_helper();
+             $data ['error'] = 'Please select at least an author!';
+             $data ['view']  = 'insert/insert_document_view';
+             $this->load->view('template/content', $data);
+         }
 
          $title    = $this->input->post('document_title');
          $abstract = $this->input->post('input_document_abstract');
          $class    = $this->input->post('classifications');
          $project  = $this->input->post('projects');
          $keyword  = $this->input->post('input_document_keywords');
-         //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
-         $array_authors = $this->input->post('hiddenid');
+
 
          $this->load->model('document_model');
          $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keyword, $array_authors);
@@ -309,20 +319,19 @@ class Insert extends CI_Controller {
       //getten
       $inputed = $this->input->get('inputed');
       $id      = $this->input->get('id');
-      $id      = str_ireplace('_', ' ', $id);
       //model loaden
       switch ($id) {
-         case "author name":
-         case "author mail":
+         case "author_name":
+         case "author_mail":
             $this->load->model('author_model');
             $check_result = $this->author_model->checking($inputed, $id);
             break;
-         case "classification name":
+         case "classification_name":
             $this->load->model('classification_model');
             $check_result = $this->classification_model->checking($inputed, $id);
             break;
-         case "project name":
-         case "project number":
+         case "project_name":
+         case "project_number":
             $this->load->model('project_model');
             $check_result = $this->project_model->checking($inputed, $id);
             break;
@@ -335,10 +344,7 @@ class Insert extends CI_Controller {
       $response = NULL;
       //ist $check_result true, congratz...
       if ($check_result) {
-         $response = 'The ' . $id . ' can be used!';
-      }
-      else {
-         $response = 'The ' . $id . ' is already used!';
+         $response = $check_result;
       }
       echo $response;
    }

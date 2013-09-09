@@ -3,7 +3,7 @@
 
    <legend>Personal Information</legend>
 
-   <?php echo form_open('login/validate_signup', array('name' => 'signup', 'class' => 'signup', 'onsubmit' => 'return validateSignUp()')); ?>
+   <?php echo form_open('login/validate_signup', array('name' => 'signup', 'class' => 'signup', 'onsubmit' => 'return validateSignUp(this)')); ?>
    <p>
       <?php echo form_label('First Name: ', 'first_name'); ?>
       <?php echo form_input(array('id' => 'first_name', 'name' => 'first_name', 'placeholder' => 'Jon', 'autofocus' => 'autofocus')); ?>
@@ -40,7 +40,7 @@
    </p>
 
    <p id="login-submit">
-      <?php echo form_button(array('class' => 'signup-button', 'type' => 'submit', 'content' => 'Create Account', 'onClick' => 'return confirm(\'Sind alle Angaben korrekt?\')')); ?>
+      <?php echo form_button(array('class' => 'signup-button', 'type' => 'submit', 'content' => 'Create Account')); ?>
    </p>
 
    <?php echo form_close(); ?>

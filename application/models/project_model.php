@@ -12,18 +12,6 @@ class Project_model extends CI_Model {
     * @return bool
     */
    function create_Project($name, $number) {
-      // mehrfache speicherung ueberpruefen...
-      $this->db->where('name', $name);
-      $query = $this->db->get('storage_project');
-      if ($query->num_rows == 1) {
-         return FALSE;
-      }
-      $this->db->where('number', $number);
-      $query = $this->db->get('storage_project');
-      if ($query->num_rows == 1) {
-         return FALSE;
-      }
-
       $data = array(
          'name'   => $name,
          'number' => $number
@@ -101,20 +89,27 @@ class Project_model extends CI_Model {
     * @return bool
     */
    function checking($inputed, $id) {
-      if ($id == "project name") {
+      if ($id == "project_name") {
          $this->db->where('name', $inputed);
+         $result = $this->db->get('storage_project');
+         //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+         if ($result->num_rows() > 0) {
+             return "This project name is already used!";
+         }
+         return FALSE;
       }
-      else if ($id == "project number") {
+      else if ($id == "project_number") {
          $this->db->where('number', $inputed);
-      }
-      $result = $this->db->get('storage_project');
-
-      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
-      if ($result->num_rows() > 0) {
+         $result = $this->db->get('storage_project');
+         //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+         if ($result->num_rows() > 0) {
+             return "This project number is already used!";
+         }
          return FALSE;
       }
 
-      return TRUE;
+
+
    }
 }
 /* End of file project_model.php */

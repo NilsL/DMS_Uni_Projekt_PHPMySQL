@@ -116,18 +116,22 @@ class User_model extends CI_Model {
    function checking($inputed, $id) {
       if ($id == "email") {
          $this->db->where('email', $inputed);
+         $result = $this->db->get('login_users');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "This Email is already used!";
+          }
+          return FALSE;
       }
       else if ($id == "username") {
          $this->db->where('username', $inputed);
+         $result = $this->db->get('login_users');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "This Username is already used!";
+          }
+          return FALSE;
       }
-      $result = $this->db->get('login_users');
-
-      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
-      if ($result->num_rows() > 0) {
-         return FALSE;
-      }
-
-      return TRUE;
    }
 }
 /* End of file user_model.php */
