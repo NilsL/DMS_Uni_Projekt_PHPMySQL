@@ -5,17 +5,33 @@
  */
 class User_model extends CI_Model {
 
-   /**
-    * @return mixed
-    */
-   function create_User() {
+    /**
+     * @param $first_name
+     * @param $last_name
+     * @param $email
+     * @param $username
+     * @param $password
+     * @return bool
+     */
+    function create_User($first_name, $last_name, $email, $username, $password) {
+      //ueberpruefung ob der username und email bereits verwendet wurde
+      $this->db->where('username', $username);
+      $query = $this->db->get('login_users');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
+      $this->db->where('number', $email);
+      $query = $this->db->get('login_users');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
 
       $insert_data = array(
-         'first_name' => $this->input->post('first_name'),
-         'last_name'  => $this->input->post('last_name'),
-         'email'      => $this->input->post('email'),
-         'username'   => $this->input->post('username'),
-         'password'   => hash('sha256', $this->input->post('password'))
+         'first_name' => $first_name,
+         'last_name'  => $last_name,
+         'email'      => $email,
+         'username'   => $username,
+         'password'   => hash('sha256', $password)
       );
 
       // insert erfolgreich, dann wird $insert TRUE
@@ -116,18 +132,22 @@ class User_model extends CI_Model {
    function checking($inputed, $id) {
       if ($id == "email") {
          $this->db->where('email', $inputed);
+         $result = $this->db->get('login_users');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "This Email is already used!";
+          }
+          return FALSE;
       }
       else if ($id == "username") {
          $this->db->where('username', $inputed);
+         $result = $this->db->get('login_users');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "This Username is already used!";
+          }
+          return FALSE;
       }
-      $result = $this->db->get('login_users');
-
-      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
-      if ($result->num_rows() > 0) {
-         return FALSE;
-      }
-
-      return TRUE;
    }
 }
 /* End of file user_model.php */
