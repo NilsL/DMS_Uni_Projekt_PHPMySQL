@@ -5,17 +5,33 @@
  */
 class User_model extends CI_Model {
 
-   /**
-    * @return mixed
-    */
-   function create_User() {
+    /**
+     * @param $first_name
+     * @param $last_name
+     * @param $email
+     * @param $username
+     * @param $password
+     * @return bool
+     */
+    function create_User($first_name, $last_name, $email, $username, $password) {
+      //ueberpruefung ob der username und email bereits verwendet wurde
+      $this->db->where('username', $username);
+      $query = $this->db->get('login_users');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
+      $this->db->where('number', $email);
+      $query = $this->db->get('login_users');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
 
       $insert_data = array(
-         'first_name' => $this->input->post('first_name'),
-         'last_name'  => $this->input->post('last_name'),
-         'email'      => $this->input->post('email'),
-         'username'   => $this->input->post('username'),
-         'password'   => hash('sha256', $this->input->post('password'))
+         'first_name' => $first_name,
+         'last_name'  => $last_name,
+         'email'      => $email,
+         'username'   => $username,
+         'password'   => hash('sha256', $password)
       );
 
       // insert erfolgreich, dann wird $insert TRUE
