@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Insert Document</h1>
 
-      <?php echo form_open('insert/validate_i_document', array('class' => 'login')); ?>
+      <?php echo form_open('insert/validate_i_document', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
 
       <?php
       //title eingabefeld

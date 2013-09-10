@@ -118,7 +118,7 @@ class Search extends CI_Controller {
 
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
-      $response = NULL;
+      $response = '<option value ="'.'">--- view all ---</option>';
       foreach ($hints->result() as $hint) {
          $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }

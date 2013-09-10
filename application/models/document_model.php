@@ -18,11 +18,11 @@ class Document_model extends CI_Model {
    function create_Document($title, $abstract, $class, $project, $keyword, $array_authors) {
       //transaction startet
       $this->db->trans_begin();
+      //title darf nicht mehrfach in der DB vorhanden sein
       $this->db->where('title', $title);
       $query = $this->db->get('storage_document');
       if (!$query || $query->num_rows == 1) {
-         $this->db->trans_rollback();
-
+      $this->db->trans_rollback();
          return FALSE;
       }
 
@@ -38,7 +38,6 @@ class Document_model extends CI_Model {
       $query = $this->db->insert('storage_document', $data);
       if (!$query) {
          $this->db->trans_rollback();
-
          return FALSE;
       }
 
@@ -47,7 +46,6 @@ class Document_model extends CI_Model {
       $query = $this->db->query('select last_insert_id() as last_id');
       if (!$query) {
          $this->db->trans_rollback();
-
          return FALSE;
       }
       $row         = $query->row();
@@ -263,12 +261,11 @@ class Document_model extends CI_Model {
       $this->db->where('title', $inputed);
       $result = $this->db->get('storage_document');
 
-      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+      //falls was gefunden ist heisst der input vom user schon vorhanden ist
       if ($result->num_rows() > 0) {
-         return FALSE;
+         return "This title is already used!";
       }
-
-      return TRUE;
+      return FALSE;
    }
 }
 /* End of file document_model.php */

@@ -14,7 +14,7 @@ class Insert extends CI_Controller {
    }
 
    /**
-    *
+    * Session-Abfrage
     */
    function is_logged_in() {
       $is_logged_in = $this->session->userdata('is_logged_in');
@@ -56,7 +56,6 @@ class Insert extends CI_Controller {
    function insert_project() {
       $data ['jQuery']   = TRUE;
       $data ['view']     = 'insert/insert_project_view';
-      $data ['dropdown'] = 'true';
       $this->load->view('template/content', $data);
    }
 
@@ -64,42 +63,56 @@ class Insert extends CI_Controller {
     * insert document
     */
    function insert_document() {
-      $this->load->model('project_model');
-      $this->load->model('author_model');
-      $this->load->model('classification_model');
-
-      if ($projects = $this->project_model->get_Project()) {
-         $data ['projects'] = $projects;
-      }
-      if ($authors = $this->author_model->get_Authors(TRUE)) {
-         $data ['authors'] = $authors;
-      }
-      if ($classification = $this->classification_model->get_Classification()) {
-         $data ['classifications'] = $classification;
-      }
-
+      $data = $this->insert_document_helper();
       $data ['jQuery'] = TRUE;
       $data ['view']   = 'insert/insert_document_view';
       $this->load->view('template/content', $data);
    }
 
-   /**
+    /**
+     * insert document helper
+     */
+    function insert_document_helper() {
+        $this->load->model('project_model');
+        $this->load->model('author_model');
+        $this->load->model('classification_model');
+
+        if ($projects = $this->project_model->get_Project()) {
+            $data ['projects'] = $projects;
+        }
+        if ($authors = $this->author_model->get_Authors(TRUE)) {
+            $data ['authors'] = $authors;
+        }
+        if ($classification = $this->classification_model->get_Classification()) {
+            $data ['classifications'] = $classification;
+        }
+        return $data;
+    }
+
+    /**
     * insert file
     */
    function insert_file() {
-      $this->load->model('document_model');
-
-      // get all documents from db
-      if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
-         $data ['documents'] = $documents;
-      }
-
+      $data = $this->insert_file_helper();
       $data ['jQuery'] = TRUE;
       $data ['view']   = 'insert/insert_file_view';
       $this->load->view('template/content', $data);
    }
 
-   /**
+    /**
+     * insert file helper
+     */
+    function insert_file_helper() {
+        $this->load->model('document_model');
+
+        // get all documents from db
+        if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
+            $data ['documents'] = $documents;
+        }
+        return $data;
+    }
+
+    /**
     * validierung des geinserteten authors
     */
    function validate_i_author() {
@@ -197,24 +210,35 @@ class Insert extends CI_Controller {
     */
    function validate_i_document() {
       $this->form_validation->set_rules('document_title', 'Title', 'trim|required|');
+      $this->form_validation->set_rules('title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
       $this->form_validation->set_rules('classification', 'Classification', 'trim|greater_than[0]|');
       // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
       // darum fehlermeldung muss neu definiert werden
       $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
+      $this->form_validation->set_rules('input_document_keywords', 'Keywords', 'trim|required|');
+      $this->form_validation->set_rules('input_document_abstract', 'Abstract', 'trim|required|');
 
       if ($this->form_validation->run() == FALSE) {
          $this->insert_document();
       }
       else {
+         //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
+         $array_authors = $this->input->post('hiddenid');
+         //aber es kann sein dass der user gar keinen author ausgewaehlt hat, das war nicht bei form_validation durchgefuehrt
+         if(!$array_authors) {
+             $data           = $this->insert_document_helper();
+             $data ['error'] = 'Please select at least an author!';
+             $data ['view']  = 'insert/insert_document_view';
+             $this->load->view('template/content', $data);
+         }
 
          $title    = $this->input->post('document_title');
          $abstract = $this->input->post('input_document_abstract');
          $class    = $this->input->post('classifications');
          $project  = $this->input->post('projects');
          $keyword  = $this->input->post('input_document_keywords');
-         //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
-         $array_authors = $this->input->post('hiddenid');
+
 
          $this->load->model('document_model');
          $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keyword, $array_authors);
@@ -258,7 +282,7 @@ class Insert extends CI_Controller {
          }
          else {
             $data           = $this->insert_file_helper();
-            $data ['error'] = $success; // $success ist gerade die errorstack aus model
+            $data ['error'] = $success; // $success in diesem Anweisungsblock waere die errorstack aus model
             $data ['view']  = 'insert/insert_file_view';
             $this->load->view('template/content', $data);
          }
@@ -284,17 +308,13 @@ class Insert extends CI_Controller {
          case "author_model":
             $hints = $this->author_model->getHints($entered);
             break;
-         //class wird aus dem grund der einfachheit nicht diese funktion zugeteilt
-         /* case "classification_model":
-            $hints = $this->classification_model->getHints($entered);
-            break; */
          case "document_model":
             $hints = $this->document_model->getHints($entered);
             break;
       }
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
-      $response = NULL;
+      $response = '<option value ="'.'">--- view all ---</option>';
       foreach ($hints->result() as $hint) {
          $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }
@@ -309,20 +329,19 @@ class Insert extends CI_Controller {
       //getten
       $inputed = $this->input->get('inputed');
       $id      = $this->input->get('id');
-      $id      = str_ireplace('_', ' ', $id);
       //model loaden
       switch ($id) {
-         case "author name":
-         case "author mail":
+         case "author_name":
+         case "author_mail":
             $this->load->model('author_model');
             $check_result = $this->author_model->checking($inputed, $id);
             break;
-         case "classification name":
+         case "classification_name":
             $this->load->model('classification_model');
             $check_result = $this->classification_model->checking($inputed, $id);
             break;
-         case "project name":
-         case "project number":
+         case "project_name":
+         case "project_number":
             $this->load->model('project_model');
             $check_result = $this->project_model->checking($inputed, $id);
             break;
@@ -335,10 +354,7 @@ class Insert extends CI_Controller {
       $response = NULL;
       //ist $check_result true, congratz...
       if ($check_result) {
-         $response = 'The ' . $id . ' can be used!';
-      }
-      else {
-         $response = 'The ' . $id . ' is already used!';
+         $response = $check_result;
       }
       echo $response;
    }
