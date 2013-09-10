@@ -14,7 +14,7 @@ class Insert extends CI_Controller {
    }
 
    /**
-    *
+    * Session-Abfrage
     */
    function is_logged_in() {
       $is_logged_in = $this->session->userdata('is_logged_in');
@@ -56,7 +56,6 @@ class Insert extends CI_Controller {
    function insert_project() {
       $data ['jQuery']   = TRUE;
       $data ['view']     = 'insert/insert_project_view';
-      $data ['dropdown'] = 'true';
       $this->load->view('template/content', $data);
    }
 
@@ -64,42 +63,56 @@ class Insert extends CI_Controller {
     * insert document
     */
    function insert_document() {
-      $this->load->model('project_model');
-      $this->load->model('author_model');
-      $this->load->model('classification_model');
-
-      if ($projects = $this->project_model->get_Project()) {
-         $data ['projects'] = $projects;
-      }
-      if ($authors = $this->author_model->get_Authors(TRUE)) {
-         $data ['authors'] = $authors;
-      }
-      if ($classification = $this->classification_model->get_Classification()) {
-         $data ['classifications'] = $classification;
-      }
-
+      $data = $this->insert_document_helper();
       $data ['jQuery'] = TRUE;
       $data ['view']   = 'insert/insert_document_view';
       $this->load->view('template/content', $data);
    }
 
-   /**
+    /**
+     * insert document helper
+     */
+    function insert_document_helper() {
+        $this->load->model('project_model');
+        $this->load->model('author_model');
+        $this->load->model('classification_model');
+
+        if ($projects = $this->project_model->get_Project()) {
+            $data ['projects'] = $projects;
+        }
+        if ($authors = $this->author_model->get_Authors(TRUE)) {
+            $data ['authors'] = $authors;
+        }
+        if ($classification = $this->classification_model->get_Classification()) {
+            $data ['classifications'] = $classification;
+        }
+        return $data;
+    }
+
+    /**
     * insert file
     */
    function insert_file() {
-      $this->load->model('document_model');
-
-      // get all documents from db
-      if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
-         $data ['documents'] = $documents;
-      }
-
+      $data = $this->insert_file_helper();
       $data ['jQuery'] = TRUE;
       $data ['view']   = 'insert/insert_file_view';
       $this->load->view('template/content', $data);
    }
 
-   /**
+    /**
+     * insert file helper
+     */
+    function insert_file_helper() {
+        $this->load->model('document_model');
+
+        // get all documents from db
+        if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
+            $data ['documents'] = $documents;
+        }
+        return $data;
+    }
+
+    /**
     * validierung des geinserteten authors
     */
    function validate_i_author() {
@@ -268,7 +281,7 @@ class Insert extends CI_Controller {
          }
          else {
             $data           = $this->insert_file_helper();
-            $data ['error'] = $success; // $success ist gerade die errorstack aus model
+            $data ['error'] = $success; // $success in diesem Anweisungsblock waere die errorstack aus model
             $data ['view']  = 'insert/insert_file_view';
             $this->load->view('template/content', $data);
          }
@@ -294,17 +307,13 @@ class Insert extends CI_Controller {
          case "author_model":
             $hints = $this->author_model->getHints($entered);
             break;
-         //class wird aus dem grund der einfachheit nicht diese funktion zugeteilt
-         /* case "classification_model":
-            $hints = $this->classification_model->getHints($entered);
-            break; */
          case "document_model":
             $hints = $this->document_model->getHints($entered);
             break;
       }
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
-      $response = NULL;
+      $response = '<option value ="'.'">--- view all ---</option>';
       foreach ($hints->result() as $hint) {
          $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }
