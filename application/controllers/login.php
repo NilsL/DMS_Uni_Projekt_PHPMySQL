@@ -116,7 +116,7 @@ class Login extends CI_Controller {
       $check_result = $this->user_model->checking($inputed, $id);
 
       $response = NULL;
-      //ist $check_result true, congratz...
+      //Sollte $check_result nicht FALSE sein heisst das dass irgendwelche Konflikt existiert
       if ($check_result) {
          $response = $check_result;
       }
