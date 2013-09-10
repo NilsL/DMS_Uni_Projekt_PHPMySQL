@@ -12,6 +12,20 @@ class Author_model extends CI_Model {
     * @return bool liefert <code> TRUE </code> wenn der Author erfolgreich Inserted wurde
     */
    function create_Author($name, $email) {
+      //zuerst prüfen ob der author oder email bereits existiert
+      $this->db->where('name', $name);
+      $query = $this->db->get('storage_author');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
+      else {
+          $this->db->where('mail', $email);
+          $query = $this->db->get('storage_author');
+          if ($query->num_rows == 1) {
+              return FALSE;
+          }
+      }
+
       $data = array(
          'name' => $name,
          'mail' => $email

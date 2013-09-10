@@ -12,6 +12,17 @@ class Project_model extends CI_Model {
     * @return bool
     */
    function create_Project($name, $number) {
+      // mehrfache speicherung ueberpruefen...
+      $this->db->where('name', $name);
+      $query = $this->db->get('storage_project');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
+      $this->db->where('number', $number);
+      $query = $this->db->get('storage_project');
+      if ($query->num_rows == 1) {
+          return FALSE;
+      }
       $data = array(
          'name'   => $name,
          'number' => $number

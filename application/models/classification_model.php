@@ -11,6 +11,13 @@ class Classification_model extends CI_Model {
     * @return bool liefert <code> TRUE </code> wenn der Insert erfolgreich war
     */
    function create_Classification($name) {
+     // mehrfache speicherung Ueberpruefen...
+     $this->db->where('name', $name);
+     $query = $this->db->get('storage_classification');
+     if ($query->num_rows == 1) {
+            return FALSE;
+     }
+
       $data   = array('name' => $name);
       $result = $this->db->insert('storage_classification', $data);
 
