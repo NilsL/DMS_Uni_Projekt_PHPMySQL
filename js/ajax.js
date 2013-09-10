@@ -65,7 +65,7 @@ function validateLogin() {
 function validateSignUp() {
   var a = document.forms['signup']['first_name'].value;
   if (a == null || a == "") {
-    alert("First Name must be filled out (Username or Email)");
+    alert("First Name must be filled out");
     return false;
   }
   var b = document.forms['signup']['last_name'].value;
@@ -108,6 +108,22 @@ function validateSignUp() {
     alert(f);
     return false;
   }
+}
+
+/**
+ * shows up a form validation
+ * for Insert view
+ * @returns {boolean}
+ */
+function validateInsert() {
+    //Falls Bemerkungen generiert wurde
+    var a = document.getElementsByTagName('span');
+    for(var i=0; i< a.length; i++) {
+        if(a[i].innerHTML!="") {
+            alert(a[i].innerHTML);
+            return false;
+        }
+    }
 }
 
 /**
@@ -227,6 +243,9 @@ function matching() {
   }
   else if (password.length == 0) {
     $("#check_password_confirm").text('');
+  }
+  else if (password.length > 32) {
+      $("#check_password_confirm").text('The password should have maximal 32 characters!');
   }
   else {
     //ueberpruefen ob beide inputs uebereinstimmt

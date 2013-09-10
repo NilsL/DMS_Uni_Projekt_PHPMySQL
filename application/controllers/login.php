@@ -74,8 +74,8 @@ class Login extends CI_Controller {
       }
       // ansonsten wird ein user in der db angelegt und die bestätigungs view angezeigt
       else {
-         $this->load->model('login_model');
-         if ($query = $this->login_model->create_member()) {
+         $this->load->model('user_model');
+         if ($query = $this->user_model->create_member()) {
 
             $data['view'] = 'signup_successful';
             $this->load->view('template/content', $data);
@@ -114,10 +114,7 @@ class Login extends CI_Controller {
       $response = NULL;
       //ist $check_result true, congratz...
       if ($check_result) {
-         $response = 'The ' . $id . ' can be used!';
-      }
-      else {
-         $response = 'The ' . $id . ' is already used!';
+         $response = $check_result;
       }
       echo $response;
    }

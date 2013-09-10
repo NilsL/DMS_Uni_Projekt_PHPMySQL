@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Create Classification</h1>
 
-      <?php echo form_open('insert/validate_i_class', array('class' => 'login')); ?>
+      <?php echo form_open('insert/validate_i_class', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
 
       <p>
          <?php
