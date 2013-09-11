@@ -3,7 +3,7 @@
       <h1>Insert successfully operated!</h1>
 
       <h2>What do you want to do next?</h2>
-      <?php echo anchor('login/index', 'Back to Home');
+      <?php echo anchor('home', 'Back to Home');
       echo br(1);
       echo anchor('insert/insert_author', 'New Author');
       echo br(1);
