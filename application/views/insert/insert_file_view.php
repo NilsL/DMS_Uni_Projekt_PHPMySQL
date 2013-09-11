@@ -22,7 +22,7 @@
          echo br(1);
 
          echo form_label('File: ', 'file');
-         echo form_upload(array('id' => 'input_file', 'name' => 'input_file'));
+         echo form_upload(array('id' => 'file', 'name' => 'file'));
          ?>
       </p>
 
