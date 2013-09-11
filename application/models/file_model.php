@@ -48,7 +48,7 @@ class File_model extends CI_Model {
          $document = $this->document_model->get_Document($document_id);
 
          // den zu speichernden namen zusammensetzen
-         $fileName = $document->title . "_" . $document->project . $fileExt;
+         $fileName = $document->project . "-" . str_replace(' ', '_', $document->title) . $fileExt;
 
          $file = array(
             'file' => $filePath,
