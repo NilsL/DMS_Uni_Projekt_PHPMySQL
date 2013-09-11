@@ -198,12 +198,12 @@ class Insert extends CI_Controller {
    function validate_i_document() {
       $this->form_validation->set_rules('title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
-      $this->form_validation->set_rules('classification', 'Classification', 'trim|greater_than[0]|');
+      $this->form_validation->set_rules('classifications', 'Classification', 'trim|greater_than[0]|');
       // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
       // darum fehlermeldung muss neu definiert werden
       $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
-      $this->form_validation->set_rules('input_document_keywords', 'Keywords', 'trim|required|');
-      $this->form_validation->set_rules('input_document_abstract', 'Abstract', 'trim|required|');
+      $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required|');
+      $this->form_validation->set_rules('abstract', 'Abstract', 'trim|required|');
 
       if ($this->form_validation->run() == FALSE) {
          $this->insert_document();
@@ -233,10 +233,10 @@ class Insert extends CI_Controller {
          }
 
          $title    = $this->input->post('title');
-         $abstract = $this->input->post('input_document_abstract');
+         $abstract = $this->input->post('abstract');
          $class    = $this->input->post('classifications');
          $project  = $this->input->post('projects');
-         $keyword  = $this->input->post('input_document_keywords');
+         $keyword  = $this->input->post('keywords');
 
 
          $this->load->model('document_model');
