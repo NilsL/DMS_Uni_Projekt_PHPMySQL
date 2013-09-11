@@ -13,7 +13,7 @@
 
       //projekt eingabefeld
       echo form_label('Project: ', 'project');
-      echo form_input(array('name' => 'input_document_projects', 'id' => 'project', 'onkeyup' => 'javascript:showHint(this)'));
+      echo form_input(array('name' => 'project', 'id' => 'project', 'onkeyup' => 'javascript:showHint(this)'));
       echo br(1);
 
       // projekt dropdown
@@ -30,7 +30,7 @@
 
       //author eingabefeld
       echo form_label('Author: ', 'author');
-      echo form_input(array('name' => 'input_document_authors', 'id' => 'author', 'onkeyup' => 'javascript:showHint(this)'));
+      echo form_input(array('name' => 'author', 'id' => 'author', 'onkeyup' => 'javascript:showHint(this)'));
       echo br(1);
 
       // author dropdown
@@ -43,15 +43,15 @@
 
 
       //keyword eingabefeld
-      echo form_label('Keyword: ', 'keyword');
+      echo form_label('Keyword: ', 'keywords');
       echo br(1);
-      echo form_textarea(array('id' => 'input_document_keywords', 'name' => 'input_document_keywords', 'placeholder' => 'delimited by comma'));
+      echo form_textarea(array('id' => 'keywords', 'name' => 'keywords', 'placeholder' => 'delimited by comma'));
       echo br(1);
 
       //abstract eingabefeld
       echo form_label('Abstract: ', 'abstract');
       echo br(1);
-      echo form_textarea(array('id' => 'input_document_abstract', 'name' => 'input_document_abstract', 'placeholder' => 'Please type your abstract text here'));
+      echo form_textarea(array('id' => 'abstract', 'name' => 'abstract', 'placeholder' => 'Please type your abstract text here'));
       echo br(1);
 
       echo form_submit('add_doc', 'Add Document');
