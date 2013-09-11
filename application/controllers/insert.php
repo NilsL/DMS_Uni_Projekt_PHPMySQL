@@ -196,7 +196,6 @@ class Insert extends CI_Controller {
     * validierung des documents
     */
    function validate_i_document() {
-      $this->form_validation->set_rules('document_title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
       $this->form_validation->set_rules('classification', 'Classification', 'trim|greater_than[0]|');
@@ -233,7 +232,7 @@ class Insert extends CI_Controller {
             $this->load->view('template/content', $data);
          }
 
-         $title    = $this->input->post('document_title');
+         $title    = $this->input->post('title');
          $abstract = $this->input->post('input_document_abstract');
          $class    = $this->input->post('classifications');
          $project  = $this->input->post('projects');
