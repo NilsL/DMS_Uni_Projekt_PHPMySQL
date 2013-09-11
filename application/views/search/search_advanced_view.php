@@ -2,7 +2,7 @@
    <?php
 
    echo form_fieldset('Erweiterte Suche', array('id' => 'search'));
-   echo form_open('site/show_advanced_result', array('class' => 'search')); ?>
+   echo form_open('search/show_result', array('class' => 'search')); ?>
 
    <p>
       <?php

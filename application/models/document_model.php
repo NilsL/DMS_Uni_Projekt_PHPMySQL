@@ -169,30 +169,38 @@ class Document_model extends CI_Model {
    }
 
    /**
-    * @param bool $title    übergebener Titel des gesuchten Dokuments
-    * @param bool $keywords übergebene Keywords des gesuchten Dokuments
-    * @param bool $dropdown default auf <code> FALSE </code>, wenn TRUE wird Rückgabe Dropdown konform
+    * @param bool $title
+    * @param bool $keywords
+    * @param bool $project
+    * @param bool $class
+    * @param bool $dropdown
     *
-    * @return bool liefert alle Dokumente anhand der Parameter bzw einfach alle Dokumente ohne Parameter
+    * @return array|bool
     */
-   function get_Documents($title = FALSE, $keywords = FALSE, $dropdown = FALSE) {
+   function get_Documents($title = FALSE, $keywords = FALSE, $project = FALSE, $class = FALSE, $dropdown = FALSE) {
 
       $this->db->select('storage_document.id, title, created, last_edited, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->distinct('storage_document.id, title, created, last_edited, storage_project.name AS project, storage_classification.name AS classification');
 
-      // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
+      if ($title) {
+         $this->db->or_like('title', $title);
+      }
+
       if ($keywords) {
-         $this->db->distinct('storage_document.id, title, storage_project.name AS project, storage_classification.name AS classification');
-         // join fuer keyword id zu name
          $this->db->join('storage_document_has_keyword', 'storage_document.id = storage_document_has_keyword.document_id');
          $this->db->join('storage_keyword', 'storage_document_has_keyword.keyword_id = storage_keyword.id');
          $this->db->or_where_in('storage_keyword.name', $keywords);
       }
 
-      if ($title) {
-         $this->db->or_like('title', $title);
+      if ($class) {
+         $this->db->or_where_in('storage_classification.id', $project);
+      }
+
+      if ($project) {
+         $this->db->or_where_in('storage_project.id', $project);
       }
 
       $this->db->order_by('storage_document.title', 'asc');
@@ -200,9 +208,7 @@ class Document_model extends CI_Model {
       $result = $this->db->get('storage_document');
 
       if ($result->num_rows() > 0) {
-         // wenn $dropdown TRUE ist wird ein Dropdown konformes Array produziert, sonst normale Resultset Rückgabe
          if ($dropdown) {
-            //bugfix: $dropdown war noch ein bool, kann nicht direkt als array verwenden
             $dropdown   = array();
             $dropdown[] = '--- view all ---';
 
