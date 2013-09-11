@@ -6,18 +6,6 @@
 class File_model extends CI_Model {
 
    /**
-    * Constructor
-    *
-    * @access public
-    */
-   function __construct() {
-      parent::__construct();
-      // upload ordner lokalisieren
-      $this->F_PATH = realpath(APPPATH . '../uploads/');
-   }
-
-
-   /**
     * @param $document_id übergebene Dokumenten ID
     *
     * @return bool|string <code> TRUE </code> wenn der Datei insert erfolgreich war, ansonsten ein Error String
@@ -25,7 +13,7 @@ class File_model extends CI_Model {
    function create_File($document_id) {
       // libary loading
       $config ['allowed_types'] = 'doc|docx|odt|pdf';
-      $config ['upload_path']   = $this->F_PATH;
+      $config ['upload_path']   = './uploads/';
       $config ['max_size']      = '20480';
       $config ['max_filename']  = '100';
       // $config['max_width'] = '1024';
