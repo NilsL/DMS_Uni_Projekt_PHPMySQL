@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Add Attachment</h1>
 
-      <?php echo form_open_multipart('insert/validate_i_file', array('class' => 'login')); ?>
+      <?php echo form_open_multipart('insert/validate_i_file', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
 
       <p>
          <?php

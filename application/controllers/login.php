@@ -74,16 +74,20 @@ class Login extends CI_Controller {
       }
       // ansonsten wird ein user in der db angelegt und die bestätigungs view angezeigt
       else {
-         $this->load->model('login_model');
-         if ($query = $this->login_model->create_member()) {
-
+         $first_name = $this->input->post('first_name');
+         $last_name = $this->input->post('last_name');
+         $email = $this->input->post('email');
+         $username = $this->input->post('username');
+         $password = $this->input->post('password');
+         $this->load->model('user_model');
+         if ($query = $this->user_model->create_member($first_name, $last_name, $email, $username, $password)) {
             $data['view'] = 'signup_successful';
             $this->load->view('template/content', $data);
-
          }
          // geht der db insert schief weil zb db verbindung abbricht etc pp
          // wird umgeleitet auf die signup view
          else {
+            $data['error'] = 'Username or Email already existed!';
             $data['jQuery'] = TRUE;
             $data['view']   = 'signup_view';
             $this->load->view('template/content', $data);
@@ -112,12 +116,9 @@ class Login extends CI_Controller {
       $check_result = $this->user_model->checking($inputed, $id);
 
       $response = NULL;
-      //ist $check_result true, congratz...
+      //Sollte $check_result nicht FALSE sein heisst das dass irgendwelche Konflikt existiert
       if ($check_result) {
-         $response = 'The ' . $id . ' can be used!';
-      }
-      else {
-         $response = 'The ' . $id . ' is already used!';
+         $response = $check_result;
       }
       echo $response;
    }

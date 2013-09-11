@@ -16,14 +16,14 @@ class Author_model extends CI_Model {
       $this->db->where('name', $name);
       $query = $this->db->get('storage_author');
       if ($query->num_rows == 1) {
-         return FALSE;
+          return FALSE;
       }
       else {
-         $this->db->where('mail', $email);
-         $query = $this->db->get('storage_author');
-         if ($query->num_rows == 1) {
-            return FALSE;
-         }
+          $this->db->where('mail', $email);
+          $query = $this->db->get('storage_author');
+          if ($query->num_rows == 1) {
+              return FALSE;
+          }
       }
 
       $data = array(
@@ -138,20 +138,24 @@ class Author_model extends CI_Model {
     * @return bool
     */
    function checking($inputed, $id) {
-      if ($id == "author mail") {
+      if ($id == "author_mail") {
          $this->db->where('mail', $inputed);
+          $result = $this->db->get('storage_author');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "The author mail is already used!";
+          }
+          return FALSE;
       }
-      else if ($id == "author name") {
+      else if ($id == "author_name") {
          $this->db->where('name', $inputed);
+         $result = $this->db->get('storage_author');
+          //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
+          if ($result->num_rows() > 0) {
+              return "The author name is already used!";
+          }
+          return FALSE;
       }
-      $result = $this->db->get('storage_author');
-
-      //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
-      if ($result->num_rows() > 0) {
-         return FALSE;
-      }
-
-      return TRUE;
    }
 }
 /* End of file author_model.php */
