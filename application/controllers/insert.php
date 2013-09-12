@@ -90,7 +90,7 @@ class Insert extends CI_Controller {
       $this->load->model('document_model');
 
       // get all documents from db
-      if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
+      if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
          $data ['documents'] = $documents;
       }
 
