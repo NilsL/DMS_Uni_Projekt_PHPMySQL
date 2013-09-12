@@ -12,17 +12,15 @@ class File_model extends CI_Model {
     */
    function create_File($document_id) {
       // libary loading
-      $config ['allowed_types'] = 'doc|docx|odt|pdf';
+      $config ['allowed_types'] = 'doc|docx|odt|pdf|txt';
       $config ['upload_path']   = './uploads/';
       $config ['max_size']      = '20480';
       $config ['max_filename']  = '100';
-      // $config['max_width'] = '1024';
-      // $config['max_height'] = '768';
+      //$config['file_name'] = $_FILES['userfile']['name'].'test';
       $this->load->library('upload', $config);
 
       // uploading
-      if ($this->upload->do_upload('input_file')) {
-         // die info aus der hochgeladenen datei zugreifen
+      if ($this->upload->do_upload('file')) {
          $data = $this->upload->data();
 
          // file Path
@@ -65,7 +63,7 @@ class File_model extends CI_Model {
       }
       //geht es schief dann erros abliefern
       else {
-         return $this->upload->display_errors();
+         return $this->upload->display_errors('<p class="error">','</p>');
       }
    }
 

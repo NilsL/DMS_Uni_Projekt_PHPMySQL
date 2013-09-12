@@ -286,18 +286,18 @@ class Insert extends CI_Controller {
          $document_id = $this->input->post('documents');
 
          $this->load->model('file_model');
-         $success = $this->file_model->create_File($document_id);
+         $result = $this->file_model->create_File($document_id);
 
-         if ($success === TRUE) {
+         if ($result === TRUE) {
             $data ['view'] = 'insert/successful_insert_view';
             $this->load->view('template/content', $data);
          }
          else {
             $this->load->model('document_model');
-            if ($documents = $this->document_model->get_Documents(FALSE, FALSE, TRUE)) {
+            if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
                $data ['documents'] = $documents;
             }
-            $data ['error'] = $success; // $success in diesem Anweisungsblock waere die errorstack aus model
+            $data ['error'] = $result; // $success in diesem Anweisungsblock waere die errorstack aus model
             $data ['view']  = 'insert/insert_file_view';
             $this->load->view('template/content', $data);
          }
