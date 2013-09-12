@@ -29,15 +29,12 @@ function showHint(element) {
 /**
  * puts selected option into the textinput field
  * @param input_element
- * @param output_element
- *
  */
 function putSelected(input_element) {
   var input_element_id = input_element.id;
-  //es scheint dieser haessliche ausdruck doch unentbeherlich zu sein :)
   var output_element_id = input_element_id.substr(0, input_element_id.length - 1);
-  var selected = document.getElementById(input_element_id).selectedOptions;
-  document.getElementById(output_element_id).value = selected[0].text;
+  var sel = document.getElementById(input_element_id).options[input_element.selectedIndex];
+  document.getElementById(output_element_id).value = sel.text;
 
 }
 

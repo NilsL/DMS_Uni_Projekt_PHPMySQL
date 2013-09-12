@@ -37,7 +37,7 @@
       <?php
       echo form_label('Projektauswahl', 'projects');
       //das gleiche wie oben, das element wird uebergeben
-      $attributes = 'id="projects" size="1" onclick="javascript:putSelected(this)"';
+      $attributes = 'id="projects" onclick="javascript:putSelected(this)"';
       echo form_dropdown('projects', $projects, array(), $attributes);
       ?>
    </p>
