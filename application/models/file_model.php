@@ -6,9 +6,9 @@
 class File_model extends CI_Model {
 
    /**
-    * @param $document_id übergebene Dokumenten ID
+    * @param $document_id
     *
-    * @return bool|string <code> TRUE </code> wenn der Datei insert erfolgreich war, ansonsten ein Error String
+    * @return bool
     */
    function create_File($document_id) {
       // libary loading
@@ -36,35 +36,31 @@ class File_model extends CI_Model {
          // den zu speichernden namen zusammensetzen
          $fileName = $document->project . "-" . str_replace(' ', '_', $document->title) . $fileExt;
 
-         $file = array(
-            'file' => $filePath,
-            'md5'  => $md5,
-            'name' => $fileName
+         $query = $this->db->insert('storage_file',
+            array('file' => $filePath,
+                  'md5'  => $md5,
+                  'name' => $fileName
+            )
          );
-
-
-         $query = $this->db->insert('storage_file', $file);
 
          // kreuztabelle, um mit document zu verbinden
          if (!$query) {
-            return 'Upload failed!';
+            return FALSE;
          }
          else {
             $query   = $this->db->query('select last_insert_id() as last_id');
-            $row     = $query->row();
-            $file_id = $row->last_id;
-            $this->db->insert('storage_document_has_file', array(
-               'document_id' => $document_id,
-               'file_id'     => $file_id
-            ));
+            $file_id = $query->row()->last_id;
+            $this->db->insert('storage_document_has_file',
+               array('document_id' => $document_id,
+                     'file_id'     => $file_id
+               )
+            );
          }
 
          return TRUE;
       }
-      //geht es schief dann erros abliefern
-      else {
-         return $this->upload->display_errors('<p class="error">','</p>');
-      }
+
+      return FALSE;
    }
 
    /**

@@ -288,7 +288,7 @@ class Insert extends CI_Controller {
          $this->load->model('file_model');
          $result = $this->file_model->create_File($document_id);
 
-         if ($result === TRUE) {
+         if ($result) {
             $data ['view'] = 'insert/successful_insert_view';
             $this->load->view('template/content', $data);
          }
@@ -297,7 +297,7 @@ class Insert extends CI_Controller {
             if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
                $data ['documents'] = $documents;
             }
-            $data ['error'] = $result; // $success in diesem Anweisungsblock waere die errorstack aus model
+            $data ['error'] = TRUE;
             $data ['view']  = 'insert/insert_file_view';
             $this->load->view('template/content', $data);
          }
