@@ -47,10 +47,10 @@
    <p>
       <?php
       if ($files) {
-         foreach ($files->result() as $row) {
-            echo anchor('search/dl_file/' . $row->f_id, $row->f_name);
+         foreach ($files->result() as $file) {
+            echo anchor('search/dl_file/' . $file->id, $file->file);
             echo br(1);
-            echo 'MD5: ' . $row->f_md5;
+            echo 'MD5: ' . $file->md5;
             echo br(2);
          }
       }

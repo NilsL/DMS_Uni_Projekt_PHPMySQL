@@ -11,35 +11,29 @@ class File_model extends CI_Model {
     * @return bool
     */
    function create_File($document_id) {
+      $this->load->model('document_model');
+      $document = $this->document_model->get_Document($document_id);
+
+      $fileName = $document->project . '-' . $document->title . '-' . uniqid();
+
+
       // libary loading
-      $config ['allowed_types'] = 'doc|docx|odt|pdf|txt';
       $config ['upload_path']   = './uploads/';
+      $config ['allowed_types'] = 'doc|docx|odt|pdf|txt';
+      $config ['file_name']     = $fileName;
       $config ['max_size']      = '20480';
       $config ['max_filename']  = '100';
-      //$config['file_name'] = $_FILES['userfile']['name'].'test';
+
       $this->load->library('upload', $config);
 
       // uploading
       if ($this->upload->do_upload('file')) {
          $data = $this->upload->data();
 
-         // file Path
-         $filePath = $data ['full_path'];
-         //md5string erzeugen anhand fullpath
-         $md5 = md5_file($filePath);
-         // file endung
-         $fileExt = $data ['file_ext'];
-         // file name basteln, dafuer braucht man document_model
-         $this->load->model('document_model');
-         $document = $this->document_model->get_Document($document_id);
-
-         // den zu speichernden namen zusammensetzen
-         $fileName = $document->project . "-" . str_replace(' ', '_', $document->title) . $fileExt;
-
          $query = $this->db->insert('storage_file',
-            array('file' => $filePath,
-                  'md5'  => $md5,
-                  'name' => $fileName
+            array('filepath' => $data ['file_path'],
+                  'file'     => $data['file_name'],
+                  'md5'      => md5_file($data['full_path'])
             )
          );
 
@@ -73,8 +67,8 @@ class File_model extends CI_Model {
          $row = $file->row();
 
          //download starten
-         $data = file_get_contents($row->file);
-         $name = $row->name;
+         $data = file_get_contents($row->filepath . $row->file);
+         $name = $row->file;
 
          force_download($name, $data);
       }
@@ -101,7 +95,6 @@ class File_model extends CI_Model {
     * @return bool
     */
    function get_File_By_DocumentID($document_id) {
-      $this->db->select('storage_file.id as f_id, storage_file.file as f_file, storage_file.md5 as f_md5, storage_file.name as f_name');
       $this->db->join('storage_document_has_file', 'storage_document_has_file.file_id = storage_file.id');
       $this->db->where('storage_document_has_file.document_id', $document_id);
       $files = $this->db->get('storage_file');
