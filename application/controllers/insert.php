@@ -28,81 +28,58 @@ class Insert extends CI_Controller {
     * insert hauptview, darunter liegen weiter vier weiteren
     */
    function index() {
-      $data ['view'] = 'insert/insert_view';
+      $data ['jQuery'] = TRUE;
+
+      switch ($this->input->get('v')) {
+         case 'author':
+            $data ['view'] = 'insert/insert_author_view';
+            break;
+
+         case 'class':
+            $data ['view'] = 'insert/insert_class_view';
+            break;
+
+         case 'project':
+            $data ['view'] = 'insert/insert_project_view';
+            break;
+
+         case 'document':
+            $this->load->model('project_model');
+            $this->load->model('author_model');
+            $this->load->model('classification_model');
+
+            if ($projects = $this->project_model->get_Project()) {
+               $data ['projects'] = $projects;
+            }
+            if ($authors = $this->author_model->get_Authors(TRUE)) {
+               $data ['authors'] = $authors;
+            }
+            if ($classification = $this->classification_model->get_Classification()) {
+               $data ['classifications'] = $classification;
+            }
+            $data ['view'] = 'insert/insert_document_view';
+            break;
+
+         case 'file':
+            $this->load->model('document_model');
+
+            if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
+               $data ['documents'] = $documents;
+            }
+            $data ['view'] = 'insert/insert_file_view';
+            break;
+
+         default:
+            $data ['view'] = 'insert/insert_view';
+            break;
+      }
       $this->load->view('template/content', $data);
    }
 
    /**
-    * insert author
+    * neuen Author anlegen
     */
    function insert_author() {
-      $data ['jQuery'] = TRUE;
-      $data ['view']   = 'insert/insert_author_view';
-      $this->load->view('template/content', $data);
-   }
-
-   /**
-    * insert class
-    */
-   function insert_class() {
-      $data ['jQuery'] = TRUE;
-      $data ['view']   = 'insert/insert_class_view';
-      $this->load->view('template/content', $data);
-   }
-
-   /**
-    * insert project
-    */
-   function insert_project() {
-      $data ['jQuery'] = TRUE;
-      $data ['view']   = 'insert/insert_project_view';
-      $this->load->view('template/content', $data);
-   }
-
-   /**
-    * insert document
-    */
-   function insert_document() {
-      $this->load->model('project_model');
-      $this->load->model('author_model');
-      $this->load->model('classification_model');
-
-      if ($projects = $this->project_model->get_Project()) {
-         $data ['projects'] = $projects;
-      }
-      if ($authors = $this->author_model->get_Authors(TRUE)) {
-         $data ['authors'] = $authors;
-      }
-      if ($classification = $this->classification_model->get_Classification()) {
-         $data ['classifications'] = $classification;
-      }
-
-      $data ['jQuery'] = TRUE;
-      $data ['view']   = 'insert/insert_document_view';
-      $this->load->view('template/content', $data);
-   }
-
-
-   /**
-    * insert file
-    */
-   function insert_file() {
-      $this->load->model('document_model');
-
-      // get all documents from db
-      if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
-         $data ['documents'] = $documents;
-      }
-
-      $data ['jQuery'] = TRUE;
-      $data ['view']   = 'insert/insert_file_view';
-      $this->load->view('template/content', $data);
-   }
-
-   /**
-    * validierung des geinserteten authors
-    */
-   function validate_i_author() {
       // Author muss name und email haben, alle felder pflicht
       $this->form_validation->set_rules('author_name', 'Author name', 'trim|required|');
       $this->form_validation->set_rules('author_mail', 'Email', 'trim|required');
@@ -135,9 +112,9 @@ class Insert extends CI_Controller {
    }
 
    /**
-    * validierung der classification
+    * neue Klassifikation anlegen
     */
-   function validate_i_class() {
+   function insert_class() {
       // es muss doch einen name dafür geben
       $this->form_validation->set_rules('class_name', 'Classification name', 'trim|required|');
       if ($this->form_validation->run() == FALSE) {
@@ -162,9 +139,9 @@ class Insert extends CI_Controller {
    }
 
    /**
-    * validierung des projekts
+    * neues Projekt anlegen
     */
-   function validate_i_project() {
+   function insert_project() {
       // project nr muss ausserdem numerisch sein
       $this->form_validation->set_rules('project_name', 'Project Name', 'trim|required|');
       $this->form_validation->set_rules('project_number', 'Project Number', 'trim|required|numeric');
@@ -193,9 +170,9 @@ class Insert extends CI_Controller {
    }
 
    /**
-    * validierung des documents
+    * neues Dokument anlegen
     */
-   function validate_i_document() {
+   function insert_document() {
       $this->form_validation->set_rules('title', 'Title', 'trim|required|');
       $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
       $this->form_validation->set_rules('classifications', 'Classification', 'trim|greater_than[0]|');
@@ -270,9 +247,9 @@ class Insert extends CI_Controller {
    }
 
    /**
-    * validierung des files
+    * neue Datei einem Dokument hinzufügen
     */
-   function validate_i_file() {
+   function insert_file() {
       $this->form_validation->set_rules('documents', 'Document', 'trim|greater_than[0]|');
       // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
       // darum fehlermeldung muss neu definiert werden
