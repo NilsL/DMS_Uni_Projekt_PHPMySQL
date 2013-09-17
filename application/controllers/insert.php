@@ -288,7 +288,10 @@ class Insert extends CI_Controller {
          $this->load->model('file_model');
          $result = $this->file_model->create_File($document_id);
 
-         if ($result) {
+         $this->load->model('document_model');
+         $result2 = $this->document_model->update_Document_LastEdited($document_id);
+
+         if ($result && $result2) {
             $data ['view'] = 'insert/successful_insert_view';
             $this->load->view('template/content', $data);
          }

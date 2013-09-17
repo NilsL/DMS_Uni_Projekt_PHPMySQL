@@ -244,9 +244,15 @@ class Document_model extends CI_Model {
    }
 
    /**
-    * @return bool
+    * @param $doc_id
+    *
+    * @return bool liefert <code> TRUE </code> wenn das update erfolgreich war, sonst <code> FALSE </code>
     */
-   function update_Document() {
+   function update_Document_LastEdited($doc_id) {
+      $result = $this->db->update('storage_document', array('last_edited' => time()), array('id' => $doc_id));
+      if ($result) {
+         return TRUE;
+      }
       return FALSE;
    }
 
