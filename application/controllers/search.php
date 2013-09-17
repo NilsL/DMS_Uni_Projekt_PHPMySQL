@@ -1,4 +1,4 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Class Search
@@ -10,13 +10,6 @@ class Search extends CI_Controller {
     */
    function __construct() {
       parent::__construct();
-      $this->is_logged_in();
-   }
-
-   /**
-    * soll noch ausgelagert werden in einen helper
-    */
-   function is_logged_in() {
       $is_logged_in = $this->session->userdata('is_logged_in');
 
       if (!isset($is_logged_in) || $is_logged_in != TRUE) {
