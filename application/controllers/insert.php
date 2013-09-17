@@ -270,7 +270,7 @@ class Insert extends CI_Controller {
             if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
                $data ['documents'] = $documents;
             }
-            $data ['error'] = TRUE;
+            $data ['error'] = 'Upload failed. Please try again!';
             $data ['view']  = 'insert/insert_file_view';
             $this->load->view('template/content', $data);
          }
