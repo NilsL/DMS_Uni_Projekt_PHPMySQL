@@ -30,11 +30,11 @@
 
       <?php
       if (isset ($error)) {
-         $this->upload->display_errors('<p class="error">', '</p>');
-      }
+          ?>
+          <p class="error" id="insert_error"><?php echo $error; ?></p>
+      <?php } ?>
 
-      echo validation_errors('<p class="error">');
-      ?>
+      <?php echo validation_errors('<p class="error">'); ?>
 
    </div>
 </div>

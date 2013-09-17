@@ -11,8 +11,14 @@ class File_model extends CI_Model {
     * @return bool
     */
    function create_File($document_id) {
+      //transaction startet
+      $this->db->trans_begin();
       $this->load->model('document_model');
       $document = $this->document_model->get_Document($document_id);
+      if(!$document || $document->num_rows == 1) {
+          $this->db->trans_rollback();
+          return FALSE;
+      }
 
       $fileName = $document->project . '-' . $document->title . '-' . uniqid();
 
@@ -36,24 +42,36 @@ class File_model extends CI_Model {
                   'md5'      => md5_file($data['full_path'])
             )
          );
-
-         // kreuztabelle, um mit document zu verbinden
          if (!$query) {
-            return FALSE;
+             $this->db->trans_rollback();
+             //die hochgeladene datei wieder wegloeschen aus dem filesystem falls die db-insert schiefgegangen ist
+             unlink($data ['full_path']);
+             return FALSE;
          }
+         // kreuztabelle, um mit document zu verbinden
          else {
-            $query   = $this->db->query('select last_insert_id() as last_id');
+            $query = $this->db->query('select last_insert_id() as last_id');
+            if (!$query) {
+                $this->db->trans_rollback();
+                unlink($data ['full_path']);
+                return FALSE;
+            }
             $file_id = $query->row()->last_id;
-            $this->db->insert('storage_document_has_file',
+            $query = $this->db->insert('storage_document_has_file',
                array('document_id' => $document_id,
                      'file_id'     => $file_id
                )
             );
+            if (!$query) {
+                $this->db->trans_rollback();
+                unlink($data ['full_path']);
+                return FALSE;
+            }
          }
-
+         $this->db->trans_complete();
          return TRUE;
       }
-
+      $this->db->trans_rollback();
       return FALSE;
    }
 
