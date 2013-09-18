@@ -29,9 +29,9 @@
       </p>
 
       <?php
-      if (isset ($error)) {
-         $this->upload->display_errors('<p class="error">', '</p>');
-      }
+      if (isset ($error)) { ?>
+         <p class="error"><?= $error; ?></p>
+      <?php }
 
       echo validation_errors('<p class="error">');
       ?>
