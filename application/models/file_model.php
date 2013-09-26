@@ -11,12 +11,9 @@ class File_model extends CI_Model {
     * @return bool liefert <code> TRUE </code> wenn der Upload inkl. verknüpfung in der DB erfolgreich war, sonst <code> FALSE </code>
     */
    function create_File($document_id) {
-      //transaction startet
-      $this->db->trans_begin();
       $this->load->model('document_model');
       $document = $this->document_model->get_Document($document_id);
       if(!$document || $document->num_rows == 1) {
-          $this->db->trans_rollback();
           return FALSE;
       }
 
