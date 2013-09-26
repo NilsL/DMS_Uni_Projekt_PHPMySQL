@@ -29,10 +29,10 @@
       </p>
 
       <?php
-      if (isset ($error)) {
-          ?>
-          <p class="error" id="insert_error"><?php echo $error; ?></p>
-      <?php } ?>
+
+      if (isset ($error)) { ?>
+         <p class="error"><?= $error; ?></p>
+      <?php }
 
       <?php echo validation_errors('<p class="error">'); ?>
 

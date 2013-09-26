@@ -8,7 +8,7 @@ class File_model extends CI_Model {
    /**
     * @param $document_id
     *
-    * @return bool
+    * @return bool liefert <code> TRUE </code> wenn der Upload inkl. verknüpfung in der DB erfolgreich war, sonst <code> FALSE </code>
     */
    function create_File($document_id) {
       //transaction startet
@@ -21,7 +21,6 @@ class File_model extends CI_Model {
       }
 
       $fileName = $document->project . '-' . $document->title . '-' . uniqid();
-
 
       // libary loading
       $config ['upload_path']   = './uploads/';
@@ -36,40 +35,37 @@ class File_model extends CI_Model {
       if ($this->upload->do_upload('file')) {
          $data = $this->upload->data();
 
-         $query = $this->db->insert('storage_file',
+         $this->db->trans_start();
+         // eintrag in der db anlegen mit pfad, dateinamen und md5 checksumme
+         $result = $this->db->insert('storage_file',
             array('filepath' => $data ['file_path'],
                   'file'     => $data['file_name'],
                   'md5'      => md5_file($data['full_path'])
             )
          );
-         if (!$query) {
-             $this->db->trans_rollback();
-             //die hochgeladene datei wieder wegloeschen aus dem filesystem falls die db-insert schiefgegangen ist
-             unlink($data ['full_path']);
-             return FALSE;
-         }
-         // kreuztabelle, um mit document zu verbinden
-         else {
-            $query = $this->db->query('select last_insert_id() as last_id');
-            if (!$query) {
-                $this->db->trans_rollback();
-                unlink($data ['full_path']);
-                return FALSE;
-            }
-            $file_id = $query->row()->last_id;
-            $query = $this->db->insert('storage_document_has_file',
+
+         // eintrag in der m:n tabelle anlegen
+         if ($result) {
+            $query   = $this->db->query('select last_insert_id() as file_id');
+            $file_id = $query->row()->file_id;
+            $result  = $this->db->insert('storage_document_has_file',
                array('document_id' => $document_id,
                      'file_id'     => $file_id
                )
             );
-            if (!$query) {
-                $this->db->trans_rollback();
-                unlink($data ['full_path']);
-                return FALSE;
+            $this->db->trans_complete();
+
+            if (!$result) {
+               unlink($data['full_path']);
+
+               return FALSE;
             }
+
+            return TRUE;
          }
-         $this->db->trans_complete();
-         return TRUE;
+         else {
+            unlink($data['full_path']);
+         }
       }
       $this->db->trans_rollback();
       return FALSE;
