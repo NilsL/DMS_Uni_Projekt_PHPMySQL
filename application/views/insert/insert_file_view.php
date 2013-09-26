@@ -32,7 +32,7 @@
 
       if (isset ($error)) { ?>
          <p class="error"><?= $error; ?></p>
-      <?php }
+      <?php } ?>
 
       <?php echo validation_errors('<p class="error">'); ?>
 
