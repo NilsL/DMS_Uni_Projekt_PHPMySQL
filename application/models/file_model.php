@@ -13,6 +13,9 @@ class File_model extends CI_Model {
    function create_File($document_id) {
       $this->load->model('document_model');
       $document = $this->document_model->get_Document($document_id);
+      if(!$document || $document->num_rows == 1) {
+          return FALSE;
+      }
 
       $fileName = $document->project . '-' . $document->title . '-' . uniqid();
 
@@ -61,7 +64,7 @@ class File_model extends CI_Model {
             unlink($data['full_path']);
          }
       }
-
+      $this->db->trans_rollback();
       return FALSE;
    }
 
