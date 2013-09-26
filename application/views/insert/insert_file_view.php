@@ -29,12 +29,12 @@
       </p>
 
       <?php
+
       if (isset ($error)) { ?>
          <p class="error"><?= $error; ?></p>
-      <?php }
+      <?php } ?>
 
-      echo validation_errors('<p class="error">');
-      ?>
+      <?php echo validation_errors('<p class="error">'); ?>
 
    </div>
 </div>
