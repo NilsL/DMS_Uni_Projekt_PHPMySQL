@@ -80,8 +80,8 @@ class Login extends CI_Controller {
          $username = $this->input->post('username');
          $password = $this->input->post('password');
          $this->load->model('user_model');
-         if ($query = $this->user_model->create_member($first_name, $last_name, $email, $username, $password)) {
-            $data['view'] = 'signup_successful';
+         if ($query = $this->user_model->create_User($first_name, $last_name, $email, $username, $password)) {
+            $data['view'] = 'login/signup_successful';
             $this->load->view('template/content', $data);
          }
          // geht der db insert schief weil zb db verbindung abbricht etc pp
@@ -89,7 +89,7 @@ class Login extends CI_Controller {
          else {
             $data['error'] = 'Username or Email already existed!';
             $data['jQuery'] = TRUE;
-            $data['view']   = 'signup_view';
+            $data['view']   = 'login/signup_view';
             $this->load->view('template/content', $data);
          }
       }
