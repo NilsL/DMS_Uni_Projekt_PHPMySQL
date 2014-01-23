@@ -124,56 +124,6 @@ function validateInsert() {
 }
 
 /**
- * multiplechoice
- * for e.g. authos
- * pur javascript-tech
- *
- */
-//warum hier findet ajax kein einsatz: weil die zwischengespeicherte auswahl sowieso jederzeit nach dem einfuegen von
-//anderem benutzer geloescht werden koennen, ajax schafft nicht das mitzubekommen weil ajax letztlich durch action
-//von dem selben user aktiviert ist wie onclick oder so. ein loeschvorgang von anderem user zaehlt offenbar nicht dazu
-function showRow(obj) {
-  if (obj.value != 0) {
-    //isChoosed helperfunktion, verhindert mehrfachauswahl von einem eintrag
-    if (isChoosed(obj)) {
-      // table ergreifen
-      var tab = document.getElementById('tab');
-      // row inserten
-      var row = tab.insertRow(tab.rows.length);
-      // vier spalten schaffen
-      var idCell = row.insertCell(row.cells.length);
-      var nameCell = row.insertCell(row.cells.length);
-      var buttonCell = row.insertCell(row.cells.length);
-      var hiddenCell = row.insertCell(row.cells.length);
-      // Inhalten einfuegen, einmal id und einmal name
-      idCell.innerHTML = obj.value;
-      nameCell.innerHTML = obj.options[obj.selectedIndex].text;
-      //loeschbutton
-      buttonCell.innerHTML = '<input value="Delete" type="button" onclick="deleteRow(this)"/>';
-      //ganz wichtig, dies hidden inputfeld speichert die Userauswahl
-      hiddenCell.innerHTML = '<input type="hidden" name="hiddenid[]" value="' + obj.value + '" />';
-    }
-  }
-}
-
-//loeschfunktion
-function deleteRow(obj) {
-  var row = obj.parentNode.parentNode;
-  var tab = row.parentNode;
-  tab.deleteRow(row.rowIndex);
-}
-//diese funktion unterbindet dass die bereits ausgewaehlte record noch mal auszuwaehlen ist
-function isChoosed(obj) {
-  //ganze tabelle durchsuchen
-  for (i = 0; i < document.getElementById('tab').rows.length; i++) {
-    if (document.getElementById('tab').rows[i].cells[0].innerHTML == obj.value) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
  * email und username beim signup validieren
  * @param element
  * @returns {boolean}
