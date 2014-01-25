@@ -11,11 +11,11 @@ class Document_model extends CI_Model {
     * @param $class
     * @param $project
     * @param $keyword
-    * @param $array_authors
+    * @param $author
     *
     * @return bool
     */
-   function create_Document($title, $abstract, $class, $project, $keyword, $array_authors) {
+   function create_Document($title, $abstract, $class, $project, $keyword, $author) {
       //transaction startet
       $this->db->trans_begin();
       //title darf nicht mehrfach in der DB vorhanden sein
@@ -34,6 +34,7 @@ class Document_model extends CI_Model {
          'project_id'        => $project,
          'created'           => $time,
          'last_edited'       => $time,
+         'author_id'         => $author
       );
       $query = $this->db->insert('storage_document', $data);
       if (!$query) {
@@ -50,29 +51,6 @@ class Document_model extends CI_Model {
       }
       $row         = $query->row();
       $document_id = $row->last_id;
-
-      // author
-      foreach ($array_authors as $row) {
-         //ueberpruefen ob author noch da ist oder evtl von anderen geloescht ist
-         $this->load->model('author_model');
-         if ($query = $this->author_model->get_Author($row)) {
-            $data  = array(
-               'document_id' => $document_id,
-               'author_id'   => $row
-            );
-            $query = $this->db->insert('storage_document_has_author', $data);
-            if (!$query) {
-               $this->db->trans_rollback();
-
-               return FALSE;
-            }
-         } //eig. sollte es nicht geloescht werden, hier ist transaction angesagt...
-         else {
-            $this->db->trans_rollback();
-
-            return FALSE;
-         }
-      }
 
       // keyword
       $keywords = trim($keyword);

@@ -20,7 +20,7 @@ class User_model extends CI_Model {
       if ($query->num_rows == 1) {
           return FALSE;
       }
-      $this->db->where('number', $email);
+      $this->db->where('email', $email);
       $query = $this->db->get('login_users');
       if ($query->num_rows == 1) {
           return FALSE;

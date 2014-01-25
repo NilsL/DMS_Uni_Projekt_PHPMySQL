@@ -74,11 +74,13 @@ class Insert extends CI_Controller {
     */
    function insert_author() {
       // Author muss name und email haben, alle felder pflicht
-      $this->form_validation->set_rules('author_name', 'Author name', 'trim|required|');
-      $this->form_validation->set_rules('author_mail', 'Email', 'trim|required');
+      $this->form_validation->set_rules('author_name', 'Author name', 'trim|required');
+      $this->form_validation->set_rules('author_mail', 'Email', 'trim|required|valid_email');
       // wenn nicht dann noch mal eingeben
       if ($this->form_validation->run() == FALSE) {
-         $this->insert_author();
+         $data ['jQuery'] = TRUE;
+         $data ['view'] = 'insert/insert_author_view';
+         $this->load->view('template/content', $data);
       }
       else {
          // input abgreifen
@@ -109,13 +111,15 @@ class Insert extends CI_Controller {
     */
    function insert_class() {
       // es muss doch einen name dafür geben
-      $this->form_validation->set_rules('class_name', 'Classification name', 'trim|required|');
+      $this->form_validation->set_rules('classification_name', 'Classification name', 'trim|required|');
       if ($this->form_validation->run() == FALSE) {
-         $this->insert_class();
+          $data ['jQuery'] = TRUE;
+          $data ['view'] = 'insert/insert_class_view';
+          $this->load->view('template/content', $data);
       }
       else {
 
-         $name = $this->input->post('class_name');
+         $name = $this->input->post('classification_name');
          $this->load->model('classification_model');
          $query = $this->classification_model->create_Classification($name);
 
@@ -140,7 +144,9 @@ class Insert extends CI_Controller {
       $this->form_validation->set_rules('project_number', 'Project Number', 'trim|required|numeric');
 
       if ($this->form_validation->run() == FALSE) {
-         $this->insert_project();
+          $data ['jQuery'] = TRUE;
+          $data ['view'] = 'insert/insert_project_view';
+          $this->load->view('template/content', $data);
       }
       else {
 
@@ -176,7 +182,9 @@ class Insert extends CI_Controller {
       $this->form_validation->set_rules('abstract', 'Abstract', 'trim|required|');
 
       if ($this->form_validation->run() == FALSE) {
-         $this->insert_document();
+          $data ['jQuery'] = TRUE;
+          $data ['view'] = 'insert/insert_document_view';
+          $this->load->view('template/content', $data);
       }
       else {
          //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
@@ -249,7 +257,9 @@ class Insert extends CI_Controller {
       $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
 
       if ($this->form_validation->run() == FALSE) {
-         $this->insert_file();
+          $data ['jQuery'] = TRUE;
+          $data ['view'] = 'insert/insert_file_view';
+          $this->load->view('template/content', $data);
       }
       else {
          // document_id abgreifen
@@ -310,42 +320,42 @@ class Insert extends CI_Controller {
       echo $response;
    }
 
-   /**
-    * ajax backend function fuer email und username ueberpruefung
-    */
-   function check_input() {
-      //getten
-      $inputed = $this->input->get('inputed');
-      $id      = $this->input->get('id');
-      //model loaden
-      switch ($id) {
-         case "author_name":
-         case "author_mail":
-            $this->load->model('author_model');
-            $check_result = $this->author_model->checking($inputed, $id);
-            break;
-         case "classification_name":
-            $this->load->model('classification_model');
-            $check_result = $this->classification_model->checking($inputed, $id);
-            break;
-         case "project_name":
-         case "project_number":
-            $this->load->model('project_model');
-            $check_result = $this->project_model->checking($inputed, $id);
-            break;
-         case "title":
-            $this->load->model('document_model');
-            $check_result = $this->document_model->checking($inputed, $id);
-            break;
-      }
+    /**
+     * ajax backend function fuer email und username ueberpruefung
+     */
+    function check_input() {
+        //getten
+        $inputed = $this->input->get('inputed');
+        $id      = $this->input->get('id');
+        //model loaden
+        switch ($id) {
+            case "author_name":
+            case "author_mail":
+                $this->load->model('author_model');
+                $check_result = $this->author_model->checking($inputed, $id);
+                break;
+            case "classification_name":
+                $this->load->model('classification_model');
+                $check_result = $this->classification_model->checking($inputed, $id);
+                break;
+            case "project_name":
+            case "project_number":
+                $this->load->model('project_model');
+                $check_result = $this->project_model->checking($inputed, $id);
+                break;
+            case "title":
+                $this->load->model('document_model');
+                $check_result = $this->document_model->checking($inputed, $id);
+                break;
+        }
 
-      $response = NULL;
-      //ist $check_result true, congratz...
-      if ($check_result) {
-         $response = $check_result;
-      }
-      echo $response;
-   }
+        $response = NULL;
+        //Sollte $check_result nicht FALSE sein heisst das dass irgendwelche Konflikt existiert
+        if ($check_result) {
+            $response = $check_result;
+        }
+        echo $response;
+    }
 }
 /* End of file insert.php */
 /* Location: ./application/controllers/insert.php */
