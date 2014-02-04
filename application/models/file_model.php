@@ -70,15 +70,11 @@ class File_model extends CI_Model {
     */
    function download_File($file_id) {
       $this->db->where('id', $file_id);
-      $file = $this->db->get('storage_file');
-      if ($file->num_rows() == 1) {
-         $row = $file->row();
-
-         //download starten
-         $data = file_get_contents($row->filepath . $row->file);
-         $name = $row->file;
-
-         force_download($name, $data);
+      $result = $this->db->get('storage_file');
+      if ($result->num_rows() == 1) {
+         $file = $result->row();
+         $data = file_get_contents($file->filepath . $file->name);
+         force_download($file->name, $data);
       }
    }
 
