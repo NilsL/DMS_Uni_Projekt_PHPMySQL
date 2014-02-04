@@ -1,5 +1,4 @@
 <div id="popup">
-
    <h1><?= $document->title; ?></h1>
 
    <p>
@@ -12,19 +11,9 @@
       echo br(1);
       echo 'Last edited: ' . mdate("%d-%m-%Y", $document->last_edited);
       echo br(1);
-
-      //authors bedarf ja mehr platz
-      echo 'Authors: ';
-      foreach ($authors->result() as $row) {
-         if ($authors->num_rows() == 1) {
-            echo $row->author_name;
-            break;
-         }
-         echo $row->author_name . ', ';
-      }
+      echo 'Author: ' . $document->author;
       echo br(1);
 
-      //das gleiche betrifft keywords
       echo 'Keywords: ';
       foreach ($keywords->result() as $row) {
          if ($keywords->num_rows() == 1) {
@@ -46,13 +35,9 @@
 
    <p>
       <?php
-      if ($files) {
-         foreach ($files->result() as $file) {
-            echo anchor('search/dl_file/' . $file->id, $file->file);
+            echo 'Filename: ' . anchor('search/dl_file/' . $document->file_id, $document->file_name);
             echo br(1);
-            echo 'MD5: ' . $file->md5;
+            echo 'MD5: ' . $document->file_md5;
             echo br(2);
-         }
-      }
       ?>
    </p>

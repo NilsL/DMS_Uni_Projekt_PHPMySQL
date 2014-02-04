@@ -130,10 +130,12 @@ class Document_model extends CI_Model {
     */
    //modifiziert auf neues datenbankstruktur (author join deleted)
    function get_Document($id) {
-      $this->db->select('storage_document.id as document_id, title, abstract, created, last_edited, storage_project.name AS project, storage_classification.name AS classification');
+      $this->db->select('storage_document.id as document_id, title, abstract, created, last_edited, storage_project.name AS project, storage_author.name AS author, storage_classification.name AS classification, storage_file.id AS file_id, storage_file.name AS file_name, storage_file.md5 AS file_md5');
 
       // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
+      $this->db->join('storage_author', 'storage_document.author_id = storage_author.id');
+      $this->db->join('storage_file', 'storage_document.file_id = storage_file.id');
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       $this->db->where('storage_document.id', $id);
