@@ -94,7 +94,7 @@ $RECYCLE.BIN/
 */logs/!index.html
 */cache/*
 */cache/!index.html
-*/config/config.php
-*/config/database.php
 /phpmyadmin/*
 /uploads/*
+application/config/config.php
+application/config/database.php

@@ -6,6 +6,11 @@
 class Home extends CI_Controller {
 
    function index() {
+       $this->load->model('document_model');
+       $documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE);
+       if ($documents) {
+           $data['documents'] = $documents;
+       }
       $data['view'] = 'home_view';
       $this->load->view('template/content', $data);
    }

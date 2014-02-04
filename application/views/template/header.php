@@ -25,7 +25,7 @@
 
 <body>
 <!--debugging options-->
-<? //= $this->db->last_query(); ?>
+<?php echo $this->db->last_query(); ?>
 <div class="container">
    <div id="header" class="span-24 last">
       <br/>

@@ -6,6 +6,4 @@
       <?php $this->load->view($view); ?>
    </div>
 
-<?php $this->load->view('template/right_sidebar'); ?>
-
 <?php $this->load->view('template/footer'); ?>
