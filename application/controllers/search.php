@@ -18,7 +18,7 @@ class Search extends CI_Controller {
    }
 
    /**
-    * default index function
+    * default index function lädt standard Suche
     */
    function index() {
       $data['view'] = 'search/search_view';
@@ -49,46 +49,129 @@ class Search extends CI_Controller {
       $this->load->view('template/content', $data);
    }
 
-   /**
-    * anzeige der suchergebnisse
-    */
-   function show_result() {
-      $this->load->model('document_model');
+    /**
+     * anzeige der suchergebnisse
+     */
+    function show_result()
+    {
+        $this->load->model('document_model');
 
-      if ($this->input->post('title') == '' && $this->input->post('keywords') == '') {
-         $documents = $this->document_model->get_Documents();
-      }
-      elseif ($this->input->post('keywords') == '') {
-         $title     = $this->input->post('title');
-         $documents = $this->document_model->get_Documents($title, NULL);
-      }
-      elseif ($this->input->post('title') == '') {
-         $keywords  = explode(',', str_replace(' ', '', $this->input->post('keywords')));
-         $documents = $this->document_model->get_Documents(NULL, $keywords);
-      }
-      else {
-         $title     = $this->input->post('title');
-         $keywords  = explode(',', str_replace(' ', '', $this->input->post('keywords')));
-         $documents = $this->document_model->get_Documents($title, $keywords);
-      }
+        // v = 1 bedeutet einfache Suche die erweiterte suche ruft show result mit v = 2 auf
+        if ($this->input->get('v') == 1) {
 
-      // wenn Ergebnisse gefunden wurden
-      if ($documents) {
-         $data['documents'] = $documents;
+            if ($this->input->post('title') == '' && $this->input->post('keywords') == '') {
+                $documents = $this->document_model->get_Documents();
+            } elseif ($this->input->post('keywords') == '') {
+                $title = $this->input->post('title');
+                $documents = $this->document_model->get_Documents($title, NULL);
+            } elseif ($this->input->post('title') == '') {
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $documents = $this->document_model->get_Documents(NULL, $keywords);
+            } else {
+                $title = $this->input->post('title');
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $documents = $this->document_model->get_Documents($title, $keywords);
+            }
+        }
+        else {
+            if ($this->input->post('title') == '' && $this->input->post('keywords') == '' && $this->input->post('projects') == '' && $this->input->post('classification') == '') {
+                $documents = $this->document_model->get_Documents(NULL, NULL, NULL, NULL);
+            }
+            elseif ($this->input->post('keywords') == '' && $this->input->post('classification') == '' && $this->input->post('projects') == '') {
+                $title = $this->input->post('title');
+                $documents = $this->document_model->get_Documents($title, NULL, NULL, NULL);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('classification') == '' && $this->input->post('projects') == '') {
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $documents = $this->document_model->get_Documents(NULL, $keywords, NULL, NULL);
+            }
+            elseif ($this->input->post('classification') == '' && $this->input->post('projects') == '') {
+                $title = $this->input->post('title');
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $documents = $this->document_model->get_Documents($title, $keywords, NULL, NULL);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('keywords') == '' && $this->input->post('classification') == '') {
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents(NULL, NULL, $project, NULL);
+            }
+            elseif ($this->input->post('keywords') == '' && $this->input->post('projects') == '') {
+                $title = $this->input->post('title');
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents($title, NULL, $project, NULL);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('classification') == '') {
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents(NULL, $keywords, $project, NULL);
+            }
+            elseif ($this->input->post('classification') == '') {
+                $title = $this->input->post('title');
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents($title, $keywords, $project, NULL);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('keywords') == '' && $this->input->post('projects') == '') {
+                $classification = $this->input->post('classification');
+                $documents = $this->document_model->get_Documents(NULL, NULL, NULL, $classification);
+            }
+            elseif ($this->input->post('keywords') == '' && $this->input->post('projects') == '') {
+                $title = $this->input->post('title');
+                $classification = $this->input->post('classification');
+                $documents = $this->document_model->get_Documents($title, NULL, NULL, $classification);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('projects') == '') {
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $classification = $this->input->post('classification');
+                $documents = $this->document_model->get_Documents(NULL, $keywords, NULL, $classification);
+            }
+            elseif ($this->input->post('projects') == '') {
+                $title = $this->input->post('title');
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $classification = $this->input->post('classification');
+                $documents = $this->document_model->get_Documents($title, $keywords, NULL, $classification);
+            }
+            elseif ($this->input->post('title') == '' && $this->input->post('keywords') == '') {
+                $classification = $this->input->post('classification');
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents(NULL, NULL, $project, $classification);
+            }
+            elseif ($this->input->post('keywords') == '') {
+                $title = $this->input->post('title');
+                $classification = $this->input->post('classification');
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents($title, NULL, $project, $classification);
+            }
+            elseif ($this->input->post('title') == '') {
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $classification = $this->input->post('classification');
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents(NULL, $keywords, $project, $classification);
+            }
+            else {
+                $title = $this->input->post('title');
+                $keywords = explode(',', str_replace(' ', '', $this->input->post('keywords')));
+                $classification = $this->input->post('classification');
+                $project = $this->input->post('projects');
+                $documents = $this->document_model->get_Documents($title, $keywords, $project, $classification);
+            }
+        }
 
-         $data['view'] = 'search/result_view';
-         $this->load->view('template/content', $data);
-      }
-      // wenn nichts gefunden wurde
-      else {
-         $data['error'] = 'No items found, search again with other input';
-         $data['view']  = 'search/search_view';
-         $this->load->view('template/content', $data);
-      }
-   }
+        // wenn Ergebnisse gefunden wurden
+        if ($documents) {
+            $data['documents'] = $documents;
+
+            $data['view'] = 'search/result_view';
+            $this->load->view('template/content', $data);
+        } // wenn nichts gefunden wurde
+        else {
+            $data['error'] = 'No items found, search again with other input';
+            $data['view'] = 'search/search_view';
+            $this->load->view('template/content', $data);
+        }
+    }
 
 
-   /**
+    /**
     * ajax backend function welche vom js script gecalled wird
     */
    function show_Hint() {
@@ -111,7 +194,7 @@ class Search extends CI_Controller {
 
 
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
-      $response = '<option value ="'.'">--- view all ---</option>';
+      //j$response = '<option value ="'.'">--- view all ---</option>';
       foreach ($hints->result() as $hint) {
          $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }

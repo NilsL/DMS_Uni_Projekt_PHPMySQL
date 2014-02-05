@@ -70,7 +70,7 @@ class Author_model extends CI_Model {
 
       $authors = $this->db->get('storage_author');
       if ($authors->num_rows() > 0) {
-         $tmp[] = '--- view all ---';
+         //$tmp[] = '--- view all ---';
 
          foreach ($authors->result() as $author) {
             $tmp[$author->id] = $author->name;

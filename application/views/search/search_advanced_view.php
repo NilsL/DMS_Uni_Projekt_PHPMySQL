@@ -2,7 +2,7 @@
    <?php
 
    echo form_fieldset('Erweiterte Suche', array('id' => 'search'));
-   echo form_open('search/show_result', array('class' => 'search')); ?>
+   echo form_open('search/show_result?v=2', array('class' => 'search')); ?>
 
    <p>
       <?php
@@ -28,7 +28,6 @@
    <p>
       <?php
       echo form_label('Projekt', 'project');
-      //showHint nimmt nicht mehr this.value als para, sondern das ganze this
       echo form_input(array('id' => 'project', 'name' => 'project', 'placeholder' => 'Projektsuche', 'onkeyup' => 'javascript:showHint(this)'))
       ?>
    </p>
@@ -36,7 +35,6 @@
    <p>
       <?php
       echo form_label('Projektauswahl', 'projects');
-      //das gleiche wie oben, das element wird uebergeben
       $attributes = 'id="projects" onclick="javascript:putSelected(this)"';
       echo form_dropdown('projects', $projects, array(), $attributes);
       ?>

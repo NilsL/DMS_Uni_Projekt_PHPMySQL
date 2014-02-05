@@ -2,7 +2,7 @@
    <?php
 
    echo form_fieldset('Suche', array('id' => 'search'));
-   echo form_open('search/show_result', array('class' => 'search')); ?>
+   echo form_open('search/show_result?v=1', array('class' => 'search')); ?>
 
    <p>
       <?php
