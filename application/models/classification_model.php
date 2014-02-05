@@ -39,7 +39,7 @@ class Classification_model extends CI_Model {
       }
       $classifications = $this->db->get('storage_classification');
       if ($classifications->num_rows() > 0) {
-         $tmp[] = '--- view all ---';
+         //$tmp[] = '--- view all ---';
 
          foreach ($classifications->result() as $class) {
             $tmp[$class->id] = $class->name;

@@ -312,6 +312,7 @@ class Insert extends CI_Controller
         }
     }
 
+
     /**
      * ajax backend funktion
      */
@@ -345,6 +346,7 @@ class Insert extends CI_Controller
 
         echo $response;
     }
+
 
     /**
      * ajax backend function fuer email und username ueberpruefung

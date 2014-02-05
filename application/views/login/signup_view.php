@@ -16,7 +16,7 @@
 
    <p>
       <?php echo form_label('Email: ', 'email'); ?>
-      <?php echo form_input(array('id' => 'email', 'name' => 'email', 'placeholder' => 'jondoe@jondoe.com', 'onblur' => 'validating(this)')); ?>
+      <?php echo form_input(array('id' => 'email', 'name' => 'email', 'placeholder' => 'jondoe@jondoe.com', 'onkeyup' => 'validating(this)')); ?>
       <span id='check_email' style="border-width: 0;color: red"></span>
    </p>
 

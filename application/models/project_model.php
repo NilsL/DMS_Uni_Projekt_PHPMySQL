@@ -50,7 +50,7 @@ class Project_model extends CI_Model {
 
       $projects = $this->db->get('storage_project');
       if ($projects->num_rows() > 0) {
-         $tmp[] = '--- view all ---';
+         //$tmp[] = '--- view all ---';
 
          foreach ($projects->result() as $project) {
             $tmp[$project->id] = $project->name;

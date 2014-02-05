@@ -128,11 +128,8 @@ class Document_model extends CI_Model {
     *
     * @return bool liefert <code> FALSE </code> wenn kein Dokument gefunden wurde, ansonsten das Dokument
     */
-   //modifiziert auf neues datenbankstruktur (author join deleted)
    function get_Document($id) {
       $this->db->select('storage_document.id as document_id, title, abstract, created, last_edited, storage_project.name AS project, storage_author.name AS author, storage_classification.name AS classification, storage_file.id AS file_id, storage_file.name AS file_name, storage_file.md5 AS file_md5');
-
-      // join fuer project und classification id zu name
       $this->db->join('storage_project', 'storage_document.project_id = storage_project.id');
       $this->db->join('storage_author', 'storage_document.author_id = storage_author.id');
       $this->db->join('storage_file', 'storage_document.file_id = storage_file.id');
@@ -175,12 +172,12 @@ class Document_model extends CI_Model {
          $this->db->or_where_in('storage_keyword.name', $keywords);
       }
 
-      if ($class) {
-         $this->db->or_where_in('storage_classification.id', $project);
+      if ($project) {
+          $this->db->or_where_in('storage_project.id', $project);
       }
 
-      if ($project) {
-         $this->db->or_where_in('storage_project.id', $project);
+      if ($class) {
+         $this->db->or_where_in('storage_classification.id', $class);
       }
 
       $this->db->order_by('storage_document.title', 'asc');
