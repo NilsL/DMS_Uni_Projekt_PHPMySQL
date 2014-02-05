@@ -163,7 +163,7 @@ class Document_model extends CI_Model {
       $this->db->join('storage_classification', 'storage_document.classification_id = storage_classification.id');
 
       if ($title) {
-         $this->db->and_like('title', $title);
+         $this->db->or_like('title', $title);
       }
 
       if ($keywords) {
