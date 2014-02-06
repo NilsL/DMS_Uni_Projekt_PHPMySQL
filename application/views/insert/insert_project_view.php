@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Create Project</h1>
 
-      <?php echo form_open('insert/insert_project', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
+       <?php echo form_open('insert/validate_i_project', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
 
       <p>
          <?php

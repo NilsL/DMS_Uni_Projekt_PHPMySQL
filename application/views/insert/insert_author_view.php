@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Create Author</h1>
 
-      <?php echo form_open('insert/insert_author', array('class' => 'login', 'onsubmit' => 'return validateInsert()')); ?>
+       <?php echo form_open('insert/validate_i_author', array('class' => 'login', 'onsubmit' => 'return validateInsert()')); ?>
 
       <p>
          <?php
