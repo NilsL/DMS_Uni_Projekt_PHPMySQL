@@ -5,24 +5,15 @@
  */
 class Document_model extends CI_Model {
 
-   /**
-    * @param $title
-    * @param $abstract
-    * @param $class
-    * @param $project
-    * @param $keyword
-    * @param $author
-    *
-    * @return bool
-    */
-   function create_Document($title, $abstract, $class, $project, $keyword, $author, $file) {
+   function create_Document($title, $abstract, $class, $project, $keywords, $author, $file_id) {
       //transaction startet
       $this->db->trans_begin();
+
       //title darf nicht mehrfach in der DB vorhanden sein
       $this->db->where('title', $title);
       $query = $this->db->get('storage_document');
       if (!$query || $query->num_rows == 1) {
-      $this->db->trans_rollback();
+         $this->db->trans_rollback();
          return FALSE;
       }
 
@@ -32,10 +23,10 @@ class Document_model extends CI_Model {
          'abstract'          => $abstract,
          'classification_id' => $class,
          'project_id'        => $project,
-         'created'           => $time,
-         'last_edited'       => $time,
          'author_id'         => $author,
-         'file_id'           => $file
+         'file_id'           => $file_id,
+         'created'           => $time,
+         'last_edited'       => $time
       );
       $query = $this->db->insert('storage_document', $data);
       if (!$query) {
@@ -50,11 +41,10 @@ class Document_model extends CI_Model {
          $this->db->trans_rollback();
          return FALSE;
       }
-      $row         = $query->row();
-      $document_id = $row->last_id;
+      $document_id = $query->row()->last_id;
 
       // keyword
-      $keywords = trim($keyword);
+      $keywords = trim($keywords);
       if (!empty ($keywords)) {
          // split string
          $keys = explode(",", $keywords);

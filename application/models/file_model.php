@@ -5,11 +5,7 @@
  */
 class File_model extends CI_Model {
 
-   /**
-    * @param $document_id
-    *
-    * @return bool liefert <code> TRUE </code> wenn der Upload inkl. verknüpfung in der DB erfolgreich war, sonst <code> FALSE </code>
-    */
+
     function create_File($project, $title) {
 
         $fileName = $project . '-' . $title . '-' . uniqid();
@@ -31,7 +27,7 @@ class File_model extends CI_Model {
             // eintrag in der db anlegen mit pfad, dateinamen und md5 checksumme
             $result = $this->db->insert('storage_file',
                 array('filepath' => $data ['file_path'],
-                    'file'     => $data['file_name'],
+                    'name'     => $data['file_name'],
                     'md5'      => md5_file($data['full_path'])
                 )
             );

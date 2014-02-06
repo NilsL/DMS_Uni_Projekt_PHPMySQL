@@ -172,14 +172,13 @@ class Insert extends CI_Controller {
     * neues Dokument anlegen
     */
    function insert_document() {
-       function validate_i_document() {
            $this->form_validation->set_rules('title', 'Title', 'trim|required|');
            $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
            $this->form_validation->set_rules('classifications', 'Classification', 'trim|greater_than[0]|');
            $this->form_validation->set_rules('authors', 'Author', 'trim|greater_than[0]');
            $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required|');
            $this->form_validation->set_rules('abstract', 'Abstract', 'trim|required|');
-           $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
+           $this->form_validation->set_message('greater_than', "The %s field must be choosen!");
 
            if ($this->form_validation->run() == FALSE) {
                $data ['jQuery'] = TRUE;
@@ -187,23 +186,23 @@ class Insert extends CI_Controller {
                $this->load->view('template/content', $data);
            }
            else {
-               $title = $this->input->post('title');
-               $abstract = $this->input->post('abstract');
-               $class = $this->input->post('classifications');
-               $project = $this->input->post('projects');
-               $keyword = $this->input->post('keywords');
-               $author = $this->input->post('authors');
+               $title       = $this->input->post('title');
+               $abstract    = $this->input->post('abstract');
+               $class       = $this->input->post('classifications');
+               $project     = $this->input->post('projects');
+               $keywords     = $this->input->post('keywords');
+               $author      = $this->input->post('authors');
                //zuletzt noch einmal das File einfuegen
                $this->load->model('file_model');
-               $file = $this->file_model->create_File($project, $title);
-               if(!$file) {
+               $file_id = $this->file_model->create_File($project, $title);
+               if(!$file_id) {
                    $data ['error'] = 'Upload failed, please try again!';
                    $data ['view'] = 'insert/insert_document_view';
                    $this->load->view('template/content', $data);
                }
 
                $this->load->model('document_model');
-               $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keyword, $author, $file);
+               $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keywords, $author, $file_id);
 
                if ($query) {
                    $data ['view'] = 'insert/successful_insert_view';
@@ -223,14 +222,14 @@ class Insert extends CI_Controller {
                        $data ['classifications'] = $classification;
                    }
 
-                   $data ['error'] = 'Document exsists!';
+                   $data ['error'] = 'Document even exsists!';
                    $data ['view'] = 'insert/insert_document_view';
 
                    $this->load->view('template/content', $data);
                }
            }
        }
-   }
+
 
    /**
     * ajax backend funktion

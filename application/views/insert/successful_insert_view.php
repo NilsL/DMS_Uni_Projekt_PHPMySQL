@@ -14,7 +14,6 @@
       echo anchor('insert?v=project', 'New Project');
       echo br(1);
       echo anchor('insert?v=document', 'New Document');
-      echo br(1);
-      echo anchor('insert?v=file', 'Attach a file to a document');?>
+      ?>
    </div>
 </div>
