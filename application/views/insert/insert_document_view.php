@@ -2,7 +2,7 @@
    <div id="insert">
       <h1>Insert Document</h1>
 
-      <?php echo form_open('insert/insert_document', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
+      <?php echo form_open_multipart('insert/validate_i_document', array('class' => 'insert', 'onsubmit' => 'return validateInsert()')); ?>
 
       <?php
       //title eingabefeld
@@ -58,11 +58,17 @@
       echo form_textarea(array('id' => 'abstract', 'name' => 'abstract', 'placeholder' => 'Please type your abstract text here'));
       echo br(1);
 
+      //file selectionsfeld
+      echo form_label('Select a file: ', 'file');
+      echo form_upload(array('id' => 'file', 'name' => 'file'));
+      echo br(1);
+
       echo form_submit('add_doc', 'Add Document');
+      echo form_close();
       ?>
 
 
-      <?php  echo form_close();
+      <?php
       if (isset ($error)) {
          ?>
          <p class="error" id="insert_error"><?php echo $error; ?></p>
