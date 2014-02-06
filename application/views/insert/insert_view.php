@@ -13,6 +13,6 @@
    echo br(1);
    echo anchor('insert/insert_document', 'New Document');
    echo br(1);
-   echo anchor('insert/insert_file', 'Attach a file to a document');
+   //echo anchor('insert/insert_file', 'Attach a file to a document');
    ?>
 </div>

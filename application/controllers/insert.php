@@ -84,23 +84,6 @@ class Insert extends CI_Controller
     }
 
     /**
-     * insert file
-     */
-    function insert_file()
-    {
-        $this->load->model('document_model');
-        // get all documents from db
-        if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
-            $data ['documents'] = $documents;
-
-            $data ['jQuery'] = TRUE;
-            $data ['view'] = 'insert/insert_file_view';
-            $this->load->view('template/content', $data);
-        }
-    }
-
-
-    /**
      * validierung des geinserteten authors
     */
    function validate_i_author() {
@@ -203,7 +186,8 @@ class Insert extends CI_Controller
         $this->form_validation->set_rules('title', 'Title', 'trim|required|');
         $this->form_validation->set_rules('projects', 'Project', 'trim|greater_than[0]|');
         $this->form_validation->set_rules('classifications', 'Classification', 'trim|greater_than[0]|');
-        // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
+        $this->form_validation->set_rules('authors', 'Author', 'trim|greater_than[0]');
+        // ausgewälte id muss größer als 0 sein, damit ist gesichert dass diese felder belegt sind
         // darum fehlermeldung muss neu definiert werden
         $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
         $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required|');
@@ -214,38 +198,23 @@ class Insert extends CI_Controller
             $data ['view'] = 'insert/insert_document_view';
             $this->load->view('template/content', $data);
         } else {
-            //authors greifen wir aus der tabelle, genauer gesagt aus der hiddenbereich, weil es multichoice auf sich hat
-            $array_authors = $this->input->post('hiddenid');
-            //aber es kann sein dass der user gar keinen author ausgewaehlt hat, das war nicht bei form_validation durchgefuehrt
-            if (!$array_authors) {
-                $this->load->model('project_model');
-                $this->load->model('author_model');
-                $this->load->model('classification_model');
-
-                if ($projects = $this->project_model->get_Project()) {
-                    $data ['projects'] = $projects;
-                }
-                if ($authors = $this->author_model->get_Authors(TRUE)) {
-                    $data ['authors'] = $authors;
-                }
-                if ($classification = $this->classification_model->get_Classification()) {
-                    $data ['classifications'] = $classification;
-                }
-
-                $data ['error'] = 'Please select at least an author!';
-                $data ['view'] = 'insert/insert_document_view';
-                $this->load->view('template/content', $data);
-            }
-
             $title = $this->input->post('title');
             $abstract = $this->input->post('abstract');
             $class = $this->input->post('classifications');
             $project = $this->input->post('projects');
             $keyword = $this->input->post('keywords');
-
+            $author = $this->input->post('authors');
+            //zuletzt noch einmal das File einfuegen
+            $this->load->model('file_model');
+            $file = $this->file_model->create_File($project, $title);
+            if(!$file) {
+                $data ['error'] = 'Upload failed, please try again!';
+                $data ['view'] = 'insert/insert_document_view';
+                $this->load->view('template/content', $data);
+            }
 
             $this->load->model('document_model');
-            $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keyword, $array_authors);
+            $query = $this->document_model->create_Document($title, $abstract, $class, $project, $keyword, $author, $file);
 
             if ($query) {
                 $data ['view'] = 'insert/successful_insert_view';
@@ -272,46 +241,6 @@ class Insert extends CI_Controller
             }
         }
     }
-
-    /**
-     * validierung des files
-     */
-    function validate_i_file()
-    {
-        $this->form_validation->set_rules('documents', 'Document', 'trim|greater_than[0]|');
-        // ausgewälte id muss größer als 1 sein, damit ist gesichert dass diese felder belegt ist
-        // darum fehlermeldung muss neu definiert werden
-        $this->form_validation->set_message('greater_than', "The %s field must be chooesed!");
-
-        if ($this->form_validation->run() == FALSE) {
-            $data ['jQuery'] = TRUE;
-            $data ['view'] = 'insert/insert_file_view';
-            $this->load->view('template/content', $data);
-        } else {
-            // document_id abgreifen
-            $document_id = $this->input->post('documents');
-
-            $this->load->model('file_model');
-            $result = $this->file_model->create_File($document_id);
-
-            $this->load->model('document_model');
-            $result2 = $this->document_model->update_Document_LastEdited($document_id);
-
-            if ($result && $result2) {
-                $data ['view'] = 'insert/successful_insert_view';
-                $this->load->view('template/content', $data);
-            } else {
-                $this->load->model('document_model');
-                if ($documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE, FALSE, TRUE)) {
-                    $data ['documents'] = $documents;
-                }
-                $data ['error'] = 'Upload failed, please try again!';
-                $data ['view'] = 'insert/insert_file_view';
-                $this->load->view('template/content', $data);
-            }
-        }
-    }
-
 
     /**
      * ajax backend funktion
