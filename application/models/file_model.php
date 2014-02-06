@@ -10,62 +10,49 @@ class File_model extends CI_Model {
     *
     * @return bool liefert <code> TRUE </code> wenn der Upload inkl. verknüpfung in der DB erfolgreich war, sonst <code> FALSE </code>
     */
-   function create_File($document_id) {
-      $this->load->model('document_model');
-      $document = $this->document_model->get_Document($document_id);
+    function create_File($project, $title) {
 
-      $fileName = $document->project . '-' . $document->title . '-' . uniqid();
+        $fileName = $project . '-' . $title . '-' . uniqid();
 
-      // libary loading
-      $config ['upload_path']   = './uploads/';
-      $config ['allowed_types'] = 'doc|docx|odt|pdf|txt';
-      $config ['file_name']     = $fileName;
-      $config ['max_size']      = '20480';
-      $config ['max_filename']  = '100';
+        // libary loading
+        $config ['upload_path']   = './uploads/';
+        $config ['allowed_types'] = 'doc|docx|odt|pdf|txt';
+        $config ['file_name']     = $fileName;
+        $config ['max_size']      = '20480';
+        $config ['max_filename']  = '100';
 
-      $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-      // uploading
-      if ($this->upload->do_upload('file')) {
-         $data = $this->upload->data();
+        // uploading
+        if ($this->upload->do_upload('file')) {
+            $data = $this->upload->data();
 
-         $this->db->trans_start();
-         // eintrag in der db anlegen mit pfad, dateinamen und md5 checksumme
-         $result = $this->db->insert('storage_file',
-            array('filepath' => $data ['file_path'],
-                  'file'     => $data['file_name'],
-                  'md5'      => md5_file($data['full_path'])
-            )
-         );
-
-         // eintrag in der m:n tabelle anlegen
-         if ($result) {
-            $query   = $this->db->query('select last_insert_id() as file_id');
-            $file_id = $query->row()->file_id;
-            $result  = $this->db->insert('storage_document_has_file',
-               array('document_id' => $document_id,
-                     'file_id'     => $file_id
-               )
+            $this->db->trans_start();
+            // eintrag in der db anlegen mit pfad, dateinamen und md5 checksumme
+            $result = $this->db->insert('storage_file',
+                array('filepath' => $data ['file_path'],
+                    'file'     => $data['file_name'],
+                    'md5'      => md5_file($data['full_path'])
+                )
             );
-            $this->db->trans_complete();
 
-            if (!$result) {
-               unlink($data['full_path']);
-
-               return FALSE;
+            // eintrag in der m:n tabelle anlegen
+            if ($result) {
+                $query   = $this->db->query('select last_insert_id() as file_id');
+                $file_id = $query->row()->file_id;
+                return $file_id;
             }
+            else {
+                unlink($data['full_path']);
+                return false;
+            }
+        }
+        $this->db->trans_rollback();
+        return false;
+    }
 
-            return TRUE;
-         }
-         else {
-            unlink($data['full_path']);
-         }
-      }
 
-      return FALSE;
-   }
-
-   /**
+    /**
     * @param $file_id
     */
    function download_File($file_id) {

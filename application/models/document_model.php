@@ -15,7 +15,7 @@ class Document_model extends CI_Model {
     *
     * @return bool
     */
-   function create_Document($title, $abstract, $class, $project, $keyword, $author) {
+   function create_Document($title, $abstract, $class, $project, $keyword, $author, $file) {
       //transaction startet
       $this->db->trans_begin();
       //title darf nicht mehrfach in der DB vorhanden sein
@@ -34,7 +34,8 @@ class Document_model extends CI_Model {
          'project_id'        => $project,
          'created'           => $time,
          'last_edited'       => $time,
-         'author_id'         => $author
+         'author_id'         => $author,
+         'file_id'           => $file
       );
       $query = $this->db->insert('storage_document', $data);
       if (!$query) {
