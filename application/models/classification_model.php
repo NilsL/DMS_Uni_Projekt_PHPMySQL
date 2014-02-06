@@ -93,12 +93,11 @@ class Classification_model extends CI_Model {
     */
    function checking($inputed, $id) {
       $this->db->where('name', $inputed);
-
       $result = $this->db->get('storage_classification');
 
       //falls was gefunden ist heisst der input vom user schon vorhanden ist, return false
       if ($result->num_rows() > 0) {
-         return "This classification name is already used!";
+         return 'This classification name is already used!';
       }
       return FALSE;
    }

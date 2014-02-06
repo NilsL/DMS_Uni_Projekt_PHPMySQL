@@ -98,5 +98,3 @@ $RECYCLE.BIN/
 /uploads/*
 application/config/config.php
 application/config/database.php
-database.php
-config.php

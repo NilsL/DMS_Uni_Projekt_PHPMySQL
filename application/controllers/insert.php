@@ -314,7 +314,7 @@ class Insert extends CI_Controller {
       // den response string formatieren so das in der view ein dropdown damit gefüllt werden kann
       //$response = '<option value ="' . '">--- view all ---</option>';
       foreach ($hints->result() as $hint) {
-         $response = $response . '<option value=' . $hint->id . '>' . $hint->name . '</option>';
+         $response = '<option value=' . $hint->id . '>' . $hint->name . '</option>';
       }
 
       echo $response;
@@ -324,33 +324,30 @@ class Insert extends CI_Controller {
      * ajax backend function fuer email und username ueberpruefung
      */
     function check_input() {
-        //getten
         $inputed = $this->input->get('inputed');
         $id      = $this->input->get('id');
-        //model loaden
         switch ($id) {
-            case "author_name":
-            case "author_mail":
+            case 'author_name':
+            case 'author_mail':
                 $this->load->model('author_model');
                 $check_result = $this->author_model->checking($inputed, $id);
                 break;
-            case "classification_name":
+            case 'classification_name':
                 $this->load->model('classification_model');
                 $check_result = $this->classification_model->checking($inputed, $id);
                 break;
-            case "project_name":
-            case "project_number":
+            case 'project_number':
+            case 'project_name':
                 $this->load->model('project_model');
                 $check_result = $this->project_model->checking($inputed, $id);
                 break;
-            case "title":
+            case 'title':
                 $this->load->model('document_model');
                 $check_result = $this->document_model->checking($inputed, $id);
                 break;
         }
 
         $response = NULL;
-        //Sollte $check_result nicht FALSE sein heisst das dass irgendwelche Konflikt existiert
         if ($check_result) {
             $response = $check_result;
         }

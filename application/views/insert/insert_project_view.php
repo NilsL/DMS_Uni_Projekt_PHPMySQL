@@ -11,7 +11,7 @@
             'id'          => 'project_name',
             'name'        => 'project_name',
             'placeholder' => 'Project Name',
-            'onkeyup'     => 'validating(this)'
+            'onkeyup'     => 'validateInsertsWithDb(this)'
          ));
          echo "<span id='check_project_name' style= 'border-width: 0;color: red'></span>";
 
@@ -22,7 +22,7 @@
             'id'          => 'project_number',
             'name'        => 'project_number',
             'placeholder' => 'Project Number',
-            'onkeyup'     => 'validating(this)'
+            'onkeyup'     => 'validateInsertsWithDb(this)'
          ));
          echo "<span id='check_project_number' style= 'border-width: 0;color: red'></span>";
          ?>

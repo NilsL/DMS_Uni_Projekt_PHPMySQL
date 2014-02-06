@@ -16,7 +16,7 @@
 
    <p>
       <?php echo form_label('Email: ', 'email'); ?>
-      <?php echo form_input(array('id' => 'email', 'name' => 'email', 'placeholder' => 'jondoe@jondoe.com', 'onkeyup' => 'validating(this)')); ?>
+      <?php echo form_input(array('id' => 'email', 'name' => 'email', 'placeholder' => 'jondoe@jondoe.com', 'onkeyup' => 'validateSignInWithDb(this)')); ?>
       <span id='check_email' style="border-width: 0;color: red"></span>
    </p>
 
@@ -24,7 +24,7 @@
 
    <p>
       <?php echo form_label('Username: ', 'username'); ?>
-      <?php echo form_input(array('id' => 'username', 'name' => 'username', 'placeholder' => 'jondoe', 'onkeyup' => 'validating(this)')); ?>
+      <?php echo form_input(array('id' => 'username', 'name' => 'username', 'placeholder' => 'jondoe', 'onkeyup' => 'validateSignInWithDb(this)')); ?>
       <span id='check_username' style="border-width: 0;color: red"></span>
    </p>
 

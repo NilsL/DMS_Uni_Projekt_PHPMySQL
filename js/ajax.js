@@ -128,52 +128,70 @@ function validateInsert() {
  * @param element
  * @returns {boolean}
  */
-function validating(element) {
-  //die entsprechende span id basteln. bsp: email -> #check_email
-  var check_element_id = "#check_" + element.id;
-
-  //wenn es hier um email geht dann muss zuerst die format ueberpruefen
-  if (element.id == 'email' || element.id == 'author_mail') {
-    //regular expression
-    var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
-    if (!myreg.test(element.value) && element.value.length > 0) {
-      //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
-      $(check_element_id).text('Please type a right email adress!');
-      return false;
+function validateSignInWithDb(element) {
+    var check_element_id = "#check_" + element.id;
+    if (element.id == 'username') {
+        if (element.value.length < 6 && element.value.length > 0) {
+            $(check_element_id).text('Username must have at least 6 characters!');
+            return false;
+        }
     }
-  }
-
-  //wenn es hier hingegen um username handelt dann muss es mind. 6 character enthalten
-  if (element.id == 'username') {
-    if (element.value.length < 6 && element.value.length > 0) {
-      $(check_element_id).text('Username must have at least 6 characters!');
-      return false;
+    if (element.id == 'email') {
+        var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
+        if (!myreg.test(element.value) && element.value.length > 0) {
+            $(check_element_id).text('Please type a right email adress!');
+            return false;
+        }
     }
-  }
 
-  //wenn es hier um project number geht, regular expression aufbauen um es numerisch zu sichern
-  if (element.id == 'project_number') {
-    //regular expression
-    var myreg = /^[0-9,]*$/;
-    if (!myreg.test(element.value) && element.value.length > 0) {
-      //sollte die email ungueltig sein, dem user mitteilen und raus aus der function
-      $(check_element_id).text('The number must be numeric!');
-      return false;
+        $.ajax({
+            type: 'GET',
+            url: 'check_input?inputed=' + element.value + '&id=' + element.id,
+            success: function (msg) {
+                $(check_element_id).text(msg);
+            }
+        });
+
+    if (element.value.length == 0) {
+        $(check_element_id).text('');
     }
-  }
 
-  if (element.value.length == 0) {
-    $(check_element_id).text('');
-  }
-  else {
-    $.ajax({
-      type: 'GET',
-      url: "check_input?inputed=" + element.value + "&id=" + element.id,
-      success: function (msg) {
-        $(check_element_id).text(msg);
-      }
-    });
-  }
+}
+
+/**
+ * insert werte validieren
+ * @param element
+ * @returns {boolean}
+ */
+function validateInsertsWithDb(element) {
+    var check_element_id = "#check_" + element.id;
+    if (element.id == 'author_mail') {
+        var myreg = /^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
+        if (!myreg.test(element.value) && element.value.length > 0) {
+            $(check_element_id).text('Please type a right email adress!');
+            return false;
+        }
+    }
+    if (element.id == 'project_number') {
+        var myreg = /^[0-9,]*$/;
+        if (!myreg.test(element.value) && element.value.length > 0) {
+            $(check_element_id).text('The number must be numeric!');
+            return false;
+        }
+    }
+
+        $.ajax({
+            type: 'GET',
+            url: 'insert/check_input?inputed=' + element.value + '&id=' + element.id,
+            success: function (msg) {
+                $(check_element_id).text(msg);
+            }
+        });
+
+    if (element.value.length == 0) {
+        $(check_element_id).text('');
+    }
+
 }
 
 /**

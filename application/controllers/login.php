@@ -112,7 +112,6 @@ class Login extends CI_Controller {
       $id      = $this->input->get('id');
       //user_model loaden
       $this->load->model('user_model');
-
       $check_result = $this->user_model->checking($inputed, $id);
 
       $response = NULL;

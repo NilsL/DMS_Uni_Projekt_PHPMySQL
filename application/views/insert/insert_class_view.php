@@ -11,7 +11,7 @@
             'id'          => 'classification_name',
             'name'        => 'classification_name',
             'placeholder' => 'New Classification',
-            'onkeyup'     => 'validating(this)'
+            'onkeyup'     => 'validateInsertsWithDb(this)'
          ));
          echo "<span id='check_classification_name' style= 'border-width: 0;color: red'></span>";
          ?>

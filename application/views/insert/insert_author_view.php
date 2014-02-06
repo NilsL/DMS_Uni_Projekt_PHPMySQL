@@ -11,7 +11,7 @@
             'id'          => 'author_name',
             'name'        => 'author_name',
             'placeholder' => 'New Author',
-            'onkeyup'     => 'validating(this)'
+            'onkeyup'     => 'validateInsertsWithDb(this)'
          ));
          echo "<span id='check_author_name' style= 'border-width: 0;color: red'></span>";
          echo br(1);
@@ -21,7 +21,7 @@
             'id'          => 'author_mail',
             'name'        => 'author_mail',
             'placeholder' => 'Emailadress',
-            'onkeyup'     => 'validating(this)'
+            'onkeyup'     => 'validateInsertsWithDb(this)'
          ));
          echo "<span id='check_author_mail' style= 'border-width: 0;color: red'></span>";
          ?>
