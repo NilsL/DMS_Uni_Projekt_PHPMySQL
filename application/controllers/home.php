@@ -1,20 +1,56 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-/**
- * Class Home
- */
-class Home extends CI_Controller {
+    class Home extends MY_Controller {
 
-   function index() {
-       $this->load->model('document_model');
-       $documents = $this->document_model->get_Documents(FALSE, FALSE, FALSE);
-       if ($documents) {
-           $data['documents'] = $documents;
-       }
-      $data['view'] = 'home_view';
-      $this->load->view('template/content', $data);
-   }
+        function __construct() {
+            parent::__construct();
+        }
 
-}
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */
+        public function index() {
+            $query = $this->dokumentmodel->getDokumente();
+            if ($query) {
+                $data ['dokumente'] = $query;
+            }
+            $this->load->view('home.php', $data);
+        }
+
+        public function addDokument() {
+            $query = $this->projektmodel->getProjekte();
+            if ($query) {
+                $data['projekte'] = $query;
+            }
+
+            $query = $this->authormodel->getAuthoren();
+            if ($query) {
+                $data['authoren'] = $query;
+            }
+
+            $this->load->view('addDokument.php', $data);
+        }
+
+        public function addProjekt() {
+            $this->load->view('addProjekt.php');
+        }
+
+        public function addAuthor() {
+            $this->load->view('addAuthor.php');
+        }
+
+        public function searchDokument() {
+            $query = $this->projektmodel->getProjekte();
+            if ($query) {
+                $data['projekte'] = $query;
+            }
+
+            $query = $this->authormodel->getAuthoren();
+            if ($query) {
+                $data['authoren'] = $query;
+            }
+
+            $this->load->view('searchDokument.php', $data);
+        }
+    }
+
+    /* End of file home.php */
+    /* Location: ./application/controllers/home.php */
