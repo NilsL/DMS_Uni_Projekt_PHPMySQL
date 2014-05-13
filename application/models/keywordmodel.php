@@ -11,6 +11,26 @@
             return $row ? $row->id : FALSE;
         }
 
+        function getKeywords($dok_id) {
+            $this->db->where('dok_id', $dok_id);
+            $query = $this->db->get('dokument_hat_keyword');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[] = $row->key_id;
+            }
+
+            $this->db->where_in('id', $array);
+            $query = $this->db->get('keyword');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[] = $row->name;
+            }
+
+            return $array;
+        }
+
         function addKeyword($keyword) {
             $query = $this->db->insert('keyword', array('name' => $keyword));
 

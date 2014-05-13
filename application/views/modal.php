@@ -9,6 +9,8 @@
 
     <p><strong>Author: </strong><?= $dokument->author_vorname . ' ' . $dokument->author_nachname; ?></p>
 
+    <p><strong>Keywords: </strong><?= $keywords; ?></p>
+
     <p><strong>Abstrakt: </strong><?= $dokument->abstrakt; ?></p>
 
     <p><strong>Datei: </strong><?= $dokument->dateipfad . $dokument->dateiname; ?></p>
@@ -18,6 +20,10 @@
 <div class = "modal-footer">
     <a href = "<?= site_url(); ?>/dokument/download/<?= $dokument->id; ?>" class = "btn btn-sm btn-primary">
         <span class = "glyphicon glyphicon-floppy-save"></span> Download</a>
+    <?php if ($this->ion_auth->is_admin()) { ?>
+        <a href = "<?= site_url(); ?>/dokument/edit/<?= $dokument->id; ?>" class = "btn btn-sm btn-default">
+        <span class = "glyphicon glyphicon-edit"></span> Edit</a>
+    <?php } ?>
     <a href = "#" class = "btn btn-sm btn-default" data-dismiss = "modal">
         <span class = "glyphicon glyphicon-remove"></span> Close</a>
 </div>

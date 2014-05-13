@@ -26,6 +26,13 @@
             return $this->db->insert_id();
         }
 
+        function updateDokument($dok_id, $dokument) {
+            $this->db->where('id', $dok_id);
+            $this->db->update('dokument', $dokument);
+
+            return $dok_id;
+        }
+
         function removeDokument($dok_id) {
             $this->db->where('id', $dok_id);
             $this->db->delete('dokument');
